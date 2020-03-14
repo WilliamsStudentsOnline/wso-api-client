@@ -36,7 +36,6 @@
     "eslint-plugin-mocha": "^6.3.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
-    "minimist": "^1.2.2",
     "mocha": "^7.1.0",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
