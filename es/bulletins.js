@@ -2,8 +2,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-import axios from "axios"; // ! Decide on notations, as well as standard conventions.
-// TODO see if autogeneration is possible? interfaces + responses.
+import axios from "axios";
 
 /** *
  ** Bulletins Section
@@ -187,13 +186,11 @@ var patchBulletin = /*#__PURE__*/function () {
   return function patchBulletin(_x9, _x10, _x11) {
     return _ref5.apply(this, arguments);
   };
-}(); // TODO
-
+}();
 /** *
  ** Discussions Section
  **
  ** Discussions consist of a main discussion thread, followed by discussion posts.
- ** Discussions Threads... TODO
  */
 
 /**
@@ -518,8 +515,7 @@ var patchPost = /*#__PURE__*/function () {
   return function patchPost(_x29, _x30, _x31) {
     return _ref14.apply(this, arguments);
   };
-}(); // TODO
-
+}();
 /** *
  ** Rides Section
  **

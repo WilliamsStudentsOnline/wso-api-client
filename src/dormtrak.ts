@@ -1,7 +1,5 @@
 import axios, { AxiosError } from "axios";
 
-// TODO document preloads
-
 type DormsQuery = {
   offset?: number;
   limit?: number;

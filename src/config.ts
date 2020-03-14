@@ -5,8 +5,6 @@
  *
  * @returns {String} Returns the appropriate base url.
  */
-// TODO think of how to make this work
-// TODO use .env.development/ .env.production
 // eslint-disable-next-line
 export const wsoBaseUrl = (): string =>
   process.env.NODE_ENV === "production"

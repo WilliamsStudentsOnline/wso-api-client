@@ -83,8 +83,7 @@ var updateTokenAPI = /*#__PURE__*/function () {
   return function updateTokenAPI(_x2) {
     return _ref2.apply(this, arguments);
   };
-}(); // TODO rethink return null
-
+}();
 /**
  * Attempts to authenticate the user with the provided unixID and password,
  * logging on to the server.

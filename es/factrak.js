@@ -291,8 +291,7 @@ var getCourse = /*#__PURE__*/function () {
   return function getCourse(_x13, _x14) {
     return _ref8.apply(this, arguments);
   };
-}(); // TODO talk more about behavior
-
+}();
 /**
  * Create Survey Agreement
  *
@@ -331,8 +330,7 @@ var postSurveyAgreement = /*#__PURE__*/function () {
   return function postSurveyAgreement(_x15, _x16, _x17) {
     return _ref9.apply(this, arguments);
   };
-}(); // TODO specify behavior
-
+}();
 /**
  * Update Survey Agreement.
  *

@@ -1,7 +1,5 @@
 import axios, { AxiosError } from "axios";
 
-// ! Decide on notations, as well as standard conventions.
-// TODO see if autogeneration is possible? interfaces + responses.
 type BulletinQuery = {
   start?: string;
   offset?: string;
@@ -60,7 +58,7 @@ type RideQuery = {
   limit?: number;
   preload?: string[];
   type?: string;
-  all?: string; // TODO check if this is actually a string?
+  all?: string;
 };
 
 type NewRide = {
@@ -185,12 +183,10 @@ const patchBulletin = async (
     });
 };
 
-// TODO
 /** *
  ** Discussions Section
  **
  ** Discussions consist of a main discussion thread, followed by discussion posts.
- ** Discussions Threads... TODO
  */
 
 /**
@@ -377,7 +373,6 @@ const patchPost = async (
     });
 };
 
-// TODO
 /** *
  ** Rides Section
  **

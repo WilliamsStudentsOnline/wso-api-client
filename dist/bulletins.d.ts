@@ -112,7 +112,6 @@ declare const patchBulletin: (token: string, bulletinID: number, updateParams: U
  ** Discussions Section
  **
  ** Discussions consist of a main discussion thread, followed by discussion posts.
- ** Discussions Threads... TODO
  */
 /**
  * Gets all the discussions.

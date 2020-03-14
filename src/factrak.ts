@@ -217,7 +217,6 @@ const getCourse = async (token: string, courseID: number): Promise<any> => {
   });
 };
 
-// TODO talk more about behavior
 /**
  * Create Survey Agreement
  *
@@ -243,7 +242,6 @@ const postSurveyAgreement = async (
   });
 };
 
-// TODO specify behavior
 /**
  * Update Survey Agreement.
  *

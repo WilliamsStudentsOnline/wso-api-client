@@ -35,7 +35,6 @@ const updateTokenAPI = async (token: string): Promise<any> => {
     });
 };
 
-// TODO rethink return null
 /**
  * Attempts to authenticate the user with the provided unixID and password,
  * logging on to the server.
