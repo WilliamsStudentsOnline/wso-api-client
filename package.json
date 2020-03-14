@@ -1,0 +1,51 @@
+{
+  "name": "wso-api",
+  "version": "1.0.0",
+  "description": "API Client for WSO's services in TS/JS",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:WilliamsStudentsOnline/wso-api-client.git"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "npm run build:types && npm run build:cjs && npm run build:es",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:cjs": "NODE_ENV=cjs babel src --extensions \".ts,.tsx\" --out-dir cjs",
+    "build:es": "NODE_ENV=es babel src  --extensions \".ts,.tsx\" --out-dir es"
+  },
+  "author": {
+    "name": "Garett Tok Ern Liang",
+    "url": "https://github.com/walnutdust"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-typescript": "^7.8.3",
+    "@babel/register": "^7.8.6",
+    "@types/node": "^13.9.1",
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-mocha": "^6.3.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "mocha": "^7.1.0",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "sinon": "^9.0.1",
+    "ts-node": "^8.6.2",
+    "typedoc": "^0.16.11",
+    "typedoc-neo-theme": "^1.0.6",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
