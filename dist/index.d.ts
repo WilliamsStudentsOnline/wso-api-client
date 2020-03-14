@@ -1,8 +1,9 @@
-export * from "./misc";
-export * from "./users";
-export * from "./dormtrak";
-export * from "./factrak";
-export * from "./bulletins";
-export * from "./autocomplete";
-export * from "./auth";
-export * from "./config";
+import * as misc from "./misc";
+import * as users from "./users";
+import * as dormtrak from "./dormtrak";
+import * as factrak from "./factrak";
+import * as bulletins from "./bulletins";
+import * as autocomplete from "./autocomplete";
+import * as auth from "./auth";
+import * as config from "./config";
+export { misc, users, dormtrak, factrak, bulletins, autocomplete, auth, config, };

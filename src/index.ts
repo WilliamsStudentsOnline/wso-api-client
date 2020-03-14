@@ -6,3 +6,14 @@ import * as bulletins from "./bulletins";
 import * as autocomplete from "./autocomplete";
 import * as auth from "./auth";
 import * as config from "./config";
+
+export {
+  misc,
+  users,
+  dormtrak,
+  factrak,
+  bulletins,
+  autocomplete,
+  auth,
+  config,
+};

@@ -1,101 +1,44 @@
 "use strict";
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.config = exports.auth = exports.autocomplete = exports.bulletins = exports.factrak = exports.dormtrak = exports.users = exports.misc = void 0;
 
-var _misc = require("./misc");
+var misc = _interopRequireWildcard(require("./misc"));
 
-Object.keys(_misc).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _misc[key];
-    }
-  });
-});
+exports.misc = misc;
 
-var _users = require("./users");
+var users = _interopRequireWildcard(require("./users"));
 
-Object.keys(_users).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _users[key];
-    }
-  });
-});
+exports.users = users;
 
-var _dormtrak = require("./dormtrak");
+var dormtrak = _interopRequireWildcard(require("./dormtrak"));
 
-Object.keys(_dormtrak).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _dormtrak[key];
-    }
-  });
-});
+exports.dormtrak = dormtrak;
 
-var _factrak = require("./factrak");
+var factrak = _interopRequireWildcard(require("./factrak"));
 
-Object.keys(_factrak).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _factrak[key];
-    }
-  });
-});
+exports.factrak = factrak;
 
-var _bulletins = require("./bulletins");
+var bulletins = _interopRequireWildcard(require("./bulletins"));
 
-Object.keys(_bulletins).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _bulletins[key];
-    }
-  });
-});
+exports.bulletins = bulletins;
 
-var _autocomplete = require("./autocomplete");
+var autocomplete = _interopRequireWildcard(require("./autocomplete"));
 
-Object.keys(_autocomplete).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _autocomplete[key];
-    }
-  });
-});
+exports.autocomplete = autocomplete;
 
-var _auth = require("./auth");
+var auth = _interopRequireWildcard(require("./auth"));
 
-Object.keys(_auth).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _auth[key];
-    }
-  });
-});
+exports.auth = auth;
 
-var _config = require("./config");
+var config = _interopRequireWildcard(require("./config"));
 
-Object.keys(_config).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _config[key];
-    }
-  });
-});
+exports.config = config;
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
