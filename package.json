@@ -1,11 +1,15 @@
 {
   "name": "wso-api",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "API Client for WSO's services in TS/JS",
-  "main": "index.js",
+  "main": "cjs/index.js",
+  "module": "es/index.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:WilliamsStudentsOnline/wso-api-client.git"
+  },
+  "typescript": {
+    "definition": "dist/index.d.ts"
   },
   "license": "MIT",
   "private": true,
