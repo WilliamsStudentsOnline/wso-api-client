@@ -6,3 +6,4 @@ export * from "./bulletins";
 export * from "./autocomplete";
 export * from "./auth";
 export * from "./config";
+export * from "./ephmatch";

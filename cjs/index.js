@@ -99,3 +99,15 @@ Object.keys(_config).forEach(function (key) {
     }
   });
 });
+
+var _ephmatch = require("./ephmatch");
+
+Object.keys(_ephmatch).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _ephmatch[key];
+    }
+  });
+});
