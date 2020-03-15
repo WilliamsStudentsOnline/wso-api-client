@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 declare type UsersQuery = {
     offset?: string;
     limit?: string;
@@ -30,9 +31,10 @@ declare type UpdatedTags = {
  *
  * @param {string} token - The auth token to be used.
  * @param {UsersQuery} params - The parameters used to retrieve the users.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-declare const getAllUsers: (token: string, params: UsersQuery) => Promise<any>;
+declare const getAllUsers: (token: string, params: UsersQuery) => Promise<AxiosResponse<any>>;
 /**
  * Retrieves all the user by user id.
  * By default, this function returns the user the token belongs to,
@@ -42,34 +44,38 @@ declare const getAllUsers: (token: string, params: UsersQuery) => Promise<any>;
  * @param {string} token - The auth token to be used.
  * @param {string | number} [userID = "me"] - The user id used to search for a user. If 'me' is
  *                                 passed in, return the user of the token.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-declare const getUser: (token: string, userID?: string | number) => Promise<any>;
+declare const getUser: (token: string, userID?: string | number) => Promise<AxiosResponse<any>>;
 /**
  * Updates the current user (i.e. user of the token) based on the update Parameters.
  *
  * @param {string} token - The auth token to be used.
- * @param {UpdatedUser} updateParams - The update user object
- * @return {Promise<any>} Returns the response from the server.
+ * @param {UpdatedUser} updateParams - The update user object.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-declare const patchCurrUser: (token: string, updateParams: UpdatedUser) => Promise<any>;
+declare const patchCurrUser: (token: string, updateParams: UpdatedUser) => Promise<AxiosResponse<any>>;
 /**
  * Updates the current user's tags. Take note that this method will replace the
  * user's current tags with the tags that are passed in
  *
  * @param {string} token - The auth token to be used.
- * @param {UpdatedTags} updatedTags - The update tags
- * @return {Promise<any>} Returns the response from the server.
+ * @param {UpdatedTags} updatedTags - The updated tags.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-declare const putCurrUserTags: (token: string, updatedTags: UpdatedTags) => Promise<any>;
+declare const putCurrUserTags: (token: string, updatedTags: UpdatedTags) => Promise<AxiosResponse<any>>;
 /**
  * Updates the current user's profile photo.
  *
  * @param {string} token - The auth token to be used.
  * @param {Blob} file - The html blob representing the file.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-declare const putCurrUserPhoto: (token: string, file: Blob) => Promise<any>;
+declare const putCurrUserPhoto: (token: string, file: Blob) => Promise<AxiosResponse<any>>;
 /**
  * Gets the profile picture of the user scaled to thumbnail size.
  * This image is perfect for smaller images such as in the header.
@@ -79,9 +85,10 @@ declare const putCurrUserPhoto: (token: string, file: Blob) => Promise<any>;
  * @param {string} token - The auth token to be used.
  * @param {string | number} [unixID = "me"] - The unix id of the user whose photo we wish to retrieve.
  *                                   Pass in "me" to get the photo of the token's user.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-declare const getUserThumbPhoto: (token: string, unixID?: string | number) => Promise<any>;
+declare const getUserThumbPhoto: (token: string, unixID?: string | number) => Promise<AxiosResponse<any>>;
 /**
  * Gets the profile picture of the user scaled to the larger size.
  * This image is perfect for larger images such as in facebook results or ephmatch.
@@ -91,7 +98,8 @@ declare const getUserThumbPhoto: (token: string, unixID?: string | number) => Pr
  * @param {string} token - The auth token to be used.
  * @param {string | number} [unixID = "me"] - The unix id of the user whose photo we wish to retrieve.
  *                                           Pass in "me" to get the photo of the token's user.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-declare const getUserLargePhoto: (token: string, unixID?: string | number) => Promise<any>;
+declare const getUserLargePhoto: (token: string, unixID?: string | number) => Promise<AxiosResponse<any>>;
 export { getAllUsers, getUser, patchCurrUser, putCurrUserTags, putCurrUserPhoto, getUserThumbPhoto, getUserLargePhoto, };

@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 
 type BulletinQuery = {
   start?: string;
@@ -86,19 +86,20 @@ type UpdatedRide = {
  *
  * @param {string} token - The auth token to be used.
  * @param {BulletinQuery} params - The parameters used to retrieve the bulletins.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getBulletins = async (
   token: string,
   params: BulletinQuery
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .get("/api/v2/bulletin/bulletins", {
       headers: { Authorization: `Bearer ${token}` },
       params,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -107,15 +108,19 @@ const getBulletins = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {number} bulletinID - The id number of the bulletin to retrieve.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getBulletin = async (token: string, bulletinID: number): Promise<any> => {
+const getBulletin = async (
+  token: string,
+  bulletinID: number
+): Promise<AxiosResponse<any>> => {
   return axios
     .get(`/api/v2/bulletin/bulletins/${bulletinID}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -124,19 +129,20 @@ const getBulletin = async (token: string, bulletinID: number): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {NewBulletin} createParams - The parameters used to create the bulletin.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const postBulletin = async (
   token: string,
   createParams: NewBulletin
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .post("/api/v2/bulletin/bulletins", {
       headers: { Authorization: `Bearer ${token}` },
       data: createParams,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -145,18 +151,19 @@ const postBulletin = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {number} bulletinID - The id of the bulletin.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const deleteBulletin = async (
   token: string,
   bulletinID: number
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .delete(`/api/v2/bulletin/bulletins/${bulletinID}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -166,20 +173,21 @@ const deleteBulletin = async (
  * @param {string} token - The auth token to be used.
  * @param {number} bulletinID - The id of the bulletin.
  * @param {UpdatedBulletin} updateParams - The parameters used to update the bulletin.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const patchBulletin = async (
   token: string,
   bulletinID: number,
   updateParams: UpdatedBulletin
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .patch(`/api/v2/bulletin/bulletins/${bulletinID}`, {
       headers: { Authorization: `Bearer ${token}` },
       params: updateParams,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -194,19 +202,20 @@ const patchBulletin = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {DiscussionsQuery} params - The parameters used to update the bulletin.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getDiscussions = async (
   token: string,
   params: DiscussionsQuery
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .get("/api/v2/bulletin/discussions", {
       headers: { Authorization: `Bearer ${token}` },
       params,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -216,20 +225,21 @@ const getDiscussions = async (
  * @param {string} token - The auth token to be used.
  * @param {number} discussionID - The id of the discussion to be retrieved.
  * @param {DiscussionQuery} params - The parameters used to get the bulletin (preload).
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getDiscussion = async (
   token: string,
   discussionID: number,
   params: DiscussionQuery
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .get(`/api/v2/bulletin/discussions/${discussionID}`, {
       headers: { Authorization: `Bearer ${token}` },
       params,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -238,18 +248,19 @@ const getDiscussion = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {number} discussionID - The id of the discussion to be retrieved.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const deleteDiscussion = async (
   token: string,
   discussionID: number
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .delete(`/api/v2/bulletin/discussions/${discussionID}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -258,19 +269,20 @@ const deleteDiscussion = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {NewDiscussion} createParams - The parameters used to create the discussion.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const postDiscussion = async (
   token: string,
   createParams: NewDiscussion
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .post(`/api/v2/bulletin/discussions`, {
       headers: { Authorization: `Bearer ${token}` },
       data: createParams,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -280,18 +292,19 @@ const postDiscussion = async (
  * @param {string} token - The auth token to be used.
  * @param {number} discussionID - The id of the discussion whose posts are
  *                                to be retrieved.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getDiscussionPosts = async (
   token: string,
   discussionID: number
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .get(`/api/v2/bulletin/discussions/${discussionID}/posts`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -300,19 +313,20 @@ const getDiscussionPosts = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {NewDiscussionPost} createParams - The parameters of the new bulletin.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const postPost = async (
   token: string,
   createParams: NewDiscussionPost
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .post(`/api/v2/bulletin/posts`, {
       headers: { Authorization: `Bearer ${token}` },
       data: createParams,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -320,16 +334,20 @@ const postPost = async (
  * Gets a bulletin post based on the post ID.
  *
  * @param {string} token - The auth token to be used.
- * @param {number} postID - The id of the bulletin post to be retrueved.
- * @return {Promise<any>} Returns the response from the server.
+ * @param {number} postID - The id of the bulletin post to be retrieved.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getPost = async (token: string, postID: number): Promise<any> => {
+const getPost = async (
+  token: string,
+  postID: number
+): Promise<AxiosResponse<any>> => {
   return axios
     .get(`/api/v2/bulletin/posts/${postID}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -338,15 +356,19 @@ const getPost = async (token: string, postID: number): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} postID - The id of the bulletin post to be deleted.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const deletePost = async (token: string, postID: number): Promise<any> => {
+const deletePost = async (
+  token: string,
+  postID: number
+): Promise<AxiosResponse<any>> => {
   return axios
     .delete(`/api/v2/bulletin/posts/${postID}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -356,20 +378,21 @@ const deletePost = async (token: string, postID: number): Promise<any> => {
  * @param {string} token - The auth token to be used.
  * @param {number} postID - The id of the bulletin post to be deleted.
  * @param {UpdatedDiscussionPost} updateParams - The parameters used to update the post.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const patchPost = async (
   token: string,
   postID: number,
   updateParams: UpdatedDiscussionPost
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .patch(`/api/v2/bulletin/posts/${postID}`, {
       headers: { Authorization: `Bearer ${token}` },
       data: updateParams,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -385,16 +408,20 @@ const patchPost = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {RideQuery} params - The parameters used to get the ride.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getRides = async (token: string, params: RideQuery): Promise<any> => {
+const getRides = async (
+  token: string,
+  params: RideQuery
+): Promise<AxiosResponse<any>> => {
   return axios
     .get("/api/v2/bulletin/rides", {
       headers: { Authorization: `Bearer ${token}` },
       params,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -403,16 +430,20 @@ const getRides = async (token: string, params: RideQuery): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {NewRide} createParams - The parameters used to get the ride.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const postRide = async (token: string, createParams: NewRide): Promise<any> => {
+const postRide = async (
+  token: string,
+  createParams: NewRide
+): Promise<AxiosResponse<any>> => {
   return axios
     .post("/api/v2/bulletin/rides", {
       headers: { Authorization: `Bearer ${token}` },
       data: createParams,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -421,15 +452,19 @@ const postRide = async (token: string, createParams: NewRide): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} rideID - The id of the ride we wish to retrieve.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getRide = async (token: string, rideID: number): Promise<any> => {
+const getRide = async (
+  token: string,
+  rideID: number
+): Promise<AxiosResponse<any>> => {
   return axios
     .get(`/api/v2/bulletin/rides/${rideID}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -438,15 +473,19 @@ const getRide = async (token: string, rideID: number): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} rideID - The id of the ride to be deleted.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const deleteRide = async (token: string, rideID: number): Promise<any> => {
+const deleteRide = async (
+  token: string,
+  rideID: number
+): Promise<AxiosResponse<any>> => {
   return axios
     .delete(`/api/v2/bulletin/rides/${rideID}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -456,20 +495,21 @@ const deleteRide = async (token: string, rideID: number): Promise<any> => {
  * @param {string} token - The auth token to be used.
  * @param {number} rideID - The id of the ride to be updated.
  * @param {UpdatedRide} updateParams - The parameters used to update rides.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const patchRide = async (
   token: string,
   rideID: number,
   updateParams: UpdatedRide
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .patch(`/api/v2/bulletin/rides/${rideID}`, {
       headers: { Authorization: `Bearer ${token}` },
       params: updateParams,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 

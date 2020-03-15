@@ -16,7 +16,8 @@ import axios from "axios";
  * Note that some of these results are dorms, and the others are specific rooms.
  *
  * @param {string} token - The auth token to be used.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 var getDormtrakRankings = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(token) {
@@ -29,7 +30,7 @@ var getDormtrakRankings = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -48,7 +49,8 @@ var getDormtrakRankings = /*#__PURE__*/function () {
  * Retrieves the list of Dormtrak Neighborhoods.
  *
  * @param {string} token - The auth token to be used.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -63,7 +65,7 @@ var getNeighborhoods = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -83,7 +85,8 @@ var getNeighborhoods = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} neighborhoodID - The id of the neighborhood we are interested in.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -98,7 +101,7 @@ var getNeighborhood = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -118,7 +121,8 @@ var getNeighborhood = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} neighborhoodID - The id of the neighborhood we are interested in.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -133,7 +137,7 @@ var getNeighborhoodFacts = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -153,7 +157,8 @@ var getNeighborhoodFacts = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {DormsQuery} params - The query parameters.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -169,7 +174,7 @@ var getDorms = /*#__PURE__*/function () {
               },
               params: params
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -189,7 +194,8 @@ var getDorms = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} dormID - The id of the dorm to retrieve.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -204,7 +210,7 @@ var getDorm = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -224,7 +230,8 @@ var getDorm = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} dormID - The id of the dorm whose facts we want to retrieve.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -239,7 +246,7 @@ var getDormFacts = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -259,7 +266,8 @@ var getDormFacts = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} dormID - The id of the dorm whose rooms we want to retrieve.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -274,7 +282,7 @@ var getDormRooms = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -294,7 +302,8 @@ var getDormRooms = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {DormReviewsQuery} [queryParams = {}] - The id of the dorm whose rooms we want to retrieve.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -313,7 +322,7 @@ var getDormReviews = /*#__PURE__*/function () {
               },
               params: queryParams
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 2:
@@ -333,7 +342,8 @@ var getDormReviews = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {NewDormReview} createParams - New Dormtrak Review.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -349,7 +359,7 @@ var postDormReview = /*#__PURE__*/function () {
               },
               data: createParams
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -369,7 +379,8 @@ var postDormReview = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} reviewID - The id of the review to be retrieved.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -384,7 +395,7 @@ var getDormReview = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -404,7 +415,8 @@ var getDormReview = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} reviewID - The id of the review to be deleted.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -419,7 +431,7 @@ var deleteDormReview = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -440,7 +452,8 @@ var deleteDormReview = /*#__PURE__*/function () {
  * @param {string} token - The auth token to be used.
  * @param {number} reviewID - The id of the review to be deleted.
  * @param {UpdatedDormReview} reviewParams - The updated dormtrak review.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -456,7 +469,7 @@ var patchDormReview = /*#__PURE__*/function () {
               },
               data: reviewParams
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:

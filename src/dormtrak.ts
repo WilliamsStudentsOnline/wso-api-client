@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 
 type DormsQuery = {
   offset?: number;
@@ -66,15 +66,18 @@ type UpdatedDormReview = {
  * Note that some of these results are dorms, and the others are specific rooms.
  *
  * @param {string} token - The auth token to be used.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getDormtrakRankings = async (token: string): Promise<any> => {
+const getDormtrakRankings = async (
+  token: string
+): Promise<AxiosResponse<any>> => {
   return axios
     .get("/api/v2/dormtrak/rankings", {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -82,15 +85,16 @@ const getDormtrakRankings = async (token: string): Promise<any> => {
  * Retrieves the list of Dormtrak Neighborhoods.
  *
  * @param {string} token - The auth token to be used.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getNeighborhoods = async (token: string): Promise<any> => {
+const getNeighborhoods = async (token: string): Promise<AxiosResponse<any>> => {
   return axios
     .get("/api/v2/dormtrak/neighborhoods", {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -99,18 +103,19 @@ const getNeighborhoods = async (token: string): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} neighborhoodID - The id of the neighborhood we are interested in.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getNeighborhood = async (
   token: string,
   neighborhoodID: number
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .get(`/api/v2/dormtrak/neighborhoods/${neighborhoodID}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -119,18 +124,19 @@ const getNeighborhood = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {number} neighborhoodID - The id of the neighborhood we are interested in.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getNeighborhoodFacts = async (
   token: string,
   neighborhoodID: number
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .get(`/api/v2/dormtrak/neighborhoods/${neighborhoodID}/facts`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -139,16 +145,20 @@ const getNeighborhoodFacts = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {DormsQuery} params - The query parameters.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getDorms = async (token: string, params: DormsQuery): Promise<any> => {
+const getDorms = async (
+  token: string,
+  params: DormsQuery
+): Promise<AxiosResponse<any>> => {
   return axios
     .get("/api/v2/dormtrak/dorms", {
       headers: { Authorization: `Bearer ${token}` },
       params,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -157,15 +167,19 @@ const getDorms = async (token: string, params: DormsQuery): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} dormID - The id of the dorm to retrieve.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getDorm = async (token: string, dormID: number): Promise<any> => {
+const getDorm = async (
+  token: string,
+  dormID: number
+): Promise<AxiosResponse<any>> => {
   return axios
     .get(`/api/v2/dormtrak/dorms/${dormID}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -174,15 +188,19 @@ const getDorm = async (token: string, dormID: number): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} dormID - The id of the dorm whose facts we want to retrieve.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getDormFacts = async (token: string, dormID: number): Promise<any> => {
+const getDormFacts = async (
+  token: string,
+  dormID: number
+): Promise<AxiosResponse<any>> => {
   return axios
     .get(`/api/v2/dormtrak/dorms/${dormID}/facts`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -191,15 +209,19 @@ const getDormFacts = async (token: string, dormID: number): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} dormID - The id of the dorm whose rooms we want to retrieve.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getDormRooms = async (token: string, dormID: number): Promise<any> => {
+const getDormRooms = async (
+  token: string,
+  dormID: number
+): Promise<AxiosResponse<any>> => {
   return axios
     .get(`/api/v2/dormtrak/dorms/${dormID}/rooms`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -208,19 +230,20 @@ const getDormRooms = async (token: string, dormID: number): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {DormReviewsQuery} [queryParams = {}] - The id of the dorm whose rooms we want to retrieve.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getDormReviews = async (
   token: string,
   queryParams: DormReviewsQuery = {}
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .get(`/api/v2/dormtrak/reviews`, {
       headers: { Authorization: `Bearer ${token}` },
       params: queryParams,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -229,19 +252,20 @@ const getDormReviews = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {NewDormReview} createParams - New Dormtrak Review.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const postDormReview = async (
   token: string,
   createParams: NewDormReview
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .post(`/api/v2/dormtrak/reviews`, {
       headers: { Authorization: `Bearer ${token}` },
       data: createParams,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -250,15 +274,19 @@ const postDormReview = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {number} reviewID - The id of the review to be retrieved.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getDormReview = async (token: string, reviewID: number): Promise<any> => {
+const getDormReview = async (
+  token: string,
+  reviewID: number
+): Promise<AxiosResponse<any>> => {
   return axios
     .get(`/api/v2/dormtrak/reviews/${reviewID}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -267,18 +295,19 @@ const getDormReview = async (token: string, reviewID: number): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} reviewID - The id of the review to be deleted.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const deleteDormReview = async (
   token: string,
   reviewID: number
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .delete(`/api/v2/dormtrak/reviews/${reviewID}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -288,20 +317,21 @@ const deleteDormReview = async (
  * @param {string} token - The auth token to be used.
  * @param {number} reviewID - The id of the review to be deleted.
  * @param {UpdatedDormReview} reviewParams - The updated dormtrak review.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const patchDormReview = async (
   token: string,
   reviewParams: UpdatedDormReview,
   reviewID: number
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .patch(`/api/v2/dormtrak/reviews/${reviewID}`, {
       headers: { Authorization: `Bearer ${token}` },
       data: reviewParams,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 

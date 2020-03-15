@@ -15,7 +15,8 @@ import axios from "axios";
  *
  * @param {string} token - The auth token to be used.
  * @param {BulletinQuery} params - The parameters used to retrieve the bulletins.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 var getBulletins = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(token, params) {
@@ -29,7 +30,7 @@ var getBulletins = /*#__PURE__*/function () {
               },
               params: params
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -49,7 +50,8 @@ var getBulletins = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} bulletinID - The id number of the bulletin to retrieve.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -64,7 +66,7 @@ var getBulletin = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -84,7 +86,8 @@ var getBulletin = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {NewBulletin} createParams - The parameters used to create the bulletin.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -100,7 +103,7 @@ var postBulletin = /*#__PURE__*/function () {
               },
               data: createParams
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -120,7 +123,8 @@ var postBulletin = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} bulletinID - The id of the bulletin.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -135,7 +139,7 @@ var deleteBulletin = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -156,7 +160,8 @@ var deleteBulletin = /*#__PURE__*/function () {
  * @param {string} token - The auth token to be used.
  * @param {number} bulletinID - The id of the bulletin.
  * @param {UpdatedBulletin} updateParams - The parameters used to update the bulletin.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -172,7 +177,7 @@ var patchBulletin = /*#__PURE__*/function () {
               },
               params: updateParams
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -198,7 +203,8 @@ var patchBulletin = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {DiscussionsQuery} params - The parameters used to update the bulletin.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -214,7 +220,7 @@ var getDiscussions = /*#__PURE__*/function () {
               },
               params: params
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -235,7 +241,8 @@ var getDiscussions = /*#__PURE__*/function () {
  * @param {string} token - The auth token to be used.
  * @param {number} discussionID - The id of the discussion to be retrieved.
  * @param {DiscussionQuery} params - The parameters used to get the bulletin (preload).
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -251,7 +258,7 @@ var getDiscussion = /*#__PURE__*/function () {
               },
               params: params
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -271,7 +278,8 @@ var getDiscussion = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} discussionID - The id of the discussion to be retrieved.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -286,7 +294,7 @@ var deleteDiscussion = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -306,7 +314,8 @@ var deleteDiscussion = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {NewDiscussion} createParams - The parameters used to create the discussion.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -322,7 +331,7 @@ var postDiscussion = /*#__PURE__*/function () {
               },
               data: createParams
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -343,7 +352,8 @@ var postDiscussion = /*#__PURE__*/function () {
  * @param {string} token - The auth token to be used.
  * @param {number} discussionID - The id of the discussion whose posts are
  *                                to be retrieved.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -358,7 +368,7 @@ var getDiscussionPosts = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -378,7 +388,8 @@ var getDiscussionPosts = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {NewDiscussionPost} createParams - The parameters of the new bulletin.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -394,7 +405,7 @@ var postPost = /*#__PURE__*/function () {
               },
               data: createParams
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -413,8 +424,9 @@ var postPost = /*#__PURE__*/function () {
  * Gets a bulletin post based on the post ID.
  *
  * @param {string} token - The auth token to be used.
- * @param {number} postID - The id of the bulletin post to be retrueved.
- * @return {Promise<any>} Returns the response from the server.
+ * @param {number} postID - The id of the bulletin post to be retrieved.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -429,7 +441,7 @@ var getPost = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -449,7 +461,8 @@ var getPost = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} postID - The id of the bulletin post to be deleted.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -464,7 +477,7 @@ var deletePost = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -485,7 +498,8 @@ var deletePost = /*#__PURE__*/function () {
  * @param {string} token - The auth token to be used.
  * @param {number} postID - The id of the bulletin post to be deleted.
  * @param {UpdatedDiscussionPost} updateParams - The parameters used to update the post.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -501,7 +515,7 @@ var patchPost = /*#__PURE__*/function () {
               },
               data: updateParams
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -528,7 +542,8 @@ var patchPost = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {RideQuery} params - The parameters used to get the ride.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -544,7 +559,7 @@ var getRides = /*#__PURE__*/function () {
               },
               params: params
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -564,7 +579,8 @@ var getRides = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {NewRide} createParams - The parameters used to get the ride.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -580,7 +596,7 @@ var postRide = /*#__PURE__*/function () {
               },
               data: createParams
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -600,7 +616,8 @@ var postRide = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} rideID - The id of the ride we wish to retrieve.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -615,7 +632,7 @@ var getRide = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -635,7 +652,8 @@ var getRide = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} rideID - The id of the ride to be deleted.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -650,7 +668,7 @@ var deleteRide = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -671,7 +689,8 @@ var deleteRide = /*#__PURE__*/function () {
  * @param {string} token - The auth token to be used.
  * @param {number} rideID - The id of the ride to be updated.
  * @param {UpdatedRide} updateParams - The parameters used to update rides.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -687,7 +706,7 @@ var patchRide = /*#__PURE__*/function () {
               },
               params: updateParams
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:

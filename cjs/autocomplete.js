@@ -18,7 +18,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  *
  * @param {string} token - The auth token to be used.
  * @param {string} query - The query to be searched.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 var autocompleteTags = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(token, query) {
@@ -35,7 +36,7 @@ var autocompleteTags = /*#__PURE__*/function () {
                 limit: 5
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -55,7 +56,8 @@ var autocompleteTags = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {string} query - The query to be searched.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -76,7 +78,7 @@ var autocompleteFactrak = /*#__PURE__*/function () {
                 limit: 5
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:

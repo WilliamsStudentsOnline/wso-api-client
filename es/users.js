@@ -17,7 +17,8 @@ import axios from "axios";
  *
  * @param {string} token - The auth token to be used.
  * @param {UsersQuery} params - The parameters used to retrieve the users.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 var getAllUsers = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(token, params) {
@@ -31,7 +32,7 @@ var getAllUsers = /*#__PURE__*/function () {
               },
               params: params
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -55,7 +56,8 @@ var getAllUsers = /*#__PURE__*/function () {
  * @param {string} token - The auth token to be used.
  * @param {string | number} [userID = "me"] - The user id used to search for a user. If 'me' is
  *                                 passed in, return the user of the token.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -73,7 +75,7 @@ var getUser = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 2:
@@ -92,8 +94,9 @@ var getUser = /*#__PURE__*/function () {
  * Updates the current user (i.e. user of the token) based on the update Parameters.
  *
  * @param {string} token - The auth token to be used.
- * @param {UpdatedUser} updateParams - The update user object
- * @return {Promise<any>} Returns the response from the server.
+ * @param {UpdatedUser} updateParams - The update user object.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -109,7 +112,7 @@ var patchCurrUser = /*#__PURE__*/function () {
               },
               data: updateParams
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -129,8 +132,9 @@ var patchCurrUser = /*#__PURE__*/function () {
  * user's current tags with the tags that are passed in
  *
  * @param {string} token - The auth token to be used.
- * @param {UpdatedTags} updatedTags - The update tags
- * @return {Promise<any>} Returns the response from the server.
+ * @param {UpdatedTags} updatedTags - The updated tags.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -146,7 +150,7 @@ var putCurrUserTags = /*#__PURE__*/function () {
               },
               data: updatedTags
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -166,7 +170,8 @@ var putCurrUserTags = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {Blob} file - The html blob representing the file.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -186,7 +191,7 @@ var putCurrUserPhoto = /*#__PURE__*/function () {
               },
               data: formData
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 3:
@@ -210,7 +215,8 @@ var putCurrUserPhoto = /*#__PURE__*/function () {
  * @param {string} token - The auth token to be used.
  * @param {string | number} [unixID = "me"] - The unix id of the user whose photo we wish to retrieve.
  *                                   Pass in "me" to get the photo of the token's user.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -229,7 +235,7 @@ var getUserThumbPhoto = /*#__PURE__*/function () {
               },
               responseType: "blob"
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 2:
@@ -253,7 +259,8 @@ var getUserThumbPhoto = /*#__PURE__*/function () {
  * @param {string} token - The auth token to be used.
  * @param {string | number} [unixID = "me"] - The unix id of the user whose photo we wish to retrieve.
  *                                           Pass in "me" to get the photo of the token's user.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -272,7 +279,7 @@ var getUserLargePhoto = /*#__PURE__*/function () {
               },
               responseType: "blob"
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 2:

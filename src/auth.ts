@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 
 /**
  * Refreshes the auth token passed in. Marginally faster than updateToken, but
@@ -6,15 +6,16 @@ import axios, { AxiosError } from "axios";
  * necessary scopes and payload.
  *
  * @param {string} token - The auth token to be refreshed.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>} Returns the response from the server.
  */
-const refreshToken = async (token: string): Promise<any> => {
+const refreshToken = async (token: string): Promise<AxiosResponse<any>> => {
   return axios
     .post("/api/v2/auth/refresh-token", {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -23,15 +24,16 @@ const refreshToken = async (token: string): Promise<any> => {
  * database, modifying the token payload if necessary.
  *
  * @param {string} token - The auth token to be refreshed.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const updateTokenAPI = async (token: string): Promise<any> => {
+const updateTokenAPI = async (token: string): Promise<AxiosResponse<any>> => {
   return axios
     .get("/api/v2/auth/update-token", {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -41,9 +43,13 @@ const updateTokenAPI = async (token: string): Promise<any> => {
  *
  * @param {string} unixID - The unix id for the LDAP account.
  * @param {string} password - The password for the LDAP account.
- * @return {Promise<any>} Returns the response from the server
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server
  */
-const getToken = async (unixID: string, password: string): Promise<any> => {
+const getToken = async (
+  unixID: string,
+  password: string
+): Promise<AxiosResponse<any>> => {
   if (!unixID || !password) {
     return null;
   }
@@ -55,17 +61,18 @@ const getToken = async (unixID: string, password: string): Promise<any> => {
         password,
       },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
 /**
  * Gets an on/off-campus token without logging in.
  *
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getCampusToken = async (): Promise<any> => {
+const getCampusToken = async (): Promise<AxiosResponse<any>> => {
   return axios
     .post("/api/v2/auth/login", {
       data: {
@@ -74,8 +81,8 @@ const getCampusToken = async (): Promise<any> => {
         useIP: true,
       },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 

@@ -8,7 +8,8 @@ import axios from "axios";
  * Retrieves the list of Areas of Study.
  *
  * @param {string} token - The auth token to be used.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 var getAreasOfStudy = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(token) {
@@ -22,7 +23,7 @@ var getAreasOfStudy = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -42,7 +43,8 @@ var getAreasOfStudy = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} areaID - The id of the area of study to be retrieved.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -58,7 +60,7 @@ var getAreaOfStudy = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -77,7 +79,8 @@ var getAreaOfStudy = /*#__PURE__*/function () {
  * Retrieves the list of departments.
  *
  * @param {string} token - The auth token to be used.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -93,7 +96,7 @@ var getDepartments = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -113,7 +116,8 @@ var getDepartments = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {QuerySurveys} params - the query paramters
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -130,7 +134,7 @@ var getSurveys = /*#__PURE__*/function () {
               },
               params: params
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -149,8 +153,9 @@ var getSurveys = /*#__PURE__*/function () {
  * Retrieves the list of flagged Factrak surveys based on the parameters passed in.
  *
  * @param {string} token - The auth token to be used.
- * @param {QuerySurveys} params - the query paramters
- * @return {Promise<any>} Returns the response from the server.
+ * @param {QuerySurveys} params - Query paramters.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -167,7 +172,7 @@ var getFlagged = /*#__PURE__*/function () {
               },
               params: params
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -187,7 +192,8 @@ var getFlagged = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} surveyID - ID of survey to be unflagged.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -204,7 +210,7 @@ var unflagSurvey = /*#__PURE__*/function () {
               },
               method: "delete"
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -224,7 +230,8 @@ var unflagSurvey = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} surveyID - ID of survey to be deleted.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -241,7 +248,7 @@ var deleteSurvey = /*#__PURE__*/function () {
               },
               method: "delete"
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -261,7 +268,8 @@ var deleteSurvey = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} courseID - ID of course to be retrieved.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -277,7 +285,7 @@ var getCourse = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -298,7 +306,8 @@ var getCourse = /*#__PURE__*/function () {
  * @param {string} token - The auth token to be used.
  * @param {number} surveyID - ID of survey to create an agreement.
  * @param {Agreement} createParams - Agreement to be tied to the survey.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -316,7 +325,7 @@ var postSurveyAgreement = /*#__PURE__*/function () {
               data: createParams,
               method: "post"
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -337,7 +346,8 @@ var postSurveyAgreement = /*#__PURE__*/function () {
  * @param {string} token - The auth token to be used.
  * @param {number} surveyID - ID of survey to update an agreement.
  * @param {Agreement} updateParams - Agreement to be tied to the survey.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -355,7 +365,7 @@ var patchSurveyAgreement = /*#__PURE__*/function () {
               data: updateParams,
               method: "patch"
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -375,7 +385,8 @@ var patchSurveyAgreement = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} surveyID - ID of survey to be deleted.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -392,7 +403,7 @@ var deleteSurveyAgreement = /*#__PURE__*/function () {
               },
               method: "delete"
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -412,7 +423,8 @@ var deleteSurveyAgreement = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} surveyID - ID of survey to be flagged.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -429,7 +441,7 @@ var flagSurvey = /*#__PURE__*/function () {
               },
               method: "post"
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -449,7 +461,8 @@ var flagSurvey = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {QueryProfessors} params - Parameters used to query for professors.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -466,7 +479,7 @@ var getProfessors = /*#__PURE__*/function () {
               },
               params: params
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -488,7 +501,8 @@ var getProfessors = /*#__PURE__*/function () {
  * @param {string} token - The auth token to be used.
  * @param {number} professorID - Professor's ID.
  * @param {number} [courseID = -1] - Course ID.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -523,7 +537,7 @@ var getProfessor = /*#__PURE__*/function () {
             }
 
             return _context14.abrupt("return", axios(request)["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 3:
@@ -543,7 +557,8 @@ var getProfessor = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} surveyID - Survey ID.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -559,7 +574,7 @@ var getSurvey = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -579,7 +594,8 @@ var getSurvey = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} departmentID - Department ID.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -595,7 +611,7 @@ var getDepartment = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -617,7 +633,8 @@ var getDepartment = /*#__PURE__*/function () {
  * @param {string} token - The auth token to be used.
  * @param {number} professorID - Professor's ID.
  * @param {number} [courseID = -1] - Course ID.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -652,7 +669,7 @@ var getProfessorRatings = /*#__PURE__*/function () {
             }
 
             return _context17.abrupt("return", axios(request)["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 3:
@@ -674,7 +691,8 @@ var getProfessorRatings = /*#__PURE__*/function () {
  * @param {string} token - The auth token to be used.
  * @param {number} [professorID = -1] - Professor's ID.
  * @param {number} courseID - Course ID.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -711,7 +729,7 @@ var getCourseRatings = /*#__PURE__*/function () {
             }
 
             return _context18.abrupt("return", axios(request)["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 4:
@@ -731,7 +749,8 @@ var getCourseRatings = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {NewSurvey} createParams - New Survey.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -749,7 +768,7 @@ var postSurvey = /*#__PURE__*/function () {
               method: "post",
               data: createParams
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -770,7 +789,8 @@ var postSurvey = /*#__PURE__*/function () {
  * @param {string} token - The auth token to be used.
  * @param {UpdatedSurvey} updateParams - Updated Survey.
  * @param {number} surveyID - Survey ID.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -788,7 +808,7 @@ var patchSurvey = /*#__PURE__*/function () {
               method: "patch",
               data: updateParams
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -808,7 +828,8 @@ var patchSurvey = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {QueryCourses} params - Updated Survey.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -825,7 +846,7 @@ var getCourses = /*#__PURE__*/function () {
               },
               params: params
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:

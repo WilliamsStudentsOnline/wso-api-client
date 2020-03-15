@@ -8,7 +8,8 @@ import axios from "axios";
  * Lists all Ephmatch-eligible students that the user has matched with
  *
  * @param {string} token - The auth token to be used.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 var getEphmatchMatches = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(token) {
@@ -24,7 +25,7 @@ var getEphmatchMatches = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             });
 
           case 2:
@@ -47,7 +48,8 @@ var getEphmatchMatches = /*#__PURE__*/function () {
  *  Retrieves the Ephmatch profile of the user provided by the token.
  *
  * @param {string} token - The auth token to be used.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -65,7 +67,7 @@ var getSelfEphmatchProfile = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             });
 
           case 2:
@@ -89,7 +91,8 @@ var getSelfEphmatchProfile = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} profileUserID - The user id of the Ephmatch profile to be retrieved.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -107,7 +110,7 @@ var getEphmatchProfile = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             });
 
           case 2:
@@ -131,7 +134,8 @@ var getEphmatchProfile = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {EphmatchProfilesQuery} params - Query parameters for profile retrival.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -150,7 +154,7 @@ var getEphmatchProfiles = /*#__PURE__*/function () {
               },
               params: params
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             });
 
           case 2:
@@ -174,7 +178,8 @@ var getEphmatchProfiles = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {EphmatchProfilesQuery} params - Query parameters for profile retrival.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -194,7 +199,7 @@ var createEphmatchProfile = /*#__PURE__*/function () {
               data: params,
               method: "post"
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             });
 
           case 2:
@@ -217,7 +222,8 @@ var createEphmatchProfile = /*#__PURE__*/function () {
  * Deletes token owner's Ephmatch profile
  *
  * @param {string} token - The auth token to be used.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -236,7 +242,7 @@ var deleteEphmatchProfile = /*#__PURE__*/function () {
               },
               method: "delete"
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             });
 
           case 2:
@@ -260,7 +266,8 @@ var deleteEphmatchProfile = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {EphmatchProfilesUpdate} params - Update parameters.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -280,7 +287,7 @@ var updateEphmatchProfile = /*#__PURE__*/function () {
               data: params,
               method: "patch"
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             });
 
           case 2:
@@ -304,7 +311,8 @@ var updateEphmatchProfile = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} profileUserID - Profile id of the user to be liked.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -323,7 +331,7 @@ var likeEphmatcher = /*#__PURE__*/function () {
               },
               method: "post"
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             });
 
           case 2:
@@ -347,7 +355,8 @@ var likeEphmatcher = /*#__PURE__*/function () {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} profileUserID - Profile id of the user to be unliked.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -366,7 +375,7 @@ var unlikeEphmatcher = /*#__PURE__*/function () {
               },
               method: "post"
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             });
 
           case 2:

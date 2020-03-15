@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 
 type UsersQuery = {
   offset?: string;
@@ -36,16 +36,20 @@ type UpdatedTags = {
  *
  * @param {string} token - The auth token to be used.
  * @param {UsersQuery} params - The parameters used to retrieve the users.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getAllUsers = async (token: string, params: UsersQuery): Promise<any> => {
+const getAllUsers = async (
+  token: string,
+  params: UsersQuery
+): Promise<AxiosResponse<any>> => {
   return axios
     .get("/api/v2/users", {
       headers: { Authorization: `Bearer ${token}` },
       params,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -58,18 +62,19 @@ const getAllUsers = async (token: string, params: UsersQuery): Promise<any> => {
  * @param {string} token - The auth token to be used.
  * @param {string | number} [userID = "me"] - The user id used to search for a user. If 'me' is
  *                                 passed in, return the user of the token.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getUser = async (
   token: string,
   userID: string | number = "me"
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .get(`/api/v2/users/${userID}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -77,20 +82,21 @@ const getUser = async (
  * Updates the current user (i.e. user of the token) based on the update Parameters.
  *
  * @param {string} token - The auth token to be used.
- * @param {UpdatedUser} updateParams - The update user object
- * @return {Promise<any>} Returns the response from the server.
+ * @param {UpdatedUser} updateParams - The update user object.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const patchCurrUser = async (
   token: string,
   updateParams: UpdatedUser
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .patch("/api/v2/users/me", {
       headers: { Authorization: `Bearer ${token}` },
       data: updateParams,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -99,20 +105,21 @@ const patchCurrUser = async (
  * user's current tags with the tags that are passed in
  *
  * @param {string} token - The auth token to be used.
- * @param {UpdatedTags} updatedTags - The update tags
- * @return {Promise<any>} Returns the response from the server.
+ * @param {UpdatedTags} updatedTags - The updated tags.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const putCurrUserTags = async (
   token: string,
   updatedTags: UpdatedTags
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .put("/api/v2/users/me/tags", {
       headers: { Authorization: `Bearer ${token}` },
       data: updatedTags,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -121,9 +128,13 @@ const putCurrUserTags = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {Blob} file - The html blob representing the file.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const putCurrUserPhoto = async (token: string, file: Blob): Promise<any> => {
+const putCurrUserPhoto = async (
+  token: string,
+  file: Blob
+): Promise<AxiosResponse<any>> => {
   const formData = new FormData();
   formData.append("file", file);
   return axios
@@ -134,8 +145,8 @@ const putCurrUserPhoto = async (token: string, file: Blob): Promise<any> => {
       },
       data: formData,
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -148,19 +159,20 @@ const putCurrUserPhoto = async (token: string, file: Blob): Promise<any> => {
  * @param {string} token - The auth token to be used.
  * @param {string | number} [unixID = "me"] - The unix id of the user whose photo we wish to retrieve.
  *                                   Pass in "me" to get the photo of the token's user.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getUserThumbPhoto = async (
   token: string,
   unixID: string | number = "me"
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .get(`/pic/thumb/${unixID}.jpg`, {
       headers: { Authorization: `Bearer ${token}` },
       responseType: "blob",
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 
@@ -173,19 +185,20 @@ const getUserThumbPhoto = async (
  * @param {string} token - The auth token to be used.
  * @param {string | number} [unixID = "me"] - The unix id of the user whose photo we wish to retrieve.
  *                                           Pass in "me" to get the photo of the token's user.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getUserLargePhoto = async (
   token: string,
   unixID: string | number = "me"
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios
     .get(`/pic/large/${unixID}.jpg`, {
       headers: { Authorization: `Bearer ${token}` },
       responseType: "blob",
     })
-    .catch((error: AxiosError) => {
-      return error.response;
+    .catch((error: AxiosError<any>) => {
+      throw error;
     });
 };
 

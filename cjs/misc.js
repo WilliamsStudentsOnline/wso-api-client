@@ -18,7 +18,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  * The words are drawn from a dictionary on the server, updated to remove
  * offensive words.
  *
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 var getRandomWSO = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
@@ -27,7 +28,7 @@ var getRandomWSO = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             return _context.abrupt("return", _axios["default"].get("/api/v2/words", {})["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -42,6 +43,13 @@ var getRandomWSO = /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }();
+/**
+ * Loads the course catalog.
+ *
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
+ */
+
 
 exports.getRandomWSO = getRandomWSO;
 
@@ -51,12 +59,8 @@ var getCatalog = /*#__PURE__*/function () {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            return _context2.abrupt("return", _axios["default"].get("/courses.json", {
-              headers: {
-                "X-Requested-With": "XMLHttpRequest"
-              }
-            })["catch"](function (error) {
-              return error.response;
+            return _context2.abrupt("return", _axios["default"].get("/courses.json", {})["catch"](function (error) {
+              throw error;
             }));
 
           case 1:

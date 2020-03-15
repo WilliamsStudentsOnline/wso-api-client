@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 
 type QuerySurveys = {
   offset?: string;
@@ -69,16 +69,17 @@ type UpdatedSurvey = {
  * Retrieves the list of Areas of Study.
  *
  * @param {string} token - The auth token to be used.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getAreasOfStudy = async (token: string): Promise<any> => {
+const getAreasOfStudy = async (token: string): Promise<AxiosResponse<any>> => {
   return axios({
     url: "/api/v2/factrak/areas-of-study",
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -87,16 +88,20 @@ const getAreasOfStudy = async (token: string): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} areaID - The id of the area of study to be retrieved.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getAreaOfStudy = async (token: string, areaID: number): Promise<any> => {
+const getAreaOfStudy = async (
+  token: string,
+  areaID: number
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: `/api/v2/factrak/areas-of-study/${areaID}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -104,16 +109,17 @@ const getAreaOfStudy = async (token: string, areaID: number): Promise<any> => {
  * Retrieves the list of departments.
  *
  * @param {string} token - The auth token to be used.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getDepartments = async (token: string): Promise<any> => {
+const getDepartments = async (token: string): Promise<AxiosResponse<any>> => {
   return axios({
     url: "/api/v2/factrak/departments",
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -122,20 +128,21 @@ const getDepartments = async (token: string): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {QuerySurveys} params - the query paramters
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getSurveys = async (
   token: string,
   params: QuerySurveys
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: "/api/v2/factrak/surveys",
     headers: {
       Authorization: `Bearer ${token}`,
     },
     params,
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -143,21 +150,22 @@ const getSurveys = async (
  * Retrieves the list of flagged Factrak surveys based on the parameters passed in.
  *
  * @param {string} token - The auth token to be used.
- * @param {QuerySurveys} params - the query paramters
- * @return {Promise<any>} Returns the response from the server.
+ * @param {QuerySurveys} params - Query paramters.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getFlagged = async (
   token: string,
   params: QuerySurveys
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: `/api/v2/factrak/admin/surveys`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
     params,
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -166,17 +174,21 @@ const getFlagged = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {number} surveyID - ID of survey to be unflagged.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const unflagSurvey = async (token: string, surveyID: number): Promise<any> => {
+const unflagSurvey = async (
+  token: string,
+  surveyID: number
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: `/api/v2/factrak/admin/surveys/${surveyID}/flag`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
     method: "delete",
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -185,17 +197,21 @@ const unflagSurvey = async (token: string, surveyID: number): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} surveyID - ID of survey to be deleted.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const deleteSurvey = async (token: string, surveyID: number): Promise<any> => {
+const deleteSurvey = async (
+  token: string,
+  surveyID: number
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: `/api/v2/factrak/surveys/${surveyID}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
     method: "delete",
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -204,16 +220,20 @@ const deleteSurvey = async (token: string, surveyID: number): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} courseID - ID of course to be retrieved.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getCourse = async (token: string, courseID: number): Promise<any> => {
+const getCourse = async (
+  token: string,
+  courseID: number
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: `/api/v2/factrak/courses/${courseID}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -223,13 +243,14 @@ const getCourse = async (token: string, courseID: number): Promise<any> => {
  * @param {string} token - The auth token to be used.
  * @param {number} surveyID - ID of survey to create an agreement.
  * @param {Agreement} createParams - Agreement to be tied to the survey.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const postSurveyAgreement = async (
   token: string,
   surveyID: number,
   createParams: Agreement
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: `/api/v2/factrak/surveys/${surveyID}/agreement`,
     headers: {
@@ -237,8 +258,8 @@ const postSurveyAgreement = async (
     },
     data: createParams,
     method: "post",
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -248,13 +269,14 @@ const postSurveyAgreement = async (
  * @param {string} token - The auth token to be used.
  * @param {number} surveyID - ID of survey to update an agreement.
  * @param {Agreement} updateParams - Agreement to be tied to the survey.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const patchSurveyAgreement = async (
   token: string,
   surveyID: number,
   updateParams: Agreement
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: `/api/v2/factrak/surveys/${surveyID}/agreement`,
     headers: {
@@ -262,8 +284,8 @@ const patchSurveyAgreement = async (
     },
     data: updateParams,
     method: "patch",
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -272,20 +294,21 @@ const patchSurveyAgreement = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {number} surveyID - ID of survey to be deleted.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const deleteSurveyAgreement = async (
   token: string,
   surveyID: number
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: `/api/v2/factrak/surveys/${surveyID}/agreement`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
     method: "delete",
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -294,17 +317,21 @@ const deleteSurveyAgreement = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {number} surveyID - ID of survey to be flagged.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const flagSurvey = async (token: string, surveyID: number): Promise<any> => {
+const flagSurvey = async (
+  token: string,
+  surveyID: number
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: `/api/v2/factrak/surveys/${surveyID}/flag`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
     method: "post",
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -313,20 +340,21 @@ const flagSurvey = async (token: string, surveyID: number): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {QueryProfessors} params - Parameters used to query for professors.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getProfessors = async (
   token: string,
   params: QueryProfessors
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: "/api/v2/factrak/professors",
     headers: {
       Authorization: `Bearer ${token}`,
     },
     params,
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -337,13 +365,14 @@ const getProfessors = async (
  * @param {string} token - The auth token to be used.
  * @param {number} professorID - Professor's ID.
  * @param {number} [courseID = -1] - Course ID.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getProfessor = async (
   token: string,
   professorID: number,
   courseID: number = -1
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   let request: Object;
   if (courseID === -1 || typeof courseID !== "number") {
     request = {
@@ -358,8 +387,8 @@ const getProfessor = async (
     };
   }
 
-  return axios(request).catch((error: AxiosError) => {
-    return error.response;
+  return axios(request).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -368,16 +397,20 @@ const getProfessor = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {number} surveyID - Survey ID.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getSurvey = async (token: string, surveyID: number): Promise<any> => {
+const getSurvey = async (
+  token: string,
+  surveyID: number
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: `/api/v2/factrak/surveys/${surveyID}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -386,19 +419,20 @@ const getSurvey = async (token: string, surveyID: number): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} departmentID - Department ID.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getDepartment = async (
   token: string,
   departmentID: number
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: `/api/v2/factrak/departments/${departmentID}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -409,13 +443,14 @@ const getDepartment = async (
  * @param {string} token - The auth token to be used.
  * @param {number} professorID - Professor's ID.
  * @param {number} [courseID = -1] - Course ID.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getProfessorRatings = async (
   token: string,
   professorID: number,
   courseID: number = -1
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   let request: Object;
   if (courseID === -1 || typeof courseID !== "number") {
     request = {
@@ -430,8 +465,8 @@ const getProfessorRatings = async (
     };
   }
 
-  return axios(request).catch((error: AxiosError) => {
-    return error.response;
+  return axios(request).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -442,13 +477,14 @@ const getProfessorRatings = async (
  * @param {string} token - The auth token to be used.
  * @param {number} [professorID = -1] - Professor's ID.
  * @param {number} courseID - Course ID.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getCourseRatings = async (
   token: string,
   professorID: number = -1,
   courseID: number
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   let request: Object;
   if (professorID === -1 || typeof professorID !== "number") {
     request = {
@@ -463,8 +499,8 @@ const getCourseRatings = async (
     };
   }
 
-  return axios(request).catch((error: AxiosError) => {
-    return error.response;
+  return axios(request).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -473,12 +509,13 @@ const getCourseRatings = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {NewSurvey} createParams - New Survey.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const postSurvey = async (
   token: string,
   createParams: NewSurvey
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: `/api/v2/factrak/surveys`,
     headers: {
@@ -486,8 +523,8 @@ const postSurvey = async (
     },
     method: "post",
     data: createParams,
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -497,13 +534,14 @@ const postSurvey = async (
  * @param {string} token - The auth token to be used.
  * @param {UpdatedSurvey} updateParams - Updated Survey.
  * @param {number} surveyID - Survey ID.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const patchSurvey = async (
   token: string,
   updateParams: UpdatedSurvey,
   surveyID: number
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: `/api/v2/factrak/surveys/${surveyID}`,
     headers: {
@@ -511,8 +549,8 @@ const patchSurvey = async (
     },
     method: "patch",
     data: updateParams,
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 
@@ -521,20 +559,21 @@ const patchSurvey = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {QueryCourses} params - Updated Survey.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getCourses = async (
   token: string,
   params: QueryCourses
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   return axios({
     url: "/api/v2/factrak/courses",
     headers: {
       Authorization: `Bearer ${token}`,
     },
     params,
-  }).catch((error: AxiosError) => {
-    return error.response;
+  }).catch((error: AxiosError<any>) => {
+    throw error;
   });
 };
 

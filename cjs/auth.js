@@ -19,7 +19,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  * necessary scopes and payload.
  *
  * @param {string} token - The auth token to be refreshed.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>} Returns the response from the server.
  */
 var refreshToken = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(token) {
@@ -32,7 +33,7 @@ var refreshToken = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -52,7 +53,8 @@ var refreshToken = /*#__PURE__*/function () {
  * database, modifying the token payload if necessary.
  *
  * @param {string} token - The auth token to be refreshed.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -69,7 +71,7 @@ var updateTokenAPI = /*#__PURE__*/function () {
                 Authorization: "Bearer ".concat(token)
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:
@@ -90,7 +92,8 @@ var updateTokenAPI = /*#__PURE__*/function () {
  *
  * @param {string} unixID - The unix id for the LDAP account.
  * @param {string} password - The password for the LDAP account.
- * @return {Promise<any>} Returns the response from the server
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server
  */
 
 
@@ -117,7 +120,7 @@ var getToken = /*#__PURE__*/function () {
                 password: password
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 3:
@@ -135,7 +138,8 @@ var getToken = /*#__PURE__*/function () {
 /**
  * Gets an on/off-campus token without logging in.
  *
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 
 
@@ -154,7 +158,7 @@ var getCampusToken = /*#__PURE__*/function () {
                 useIP: true
               }
             })["catch"](function (error) {
-              return error.response;
+              throw error;
             }));
 
           case 1:

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse, AxiosError } from "axios";
 
 type EphmatchProfilesQuery = {
   sort?: string;
@@ -21,16 +21,19 @@ type EphmatchProfilesUpdate = {
  * Lists all Ephmatch-eligible students that the user has matched with
  *
  * @param {string} token - The auth token to be used.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getEphmatchMatches = async (token: string): Promise<any> => {
+const getEphmatchMatches = async (
+  token: string
+): Promise<AxiosResponse<any>> => {
   const response = await axios({
     url: "/api/v2/ephmatch/matches",
     headers: {
       Authorization: `Bearer ${token}`,
     },
   }).catch((error) => {
-    return error.response;
+    throw error;
   });
 
   return response;
@@ -40,16 +43,19 @@ const getEphmatchMatches = async (token: string): Promise<any> => {
  *  Retrieves the Ephmatch profile of the user provided by the token.
  *
  * @param {string} token - The auth token to be used.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const getSelfEphmatchProfile = async (token: string): Promise<any> => {
+const getSelfEphmatchProfile = async (
+  token: string
+): Promise<AxiosResponse<any>> => {
   const response = await axios({
     url: `/api/v2/ephmatch/profile`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
   }).catch((error) => {
-    return error.response;
+    throw error;
   });
 
   return response;
@@ -60,19 +66,20 @@ const getSelfEphmatchProfile = async (token: string): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {number} profileUserID - The user id of the Ephmatch profile to be retrieved.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getEphmatchProfile = async (
   token: string,
   profileUserID: number
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   const response = await axios({
     url: `/api/v2/ephmatch/profiles/${profileUserID}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
   }).catch((error) => {
-    return error.response;
+    throw error;
   });
 
   return response;
@@ -83,12 +90,13 @@ const getEphmatchProfile = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {EphmatchProfilesQuery} params - Query parameters for profile retrival.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const getEphmatchProfiles = async (
   token: string,
   params: EphmatchProfilesQuery
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   const response = await axios({
     url: `/api/v2/ephmatch/profiles`,
     headers: {
@@ -96,7 +104,7 @@ const getEphmatchProfiles = async (
     },
     params,
   }).catch((error) => {
-    return error.response;
+    throw error;
   });
 
   return response;
@@ -107,12 +115,13 @@ const getEphmatchProfiles = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {EphmatchProfilesQuery} params - Query parameters for profile retrival.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const createEphmatchProfile = async (
   token: string,
   params: EphmatchProfilesNew
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   const response = await axios({
     url: `/api/v2/ephmatch/profile`,
     headers: {
@@ -121,7 +130,7 @@ const createEphmatchProfile = async (
     data: params,
     method: "post",
   }).catch((error) => {
-    return error.response;
+    throw error;
   });
 
   return response;
@@ -131,9 +140,12 @@ const createEphmatchProfile = async (
  * Deletes token owner's Ephmatch profile
  *
  * @param {string} token - The auth token to be used.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-const deleteEphmatchProfile = async (token: string): Promise<any> => {
+const deleteEphmatchProfile = async (
+  token: string
+): Promise<AxiosResponse<any>> => {
   const response = await axios({
     url: `/api/v2/ephmatch/profile`,
     headers: {
@@ -141,7 +153,7 @@ const deleteEphmatchProfile = async (token: string): Promise<any> => {
     },
     method: "delete",
   }).catch((error) => {
-    return error.response;
+    throw error;
   });
 
   return response;
@@ -152,12 +164,13 @@ const deleteEphmatchProfile = async (token: string): Promise<any> => {
  *
  * @param {string} token - The auth token to be used.
  * @param {EphmatchProfilesUpdate} params - Update parameters.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const updateEphmatchProfile = async (
   token: string,
   params: EphmatchProfilesUpdate
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   const response = await axios({
     url: `/api/v2/ephmatch/profile`,
     headers: {
@@ -166,7 +179,7 @@ const updateEphmatchProfile = async (
     data: params,
     method: "patch",
   }).catch((error) => {
-    return error.response;
+    throw error;
   });
 
   return response;
@@ -177,12 +190,13 @@ const updateEphmatchProfile = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {number} profileUserID - Profile id of the user to be liked.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const likeEphmatcher = async (
   token: string,
   profileUserID: number
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   const response = await axios({
     url: `/api/v2/ephmatch/profiles/${profileUserID}/like`,
     headers: {
@@ -190,7 +204,7 @@ const likeEphmatcher = async (
     },
     method: "post",
   }).catch((error) => {
-    return error.response;
+    throw error;
   });
 
   return response;
@@ -201,12 +215,13 @@ const likeEphmatcher = async (
  *
  * @param {string} token - The auth token to be used.
  * @param {number} profileUserID - Profile id of the user to be unliked.
- * @return {Promise<any>} Returns the response from the server.
+ * @throws {AxiosError<any>} Possible error returned from the server.
+ * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
 const unlikeEphmatcher = async (
   token: string,
   profileUserID: number
-): Promise<any> => {
+): Promise<AxiosResponse<any>> => {
   const response = await axios({
     url: `/api/v2/ephmatch/profiles/${profileUserID}/unlike`,
     headers: {
@@ -214,7 +229,7 @@ const unlikeEphmatcher = async (
     },
     method: "post",
   }).catch((error) => {
-    return error.response;
+    throw error;
   });
 
   return response;
