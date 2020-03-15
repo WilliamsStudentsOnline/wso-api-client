@@ -55,11 +55,8 @@ const getToken = async (
   }
   return axios
     .post("/api/v2/auth/login", {
-      method: "post",
-      data: {
-        unixID,
-        password,
-      },
+      unixID,
+      password,
     })
     .catch((error: AxiosError<any>) => {
       throw error;
@@ -75,11 +72,9 @@ const getToken = async (
 const getCampusToken = async (): Promise<AxiosResponse<any>> => {
   return axios
     .post("/api/v2/auth/login", {
-      data: {
-        unixID: "invalid",
-        password: "invalid",
-        useIP: true,
-      },
+      unixID: "invalid",
+      password: "invalid",
+      useIP: true,
     })
     .catch((error: AxiosError<any>) => {
       throw error;

@@ -114,11 +114,8 @@ var getToken = /*#__PURE__*/function () {
 
           case 2:
             return _context3.abrupt("return", _axios["default"].post("/api/v2/auth/login", {
-              method: "post",
-              data: {
-                unixID: unixID,
-                password: password
-              }
+              unixID: unixID,
+              password: password
             })["catch"](function (error) {
               throw error;
             }));
@@ -152,11 +149,9 @@ var getCampusToken = /*#__PURE__*/function () {
         switch (_context4.prev = _context4.next) {
           case 0:
             return _context4.abrupt("return", _axios["default"].post("/api/v2/auth/login", {
-              data: {
-                unixID: "invalid",
-                password: "invalid",
-                useIP: true
-              }
+              unixID: "invalid",
+              password: "invalid",
+              useIP: true
             })["catch"](function (error) {
               throw error;
             }));
