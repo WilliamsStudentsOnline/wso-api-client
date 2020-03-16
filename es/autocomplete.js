@@ -3,15 +3,15 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 import axios from "axios";
+
 /**
  * Returns the autocomplete results for tags, limited to 5.
  *
  * @param {string} token - The auth token to be used.
- * @param {string} query - The query to be searched.
+ * @param {AutoCompleteQuery} query - The query to be searched.
  * @throws {AxiosError<any>} Possible error returned from the server.
  * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
-
 var autocompleteTags = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(token, query) {
     return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -22,10 +22,7 @@ var autocompleteTags = /*#__PURE__*/function () {
               headers: {
                 Authorization: "Bearer ".concat(token)
               },
-              params: {
-                q: query,
-                limit: 5
-              }
+              params: query
             })["catch"](function (error) {
               throw error;
             }));
@@ -46,7 +43,7 @@ var autocompleteTags = /*#__PURE__*/function () {
  * Returns the autocomplete results for Factrak (Professors/Courses), limited to 5.
  *
  * @param {string} token - The auth token to be used.
- * @param {string} query - The query to be searched.
+ * @param {AutoCompleteQuery} query - The query to be searched.
  * @throws {AxiosError<any>} Possible error returned from the server.
  * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
@@ -62,10 +59,7 @@ var autocompleteFactrak = /*#__PURE__*/function () {
               headers: {
                 Authorization: "Bearer ".concat(token)
               },
-              params: {
-                q: query,
-                limit: 5
-              }
+              params: query
             })["catch"](function (error) {
               throw error;
             }));

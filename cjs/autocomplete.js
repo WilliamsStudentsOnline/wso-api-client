@@ -17,7 +17,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  * Returns the autocomplete results for tags, limited to 5.
  *
  * @param {string} token - The auth token to be used.
- * @param {string} query - The query to be searched.
+ * @param {AutoCompleteQuery} query - The query to be searched.
  * @throws {AxiosError<any>} Possible error returned from the server.
  * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
@@ -31,10 +31,7 @@ var autocompleteTags = /*#__PURE__*/function () {
               headers: {
                 Authorization: "Bearer ".concat(token)
               },
-              params: {
-                q: query,
-                limit: 5
-              }
+              params: query
             })["catch"](function (error) {
               throw error;
             }));
@@ -55,7 +52,7 @@ var autocompleteTags = /*#__PURE__*/function () {
  * Returns the autocomplete results for Factrak (Professors/Courses), limited to 5.
  *
  * @param {string} token - The auth token to be used.
- * @param {string} query - The query to be searched.
+ * @param {AutoCompleteQuery} query - The query to be searched.
  * @throws {AxiosError<any>} Possible error returned from the server.
  * @return {Promise<AxiosResponse<any>>} Returns the response from the server.
  */
@@ -73,10 +70,7 @@ var autocompleteFactrak = /*#__PURE__*/function () {
               headers: {
                 Authorization: "Bearer ".concat(token)
               },
-              params: {
-                q: query,
-                limit: 5
-              }
+              params: query
             })["catch"](function (error) {
               throw error;
             }));

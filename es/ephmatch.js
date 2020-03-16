@@ -19,8 +19,7 @@ var getEphmatchMatches = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return axios({
-              url: "/api/v2/ephmatch/matches",
+            return axios.get("/api/v2/ephmatch/matches", {
               headers: {
                 Authorization: "Bearer ".concat(token)
               }
@@ -61,8 +60,7 @@ var getSelfEphmatchProfile = /*#__PURE__*/function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return axios({
-              url: "/api/v2/ephmatch/profile",
+            return axios.get("/api/v2/ephmatch/profile", {
               headers: {
                 Authorization: "Bearer ".concat(token)
               }
@@ -104,8 +102,7 @@ var getEphmatchProfile = /*#__PURE__*/function () {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return axios({
-              url: "/api/v2/ephmatch/profiles/".concat(profileUserID),
+            return axios.get("/api/v2/ephmatch/profiles/".concat(profileUserID), {
               headers: {
                 Authorization: "Bearer ".concat(token)
               }
@@ -147,8 +144,7 @@ var getEphmatchProfiles = /*#__PURE__*/function () {
         switch (_context4.prev = _context4.next) {
           case 0:
             _context4.next = 2;
-            return axios({
-              url: "/api/v2/ephmatch/profiles",
+            return axios.get("/api/v2/ephmatch/profiles", {
               headers: {
                 Authorization: "Bearer ".concat(token)
               },
@@ -191,13 +187,11 @@ var createEphmatchProfile = /*#__PURE__*/function () {
         switch (_context5.prev = _context5.next) {
           case 0:
             _context5.next = 2;
-            return axios({
-              url: "/api/v2/ephmatch/profile",
+            return axios.post("/api/v2/ephmatch/profile", {
               headers: {
                 Authorization: "Bearer ".concat(token)
               },
-              data: params,
-              method: "post"
+              data: params
             })["catch"](function (error) {
               throw error;
             });
@@ -235,12 +229,10 @@ var deleteEphmatchProfile = /*#__PURE__*/function () {
         switch (_context6.prev = _context6.next) {
           case 0:
             _context6.next = 2;
-            return axios({
-              url: "/api/v2/ephmatch/profile",
+            return axios["delete"]("/api/v2/ephmatch/profile", {
               headers: {
                 Authorization: "Bearer ".concat(token)
-              },
-              method: "delete"
+              }
             })["catch"](function (error) {
               throw error;
             });
@@ -279,13 +271,11 @@ var updateEphmatchProfile = /*#__PURE__*/function () {
         switch (_context7.prev = _context7.next) {
           case 0:
             _context7.next = 2;
-            return axios({
-              url: "/api/v2/ephmatch/profile",
+            return axios.patch("/api/v2/ephmatch/profile", {
               headers: {
                 Authorization: "Bearer ".concat(token)
               },
-              data: params,
-              method: "patch"
+              data: params
             })["catch"](function (error) {
               throw error;
             });
@@ -324,12 +314,10 @@ var likeEphmatcher = /*#__PURE__*/function () {
         switch (_context8.prev = _context8.next) {
           case 0:
             _context8.next = 2;
-            return axios({
-              url: "/api/v2/ephmatch/profiles/".concat(profileUserID, "/like"),
+            return axios.post("/api/v2/ephmatch/profiles/".concat(profileUserID, "/like"), {
               headers: {
                 Authorization: "Bearer ".concat(token)
-              },
-              method: "post"
+              }
             })["catch"](function (error) {
               throw error;
             });
@@ -368,12 +356,10 @@ var unlikeEphmatcher = /*#__PURE__*/function () {
         switch (_context9.prev = _context9.next) {
           case 0:
             _context9.next = 2;
-            return axios({
-              url: "/api/v2/ephmatch/profiles/".concat(profileUserID, "/unlike"),
+            return axios.post("/api/v2/ephmatch/profiles/".concat(profileUserID, "/unlike"), {
               headers: {
                 Authorization: "Bearer ".concat(token)
-              },
-              method: "post"
+              }
             })["catch"](function (error) {
               throw error;
             });

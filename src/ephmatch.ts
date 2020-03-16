@@ -27,14 +27,15 @@ type EphmatchProfilesUpdate = {
 const getEphmatchMatches = async (
   token: string
 ): Promise<AxiosResponse<any>> => {
-  const response = await axios({
-    url: "/api/v2/ephmatch/matches",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }).catch((error) => {
-    throw error;
-  });
+  const response = await axios
+    .get("/api/v2/ephmatch/matches", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .catch((error: AxiosError<any>) => {
+      throw error;
+    });
 
   return response;
 };
@@ -49,14 +50,15 @@ const getEphmatchMatches = async (
 const getSelfEphmatchProfile = async (
   token: string
 ): Promise<AxiosResponse<any>> => {
-  const response = await axios({
-    url: `/api/v2/ephmatch/profile`,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }).catch((error) => {
-    throw error;
-  });
+  const response = await axios
+    .get(`/api/v2/ephmatch/profile`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .catch((error: AxiosError<any>) => {
+      throw error;
+    });
 
   return response;
 };
@@ -73,14 +75,15 @@ const getEphmatchProfile = async (
   token: string,
   profileUserID: number
 ): Promise<AxiosResponse<any>> => {
-  const response = await axios({
-    url: `/api/v2/ephmatch/profiles/${profileUserID}`,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }).catch((error) => {
-    throw error;
-  });
+  const response = await axios
+    .get(`/api/v2/ephmatch/profiles/${profileUserID}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .catch((error: AxiosError<any>) => {
+      throw error;
+    });
 
   return response;
 };
@@ -97,15 +100,16 @@ const getEphmatchProfiles = async (
   token: string,
   params: EphmatchProfilesQuery
 ): Promise<AxiosResponse<any>> => {
-  const response = await axios({
-    url: `/api/v2/ephmatch/profiles`,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    params,
-  }).catch((error) => {
-    throw error;
-  });
+  const response = await axios
+    .get(`/api/v2/ephmatch/profiles`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params,
+    })
+    .catch((error: AxiosError<any>) => {
+      throw error;
+    });
 
   return response;
 };
@@ -122,16 +126,16 @@ const createEphmatchProfile = async (
   token: string,
   params: EphmatchProfilesNew
 ): Promise<AxiosResponse<any>> => {
-  const response = await axios({
-    url: `/api/v2/ephmatch/profile`,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    data: params,
-    method: "post",
-  }).catch((error) => {
-    throw error;
-  });
+  const response = await axios
+    .post(`/api/v2/ephmatch/profile`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      data: params,
+    })
+    .catch((error: AxiosError<any>) => {
+      throw error;
+    });
 
   return response;
 };
@@ -146,15 +150,15 @@ const createEphmatchProfile = async (
 const deleteEphmatchProfile = async (
   token: string
 ): Promise<AxiosResponse<any>> => {
-  const response = await axios({
-    url: `/api/v2/ephmatch/profile`,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    method: "delete",
-  }).catch((error) => {
-    throw error;
-  });
+  const response = await axios
+    .delete(`/api/v2/ephmatch/profile`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .catch((error: AxiosError<any>) => {
+      throw error;
+    });
 
   return response;
 };
@@ -171,16 +175,16 @@ const updateEphmatchProfile = async (
   token: string,
   params: EphmatchProfilesUpdate
 ): Promise<AxiosResponse<any>> => {
-  const response = await axios({
-    url: `/api/v2/ephmatch/profile`,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    data: params,
-    method: "patch",
-  }).catch((error) => {
-    throw error;
-  });
+  const response = await axios
+    .patch(`/api/v2/ephmatch/profile`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      data: params,
+    })
+    .catch((error: AxiosError<any>) => {
+      throw error;
+    });
 
   return response;
 };
@@ -197,15 +201,15 @@ const likeEphmatcher = async (
   token: string,
   profileUserID: number
 ): Promise<AxiosResponse<any>> => {
-  const response = await axios({
-    url: `/api/v2/ephmatch/profiles/${profileUserID}/like`,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    method: "post",
-  }).catch((error) => {
-    throw error;
-  });
+  const response = await axios
+    .post(`/api/v2/ephmatch/profiles/${profileUserID}/like`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .catch((error: AxiosError<any>) => {
+      throw error;
+    });
 
   return response;
 };
@@ -222,15 +226,15 @@ const unlikeEphmatcher = async (
   token: string,
   profileUserID: number
 ): Promise<AxiosResponse<any>> => {
-  const response = await axios({
-    url: `/api/v2/ephmatch/profiles/${profileUserID}/unlike`,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    method: "post",
-  }).catch((error) => {
-    throw error;
-  });
+  const response = await axios
+    .post(`/api/v2/ephmatch/profiles/${profileUserID}/unlike`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .catch((error: AxiosError<any>) => {
+      throw error;
+    });
 
   return response;
 };
