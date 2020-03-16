@@ -1,12 +1,12 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 
 type AutoCompleteQuery = {
-    q: string,
-    limit?: number
-}
+  q: string;
+  limit?: number;
+};
 
 /**
- * Returns the autocomplete results for tags, limited to 5.
+ * Returns the autocomplete results for tags.
  *
  * @param {string} token - The auth token to be used.
  * @param {AutoCompleteQuery} query - The query to be searched.
@@ -20,7 +20,7 @@ const autocompleteTags = async (
   return axios
     .get("/api/v2/autocomplete/tag", {
       headers: { Authorization: `Bearer ${token}` },
-      params: query
+      params: query,
     })
     .catch((error: AxiosError<any>) => {
       throw error;
@@ -28,7 +28,7 @@ const autocompleteTags = async (
 };
 
 /**
- * Returns the autocomplete results for Factrak (Professors/Courses), limited to 5.
+ * Returns the autocomplete results for Factrak (Professors/Courses).
  *
  * @param {string} token - The auth token to be used.
  * @param {AutoCompleteQuery} query - The query to be searched.
