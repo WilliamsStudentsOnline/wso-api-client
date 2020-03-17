@@ -11,9 +11,9 @@
   "typescript": {
     "definition": "dist/index.d.ts"
   },
-  "license": "MIT",
   "private": true,
   "scripts": {
+    "docs": "typedoc src",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
     "build": "npm run build:types && npm run build:cjs && npm run build:es",
@@ -42,10 +42,22 @@
     "pretty-quick": "^2.0.1",
     "ts-node": "^8.6.2",
     "typedoc": "^0.16.11",
-    "typedoc-neo-theme": "^1.0.6",
     "typescript": "^3.8.3"
   },
   "dependencies": {
     "axios": "^0.19.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts}": [
+      "./node_modules/.bin/eslint --ext .ts --ignore-path .gitignore --fix",
+      "pretty-quick --staged",
+      "yarn docs",
+      "git add"
+    ]
   }
 }
