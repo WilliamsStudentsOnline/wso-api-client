@@ -326,9 +326,8 @@ const patchDormReview = async (
   reviewID: number
 ): Promise<AxiosResponse<any>> => {
   return axios
-    .patch(`/api/v2/dormtrak/reviews/${reviewID}`, {
+    .patch(`/api/v2/dormtrak/reviews/${reviewID}`, reviewParams, {
       headers: { Authorization: `Bearer ${token}` },
-      data: reviewParams,
     })
     .catch((error: AxiosError<any>) => {
       throw error;

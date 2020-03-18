@@ -91,9 +91,8 @@ const patchCurrUser = async (
   updateParams: UpdatedUser
 ): Promise<AxiosResponse<any>> => {
   return axios
-    .patch("/api/v2/users/me", {
+    .patch("/api/v2/users/me", updateParams, {
       headers: { Authorization: `Bearer ${token}` },
-      data: updateParams,
     })
     .catch((error: AxiosError<any>) => {
       throw error;

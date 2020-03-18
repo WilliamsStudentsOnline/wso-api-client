@@ -182,9 +182,8 @@ const patchBulletin = async (
   updateParams: UpdatedBulletin
 ): Promise<AxiosResponse<any>> => {
   return axios
-    .patch(`/api/v2/bulletin/bulletins/${bulletinID}`, {
+    .patch(`/api/v2/bulletin/bulletins/${bulletinID}`, updateParams, {
       headers: { Authorization: `Bearer ${token}` },
-      params: updateParams,
     })
     .catch((error: AxiosError<any>) => {
       throw error;
@@ -387,9 +386,8 @@ const patchPost = async (
   updateParams: UpdatedDiscussionPost
 ): Promise<AxiosResponse<any>> => {
   return axios
-    .patch(`/api/v2/bulletin/posts/${postID}`, {
+    .patch(`/api/v2/bulletin/posts/${postID}`, updateParams, {
       headers: { Authorization: `Bearer ${token}` },
-      data: updateParams,
     })
     .catch((error: AxiosError<any>) => {
       throw error;
@@ -504,9 +502,8 @@ const patchRide = async (
   updateParams: UpdatedRide
 ): Promise<AxiosResponse<any>> => {
   return axios
-    .patch(`/api/v2/bulletin/rides/${rideID}`, {
+    .patch(`/api/v2/bulletin/rides/${rideID}`, updateParams, {
       headers: { Authorization: `Bearer ${token}` },
-      params: updateParams,
     })
     .catch((error: AxiosError<any>) => {
       throw error;

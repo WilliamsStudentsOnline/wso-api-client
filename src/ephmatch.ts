@@ -176,11 +176,10 @@ const updateEphmatchProfile = async (
   params: EphmatchProfilesUpdate
 ): Promise<AxiosResponse<any>> => {
   const response = await axios
-    .patch(`/api/v2/ephmatch/profile`, {
+    .patch(`/api/v2/ephmatch/profile`, params, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      data: params,
     })
     .catch((error: AxiosError<any>) => {
       throw error;
