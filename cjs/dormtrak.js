@@ -496,11 +496,10 @@ var patchDormReview = /*#__PURE__*/function () {
       while (1) {
         switch (_context13.prev = _context13.next) {
           case 0:
-            return _context13.abrupt("return", _axios["default"].patch("/api/v2/dormtrak/reviews/".concat(reviewID), {
+            return _context13.abrupt("return", _axios["default"].patch("/api/v2/dormtrak/reviews/".concat(reviewID), reviewParams, {
               headers: {
                 Authorization: "Bearer ".concat(token)
-              },
-              data: reviewParams
+              }
             })["catch"](function (error) {
               throw error;
             }));

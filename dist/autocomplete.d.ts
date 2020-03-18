@@ -4,7 +4,7 @@ declare type AutoCompleteQuery = {
     limit?: number;
 };
 /**
- * Returns the autocomplete results for tags, limited to 5.
+ * Returns the autocomplete results for tags.
  *
  * @param {string} token - The auth token to be used.
  * @param {AutoCompleteQuery} query - The query to be searched.
@@ -13,7 +13,7 @@ declare type AutoCompleteQuery = {
  */
 declare const autocompleteTags: (token: string, query: AutoCompleteQuery) => Promise<AxiosResponse<any>>;
 /**
- * Returns the autocomplete results for Factrak (Professors/Courses), limited to 5.
+ * Returns the autocomplete results for Factrak (Professors/Courses).
  *
  * @param {string} token - The auth token to be used.
  * @param {AutoCompleteQuery} query - The query to be searched.

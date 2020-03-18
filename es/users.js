@@ -106,11 +106,10 @@ var patchCurrUser = /*#__PURE__*/function () {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
-            return _context3.abrupt("return", axios.patch("/api/v2/users/me", {
+            return _context3.abrupt("return", axios.patch("/api/v2/users/me", updateParams, {
               headers: {
                 Authorization: "Bearer ".concat(token)
-              },
-              data: updateParams
+              }
             })["catch"](function (error) {
               throw error;
             }));

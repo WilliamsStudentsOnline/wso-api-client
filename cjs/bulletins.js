@@ -188,11 +188,10 @@ var patchBulletin = /*#__PURE__*/function () {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
-            return _context5.abrupt("return", _axios["default"].patch("/api/v2/bulletin/bulletins/".concat(bulletinID), {
+            return _context5.abrupt("return", _axios["default"].patch("/api/v2/bulletin/bulletins/".concat(bulletinID), updateParams, {
               headers: {
                 Authorization: "Bearer ".concat(token)
-              },
-              params: updateParams
+              }
             })["catch"](function (error) {
               throw error;
             }));
@@ -544,11 +543,10 @@ var patchPost = /*#__PURE__*/function () {
       while (1) {
         switch (_context14.prev = _context14.next) {
           case 0:
-            return _context14.abrupt("return", _axios["default"].patch("/api/v2/bulletin/posts/".concat(postID), {
+            return _context14.abrupt("return", _axios["default"].patch("/api/v2/bulletin/posts/".concat(postID), updateParams, {
               headers: {
                 Authorization: "Bearer ".concat(token)
-              },
-              data: updateParams
+              }
             })["catch"](function (error) {
               throw error;
             }));
@@ -745,11 +743,10 @@ var patchRide = /*#__PURE__*/function () {
       while (1) {
         switch (_context19.prev = _context19.next) {
           case 0:
-            return _context19.abrupt("return", _axios["default"].patch("/api/v2/bulletin/rides/".concat(rideID), {
+            return _context19.abrupt("return", _axios["default"].patch("/api/v2/bulletin/rides/".concat(rideID), updateParams, {
               headers: {
                 Authorization: "Bearer ".concat(token)
-              },
-              params: updateParams
+              }
             })["catch"](function (error) {
               throw error;
             }));

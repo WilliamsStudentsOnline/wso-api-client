@@ -5,7 +5,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 import axios from "axios";
 
 /**
- * Returns the autocomplete results for tags, limited to 5.
+ * Returns the autocomplete results for tags.
  *
  * @param {string} token - The auth token to be used.
  * @param {AutoCompleteQuery} query - The query to be searched.
@@ -40,7 +40,7 @@ var autocompleteTags = /*#__PURE__*/function () {
   };
 }();
 /**
- * Returns the autocomplete results for Factrak (Professors/Courses), limited to 5.
+ * Returns the autocomplete results for Factrak (Professors/Courses).
  *
  * @param {string} token - The auth token to be used.
  * @param {AutoCompleteQuery} query - The query to be searched.

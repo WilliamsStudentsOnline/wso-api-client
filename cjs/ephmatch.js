@@ -292,11 +292,10 @@ var updateEphmatchProfile = /*#__PURE__*/function () {
         switch (_context7.prev = _context7.next) {
           case 0:
             _context7.next = 2;
-            return _axios["default"].patch("/api/v2/ephmatch/profile", {
+            return _axios["default"].patch("/api/v2/ephmatch/profile", params, {
               headers: {
                 Authorization: "Bearer ".concat(token)
-              },
-              data: params
+              }
             })["catch"](function (error) {
               throw error;
             });

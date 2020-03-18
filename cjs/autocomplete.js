@@ -14,7 +14,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 /**
- * Returns the autocomplete results for tags, limited to 5.
+ * Returns the autocomplete results for tags.
  *
  * @param {string} token - The auth token to be used.
  * @param {AutoCompleteQuery} query - The query to be searched.
@@ -49,7 +49,7 @@ var autocompleteTags = /*#__PURE__*/function () {
   };
 }();
 /**
- * Returns the autocomplete results for Factrak (Professors/Courses), limited to 5.
+ * Returns the autocomplete results for Factrak (Professors/Courses).
  *
  * @param {string} token - The auth token to be used.
  * @param {AutoCompleteQuery} query - The query to be searched.
