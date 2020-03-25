@@ -1,0 +1,39 @@
+{
+  "name": "wso-api-client",
+  "version": "1.0.0",
+  "description": "WSO API Client for JS",
+  "main": "lib/wso.js",
+  "typings": "lib/wso.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npm run build",
+    "build": "tsc",
+    "lint": "eslint -c .eslintrc.yml src/**/*.ts",
+    "prepublishOnly" : "npm run lint",
+    "preversion" : "npm run lint",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "author": "Williams Students Online",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.19.2",
+    "jwt-decode": "latest"
+  },
+  "devDependencies": {
+    "@types/jwt-decode": "^2.2.1",
+    "@typescript-eslint/eslint-plugin": "^2.22.0",
+    "@typescript-eslint/parser": "^2.22.0",
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1",
+    "typescript": "^3.8.3"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "homepage": "https://github.com/WilliamsStudentsOnline/wso-api-client"
+}
