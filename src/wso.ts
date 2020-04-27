@@ -1,13 +1,13 @@
-import { AuthService } from "./services/auth";
-import { API } from "./api";
-import { AutocompleteService } from "./services/autocomplete";
-import { BulletinService } from "./services/bulletin";
-import { DormtrakService } from "./services/dormtrak";
-import { EphcatchService } from "./services/ephcatch";
-import { EphmatchService } from "./services/ephmatch";
-import { FactrakService } from "./services/factrak";
-import { MiscService } from "./services/misc";
-import { UserService } from "./services/user";
+import { AuthService } from './services/auth';
+import { API } from './api';
+import { AutocompleteService } from './services/autocomplete';
+import { BulletinService } from './services/bulletin';
+import { DormtrakService } from './services/dormtrak';
+import { EphcatchService } from './services/ephcatch';
+import { EphmatchService } from './services/ephmatch';
+import { FactrakService } from './services/factrak';
+import { MiscService } from './services/misc';
+import { UserService } from './services/user';
 
 export class WSO {
   private api: API;
@@ -83,3 +83,6 @@ export class WSO {
     this._user = new UserService(api);
   }
 }
+
+export * from './api';
+export * from './auth';
