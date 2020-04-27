@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse, Method } from 'axios';
-import { Authentication } from './auth';
+import { Authentication, NoAuthentication } from './auth';
 
 export class API {
   auth: Authentication;
@@ -15,6 +15,10 @@ export class API {
         return (status >= 200 && status < 300) || (status >= 400 && status < 500);
       },
     });
+  }
+
+  isAuthenticated(): boolean {
+    return !(this.auth instanceof NoAuthentication);
   }
 
   // returns a new API object with the newAuth object.

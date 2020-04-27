@@ -36,6 +36,10 @@ export class WSO {
     this._user = new UserService(api);
   }
 
+  isAuthenticated(): boolean {
+    return this.api.isAuthenticated();
+  }
+
   // returns a new API object with the newAuth object.
   updateAuth(newAuth: Authentication): WSO {
     return new WSO(this.api.updateAuth(newAuth));
