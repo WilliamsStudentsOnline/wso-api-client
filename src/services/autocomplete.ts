@@ -1,5 +1,5 @@
-import { API, APIResponse } from "../api";
-import { AutocompleteACEntry } from "./types";
+import { API, APIResponse } from '../api';
+import { AutocompleteACEntry } from './types';
 
 export class AutocompleteService {
   private api: API;
@@ -12,11 +12,11 @@ export class AutocompleteService {
     query: string,
     limit?: number
   ): Promise<APIResponse<AutocompleteACEntry>> {
-    return this.api.request("get", "/api/v2/autocomplete/area-of-study", {
+    return this.api.request('get', '/api/v2/autocomplete/area-of-study', {
       params: {
         q: query,
-        limit: limit
-      }
+        limit: limit,
+      },
     });
   }
 
@@ -24,11 +24,11 @@ export class AutocompleteService {
     query: string,
     limit?: number
   ): Promise<APIResponse<AutocompleteACEntry>> {
-    return this.api.request("get", "/api/v2/autocomplete/course", {
+    return this.api.request('get', '/api/v2/autocomplete/course', {
       params: {
         q: query,
-        limit: limit
-      }
+        limit: limit,
+      },
     });
   }
 
@@ -36,11 +36,11 @@ export class AutocompleteService {
     query: string,
     limit?: number
   ): Promise<APIResponse<AutocompleteACEntry>> {
-    return this.api.request("get", "/api/v2/autocomplete/factrak", {
+    return this.api.request('get', '/api/v2/autocomplete/factrak', {
       params: {
         q: query,
-        limit: limit
-      }
+        limit: limit,
+      },
     });
   }
 
@@ -48,23 +48,20 @@ export class AutocompleteService {
     query: string,
     limit?: number
   ): Promise<APIResponse<AutocompleteACEntry>> {
-    return this.api.request("get", "/api/v2/autocomplete/professor", {
+    return this.api.request('get', '/api/v2/autocomplete/professor', {
       params: {
         q: query,
-        limit: limit
-      }
+        limit: limit,
+      },
     });
   }
 
-  async autocompleteTag(
-    query: string,
-    limit?: number
-  ): Promise<APIResponse<AutocompleteACEntry>> {
-    return this.api.request("get", "/api/v2/autocomplete/tag", {
+  async autocompleteTag(query: string, limit?: number): Promise<APIResponse<AutocompleteACEntry>> {
+    return this.api.request('get', '/api/v2/autocomplete/tag', {
       params: {
         q: query,
-        limit: limit
-      }
+        limit: limit,
+      },
     });
   }
 }

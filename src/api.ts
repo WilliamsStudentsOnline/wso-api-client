@@ -26,6 +26,14 @@ export class API {
     return new API(this.base, newAuth);
   }
 
+  /**
+   * Performs a request with the given parameters, returning the response.
+   * @param {string} method HTTP method (e.g. POST, GET)
+   * @param {string} path API path
+   * @param {APIRequest} req additional request parameters.
+   * @return {Promise<APIResponse>} the http response given by the server.
+   * @throws {APIError} throws an error if the http status code is above 400, or if there is an error.
+   */
   async request(method: string, path: string, req: APIRequest = {}): Promise<APIResponse> {
     const config = {
       method: <Method>method,

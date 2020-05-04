@@ -1,4 +1,4 @@
-import { API, APIResponse } from "../api";
+import { API, APIResponse } from '../api';
 import {
   FactrakAgreementCreateParams,
   FactrakAgreementUpdateParams,
@@ -10,8 +10,8 @@ import {
   ModelsFactrakAgreement,
   ModelsFactrakSurvey,
   ModelsFactrakSurveyAvgRatings,
-  ModelsUser
-} from "./types";
+  ModelsUser,
+} from './types';
 
 export class FactrakService {
   private api: API;
@@ -28,18 +28,13 @@ export class FactrakService {
     preload?: string[];
     sort?: string;
   }): Promise<APIResponse<ModelsAreaOfStudy[]>> {
-    return this.api.request("get", `/api/v2/factrak/areas-of-study`, {
-      params: params
+    return this.api.request('get', `/api/v2/factrak/areas-of-study`, {
+      params: params,
     });
   }
 
-  async getAreaOfStudy(
-    areaOfStudyID: number
-  ): Promise<APIResponse<ModelsAreaOfStudy>> {
-    return this.api.request(
-      "get",
-      `/api/v2/factrak/areas-of-study/${areaOfStudyID}`
-    );
+  async getAreaOfStudy(areaOfStudyID: number): Promise<APIResponse<ModelsAreaOfStudy>> {
+    return this.api.request('get', `/api/v2/factrak/areas-of-study/${areaOfStudyID}`);
   }
 
   /* Courses */
@@ -52,19 +47,16 @@ export class FactrakService {
     departmentID?: number;
     professorID?: number;
   }): Promise<APIResponse<ModelsCourse[]>> {
-    return this.api.request("get", `/api/v2/factrak/courses`, {
-      params: params
+    return this.api.request('get', `/api/v2/factrak/courses`, {
+      params: params,
     });
   }
 
-  async getCourse(
-    courseID: number,
-    professorID?: number
-  ): Promise<APIResponse<ModelsCourse>> {
-    return this.api.request("get", `/api/v2/factrak/courses/${courseID}`, {
+  async getCourse(courseID: number, professorID?: number): Promise<APIResponse<ModelsCourse>> {
+    return this.api.request('get', `/api/v2/factrak/courses/${courseID}`, {
       params: {
-        professorID: professorID
-      }
+        professorID: professorID,
+      },
     });
   }
 
@@ -72,30 +64,21 @@ export class FactrakService {
     courseID: number,
     professorID?: number
   ): Promise<APIResponse<ModelsFactrakSurveyAvgRatings>> {
-    return this.api.request(
-      "get",
-      `/api/v2/factrak/courses/${courseID}/ratings`,
-      {
-        params: {
-          professorID: professorID
-        }
-      }
-    );
+    return this.api.request('get', `/api/v2/factrak/courses/${courseID}/ratings`, {
+      params: {
+        professorID: professorID,
+      },
+    });
   }
 
   /* Departments */
 
   async listDepartments(): Promise<APIResponse<ModelsDepartment[]>> {
-    return this.api.request("get", `/api/v2/factrak/departments`);
+    return this.api.request('get', `/api/v2/factrak/departments`);
   }
 
-  async getDepartment(
-    departmentID: number
-  ): Promise<APIResponse<ModelsDepartment>> {
-    return this.api.request(
-      "get",
-      `/api/v2/factrak/departments/${departmentID}`
-    );
+  async getDepartment(departmentID: number): Promise<APIResponse<ModelsDepartment>> {
+    return this.api.request('get', `/api/v2/factrak/departments/${departmentID}`);
   }
 
   /* Professors */
@@ -109,39 +92,28 @@ export class FactrakService {
     courseID?: number;
     q?: string;
   }): Promise<APIResponse<ModelsUser[]>> {
-    return this.api.request("get", `/api/v2/factrak/professors`, {
-      params: params
+    return this.api.request('get', `/api/v2/factrak/professors`, {
+      params: params,
     });
   }
 
-  async getProfessor(
-    professorID: number,
-    courseID?: number
-  ): Promise<APIResponse<ModelsUser>> {
-    return this.api.request(
-      "get",
-      `/api/v2/factrak/professors/${professorID}`,
-      {
-        params: {
-          courseID: courseID
-        }
-      }
-    );
+  async getProfessor(professorID: number, courseID?: number): Promise<APIResponse<ModelsUser>> {
+    return this.api.request('get', `/api/v2/factrak/professors/${professorID}`, {
+      params: {
+        courseID: courseID,
+      },
+    });
   }
 
   async getProfessorRatings(
     professorID: number,
     courseID?: number
   ): Promise<APIResponse<ModelsFactrakSurveyAvgRatings>> {
-    return this.api.request(
-      "get",
-      `/api/v2/factrak/professors/${professorID}/ratings`,
-      {
-        params: {
-          courseID: courseID
-        }
-      }
-    );
+    return this.api.request('get', `/api/v2/factrak/professors/${professorID}/ratings`, {
+      params: {
+        courseID: courseID,
+      },
+    });
   }
 
   /* Surveys */
@@ -152,39 +124,37 @@ export class FactrakService {
     userID?: number;
     offset?: string;
     limit?: number;
-    preload?: ("course" | "professor")[];
+    preload?: ('course' | 'professor')[];
     populateAgreements?: boolean;
     populateClientAgreement?: boolean;
   }): Promise<APIResponse<ModelsFactrakSurvey[]>> {
-    return this.api.request("get", `/api/v2/factrak/surveys`, {
-      params: params
+    return this.api.request('get', `/api/v2/factrak/surveys`, {
+      params: params,
     });
   }
 
   async createSurvey(
     createParams: FactrakSurveyCreateParams
   ): Promise<APIResponse<ModelsFactrakSurvey>> {
-    return this.api.request("post", `/api/v2/factrak/surveys`, {
-      data: createParams
+    return this.api.request('post', `/api/v2/factrak/surveys`, {
+      data: createParams,
     });
   }
 
   async getSurvey(surveyID: number): Promise<APIResponse<ModelsFactrakSurvey>> {
-    return this.api.request("get", `/api/v2/factrak/surveys/${surveyID}`);
+    return this.api.request('get', `/api/v2/factrak/surveys/${surveyID}`);
   }
 
-  async deleteSurvey(
-    surveyID: number
-  ): Promise<APIResponse<ModelsFactrakSurvey>> {
-    return this.api.request("delete", `/api/v2/factrak/surveys/${surveyID}`);
+  async deleteSurvey(surveyID: number): Promise<APIResponse<ModelsFactrakSurvey>> {
+    return this.api.request('delete', `/api/v2/factrak/surveys/${surveyID}`);
   }
 
   async updateSurvey(
     surveyID: number,
     updateParams: FactrakSurveyUpdateParams
   ): Promise<APIResponse<ModelsFactrakSurvey>> {
-    return this.api.request("patch", `/api/v2/factrak/surveys/${surveyID}`, {
-      data: updateParams
+    return this.api.request('patch', `/api/v2/factrak/surveys/${surveyID}`, {
+      data: updateParams,
     });
   }
 
@@ -192,48 +162,30 @@ export class FactrakService {
     surveyID: number,
     createParams: FactrakAgreementCreateParams
   ): Promise<APIResponse<ModelsFactrakAgreement>> {
-    return this.api.request(
-      "post",
-      `/api/v2/factrak/surveys/${surveyID}/agreement`,
-      {
-        data: createParams
-      }
-    );
+    return this.api.request('post', `/api/v2/factrak/surveys/${surveyID}/agreement`, {
+      data: createParams,
+    });
   }
 
-  async getSurveyAgreement(
-    surveyID: number
-  ): Promise<APIResponse<ModelsFactrakAgreement>> {
-    return this.api.request(
-      "get",
-      `/api/v2/factrak/surveys/${surveyID}/agreement`
-    );
+  async getSurveyAgreement(surveyID: number): Promise<APIResponse<ModelsFactrakAgreement>> {
+    return this.api.request('get', `/api/v2/factrak/surveys/${surveyID}/agreement`);
   }
 
-  async deleteSurveyAgreement(
-    surveyID: number
-  ): Promise<APIResponse<ModelsFactrakAgreement>> {
-    return this.api.request(
-      "delete",
-      `/api/v2/factrak/surveys/${surveyID}/agreement`
-    );
+  async deleteSurveyAgreement(surveyID: number): Promise<APIResponse<ModelsFactrakAgreement>> {
+    return this.api.request('delete', `/api/v2/factrak/surveys/${surveyID}/agreement`);
   }
 
   async updateSurveyAgreement(
     surveyID: number,
     updateParams: FactrakAgreementUpdateParams
   ): Promise<APIResponse<ModelsFactrakAgreement>> {
-    return this.api.request(
-      "patch",
-      `/api/v2/factrak/surveys/${surveyID}/agreement`,
-      {
-        data: updateParams
-      }
-    );
+    return this.api.request('patch', `/api/v2/factrak/surveys/${surveyID}/agreement`, {
+      data: updateParams,
+    });
   }
 
   async flagSurvey(surveyID: number): Promise<APIResponse> {
-    return this.api.request("post", `/api/v2/factrak/surveys/${surveyID}/flag`);
+    return this.api.request('post', `/api/v2/factrak/surveys/${surveyID}/flag`);
   }
 
   /* Admin */
@@ -244,19 +196,16 @@ export class FactrakService {
     userID?: number;
     offset?: string;
     limit?: number;
-    preload?: ("course" | "professor")[];
+    preload?: ('course' | 'professor')[];
     populateAgreements?: boolean;
     populateClientAgreement?: boolean;
   }): Promise<APIResponse<ModelsFactrakSurvey[]>> {
-    return this.api.request("get", `/api/v2/factrak/admin/surveys`, {
-      params: params
+    return this.api.request('get', `/api/v2/factrak/admin/surveys`, {
+      params: params,
     });
   }
 
   async unflagSurveyAdmin(surveyID: number): Promise<APIResponse> {
-    return this.api.request(
-      "delete",
-      `/api/v2/factrak/admin/surveys/${surveyID}/flag`
-    );
+    return this.api.request('delete', `/api/v2/factrak/admin/surveys/${surveyID}/flag`);
   }
 }

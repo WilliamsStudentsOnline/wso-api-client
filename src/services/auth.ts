@@ -1,5 +1,5 @@
-import { API, APIResponse } from "../api";
-import jwtDecode from "jwt-decode";
+import { API, APIResponse } from '../api';
+import jwtDecode from 'jwt-decode';
 
 export interface LoginData {
   unixID?: string;
@@ -18,26 +18,26 @@ export class AuthService {
   /* V2 Auth API */
   async getIdentityToken(data: LoginData): Promise<Token> {
     return this.api
-      .request("post", "/api/v2/auth/identity/token", {
+      .request('post', '/api/v2/auth/identity/token', {
         data: data,
-        noAuth: true
+        noAuth: true,
       })
       .then((resp: APIResponse<AuthResponse>) => {
-        if (!resp.data) throw new Error("missing response data");
+        if (!resp.data) throw new Error('missing response data');
         return new Token(resp.data.token);
       });
   }
 
   async getAPIToken(identityToken: string): Promise<Token> {
     return this.api
-      .request("post", "/api/v2/auth/api/token", {
+      .request('post', '/api/v2/auth/api/token', {
         noAuth: true,
         headers: {
-          Authorization: `Bearer ${identityToken}`
-        }
+          Authorization: `Bearer ${identityToken}`,
+        },
       })
       .then((resp: APIResponse<AuthResponse>) => {
-        if (!resp.data) throw new Error("missing response data");
+        if (!resp.data) throw new Error('missing response data');
         return new Token(resp.data.token);
       });
   }
@@ -48,14 +48,14 @@ export class AuthService {
       req = {
         noAuth: true,
         headers: {
-          Authorization: `Bearer ${apiToken}`
-        }
+          Authorization: `Bearer ${apiToken}`,
+        },
       };
     }
     return this.api
-      .request("post", "/api/v2/auth/identity/token", req)
+      .request('post', '/api/v2/auth/identity/token', req)
       .then((resp: APIResponse<AuthResponse>) => {
-        if (!resp.data) throw new Error("missing response data");
+        if (!resp.data) throw new Error('missing response data');
         return new Token(resp.data.token);
       });
   }
@@ -63,30 +63,30 @@ export class AuthService {
   /* V1 Auth API */
   async refreshTokenV1(): Promise<Token> {
     return this.api
-      .request("post", "/api/v2/auth/refresh-token")
+      .request('post', '/api/v2/auth/refresh-token')
       .then((resp: APIResponse<AuthResponse>) => {
-        if (!resp.data) throw new Error("missing response data");
+        if (!resp.data) throw new Error('missing response data');
         return new Token(resp.data.token);
       });
   }
 
   async updateTokenV1(): Promise<Token> {
     return this.api
-      .request("post", "/api/v2/auth/update-token")
+      .request('post', '/api/v2/auth/update-token')
       .then((resp: APIResponse<AuthResponse>) => {
-        if (!resp.data) throw new Error("missing response data");
+        if (!resp.data) throw new Error('missing response data');
         return new Token(resp.data.token);
       });
   }
 
   async loginV1(data: LoginData): Promise<Token> {
     return this.api
-      .request("post", "/api/v2/auth/login", {
+      .request('post', '/api/v2/auth/login', {
         data: data,
-        noAuth: true
+        noAuth: true,
       })
       .then((resp: APIResponse<AuthResponse>) => {
-        if (!resp.data) throw new Error("missing response data");
+        if (!resp.data) throw new Error('missing response data');
         return new Token(resp.data.token);
       });
   }
@@ -105,7 +105,7 @@ export class Token {
 
   constructor(token: string) {
     if (!token) {
-      this.token = "";
+      this.token = '';
       this.scopes = [];
       this.expiry = new Date();
       this.id = 0;
@@ -123,34 +123,34 @@ export class Token {
 // The current scopes
 export enum Scope {
   // Global scopes:
-  AdminAll = "admin:all",
+  AdminAll = 'admin:all',
   // Allows client to do write-level requests as long as it is scoped to models involving self, not all models
-  WriteSelf = "write:self",
+  WriteSelf = 'write:self',
 
   // Service scopes. Permits clients to access services read only. If it is included with the global write-self scope,
   // allows write access to service, iff it is scoped to models owned and allowed to be edited by self.
 
   // Service: Factrak
   // Limited access to factrak for people with outstanding survey deficit
-  FactrakLimited = "service:factrak:limited",
+  FactrakLimited = 'service:factrak:limited',
   // Full access to factrak for people with no survey deficit. Includes everything from ScopeFactrakLimited.
-  FactrakFull = "service:factrak:full",
+  FactrakFull = 'service:factrak:full',
   // Allows admin access to factrak. This includes everything from ScopeFactrakFull, while also opening up
   // admin endpoints and allowing certain admin-level write actions (need write-self for normal actions, though).
-  FactrakAdmin = "service:factrak:admin",
+  FactrakAdmin = 'service:factrak:admin',
 
   // Service: Dormtrak
   // Access to dormtrak reviews, etc.
-  Dormtrak = "service:dormtrak",
+  Dormtrak = 'service:dormtrak',
   // Ability to create reviews, etc. (must be upperclass)
-  DormtrakWrite = "service:dormtrak:write",
+  DormtrakWrite = 'service:dormtrak:write',
 
-  Ephcatch = "service:ephcatch",
-  Bulletin = "service:bulletin",
+  Ephcatch = 'service:ephcatch',
+  Bulletin = 'service:bulletin',
   // This is for facebook & users
-  Users = "service:users",
+  Users = 'service:users',
   // Allows you to access other services not mentioned above
-  AllOther = "service:other",
+  AllOther = 'service:other',
 
-  Ephmatch = "service:ephmatch"
+  Ephmatch = 'service:ephmatch',
 }

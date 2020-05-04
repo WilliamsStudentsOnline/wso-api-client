@@ -25,7 +25,7 @@ export class UserService {
   }
 
   async updateUser(
-    userID: number | 'me' = 'me',
+    userID: number | 'me',
     updateParams: UserUpdateUserParams
   ): Promise<APIResponse<ModelsUser>> {
     return this.api.request('patch', `/api/v2/users/${userID}`, {
@@ -34,7 +34,7 @@ export class UserService {
   }
 
   async updateUserTags(
-    userID: number | 'me' = 'me',
+    userID: number | 'me',
     updateParams: UserUpdateUserTagsParams
   ): Promise<APIResponse> {
     return this.api.request('put', `/api/v2/users/${userID}/tags`, {
@@ -43,7 +43,7 @@ export class UserService {
   }
 
   // Replaces current user's photo
-  async updateUserPhoto(userID: number | 'me' = 'me', file: string | Blob): Promise<APIResponse> {
+  async updateUserPhoto(userID: number | 'me', file: string | Blob): Promise<APIResponse> {
     const formData = new FormData();
     formData.append('file', file);
     return this.api.request('put', `/api/v2/users/${userID}/photo`, {
