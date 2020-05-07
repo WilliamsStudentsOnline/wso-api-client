@@ -63,7 +63,7 @@ export class AuthService {
   /* V1 Auth API */
   async refreshTokenV1(): Promise<Token> {
     return this.api
-      .request('post', '/api/v2/auth/refresh-token')
+      .request('get', '/api/v2/auth/refresh-token')
       .then((resp: APIResponse<AuthResponse>) => {
         if (!resp.data) throw new Error('missing response data');
         return new Token(resp.data.token);
@@ -72,7 +72,7 @@ export class AuthService {
 
   async updateTokenV1(): Promise<Token> {
     return this.api
-      .request('post', '/api/v2/auth/update-token')
+      .request('get', '/api/v2/auth/update-token')
       .then((resp: APIResponse<AuthResponse>) => {
         if (!resp.data) throw new Error('missing response data');
         return new Token(resp.data.token);
