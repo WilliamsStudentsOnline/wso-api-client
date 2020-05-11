@@ -32,7 +32,9 @@ export class AuthService {
     return this.api
       .request('post', '/api/v2/auth/api/token', {
         noAuth: true,
-        data: { identityToken },
+        headers: {
+          Authorization: `Bearer ${identityToken}`,
+        },
       })
       .then((resp: APIResponse<AuthResponse>) => {
         if (!resp.data) throw new Error('missing response data');
