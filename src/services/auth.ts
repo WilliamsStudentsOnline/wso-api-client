@@ -53,7 +53,7 @@ export class AuthService {
       };
     }
     return this.api
-      .request('post', '/api/v2/auth/identity/token', req)
+      .request('get', '/api/v2/auth/api/refresh', req)
       .then((resp: APIResponse<AuthResponse>) => {
         if (!resp.data) throw new Error('missing response data');
         return new Token(resp.data.token);
