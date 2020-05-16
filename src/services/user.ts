@@ -56,9 +56,13 @@ export class UserService {
 
   // Gets the thumbnail photo of a specified user.
   async getUserThumbPhoto(unixID: string): Promise<Blob> {
+    const token = await this.api.auth.getToken();
     return this.api.api
       .request<Blob>({
         url: `/pic/thumb/${unixID}.jpg`,
+        headers: {
+          Authorization: `Bearer ${token.token}`,
+        },
         responseType: 'blob',
         validateStatus: (status: number) => {
           return status >= 200 && status < 300;
@@ -69,9 +73,13 @@ export class UserService {
 
   // Gets the large photo of a specified user.
   async getUserLargePhoto(unixID: string): Promise<Blob> {
+    const token = await this.api.auth.getToken();
     return this.api.api
       .request<Blob>({
         url: `/pic/large/${unixID}.jpg`,
+        headers: {
+          Authorization: `Bearer ${token.token}`,
+        },
         responseType: 'blob',
         validateStatus: (status: number) => {
           return status >= 200 && status < 300;
