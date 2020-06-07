@@ -1,9 +1,10 @@
 import { API, APIResponse } from '../api';
 import {
+  EphmatchCountMatchesResponse,
   EphmatchProfileCreateParams,
   EphmatchProfileUpdateParams,
   ModelsEphmatchProfile,
-  ResponsesListMatchesResponseEphmatch,
+  ResponsesListMatchesResponseEphmatchMatch,
 } from './types';
 
 export class EphmatchService {
@@ -17,10 +18,14 @@ export class EphmatchService {
 
   async listMatches(params?: {
     preload?: string[];
-  }): Promise<APIResponse<ResponsesListMatchesResponseEphmatch[]>> {
+  }): Promise<APIResponse<ResponsesListMatchesResponseEphmatchMatch[]>> {
     return this.api.request('get', '/api/v2/ephmatch/matches', {
       params: params,
     });
+  }
+
+  async countMatches(): Promise<APIResponse<EphmatchCountMatchesResponse[]>> {
+    return this.api.request('get', '/api/v2/ephmatch/matches-count');
   }
 
   /* Self Profile */

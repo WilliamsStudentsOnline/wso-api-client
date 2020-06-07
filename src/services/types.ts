@@ -476,9 +476,35 @@ export interface DormtrakReviewUpdateParams {
 /**
  *
  * @export
+ * @interface EphmatchCountMatchesResponse
+ */
+export interface EphmatchCountMatchesResponse {
+  /**
+   *
+   * @type {number}
+   * @memberof EphmatchCountMatchesResponse
+   */
+  total?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof EphmatchCountMatchesResponse
+   */
+  unseen?: number;
+}
+
+/**
+ *
+ * @export
  * @interface EphmatchProfileCreateParams
  */
 export interface EphmatchProfileCreateParams {
+  /**
+   *
+   * @type {string}
+   * @memberof EphmatchProfileCreateParams
+   */
+  locationCountry?: string;
   /**
    *
    * @type {string}
@@ -490,7 +516,37 @@ export interface EphmatchProfileCreateParams {
    * @type {string}
    * @memberof EphmatchProfileCreateParams
    */
+  locationState?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof EphmatchProfileCreateParams
+   */
+  locationTown?: string;
+  /**
+   *
+   * @type {boolean}
+   * @memberof EphmatchProfileCreateParams
+   */
+  locationVisible?: boolean;
+  /**
+   *
+   * @type {string}
+   * @memberof EphmatchProfileCreateParams
+   */
   matchMessage?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof EphmatchProfileCreateParams
+   */
+  messagingPlatform?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof EphmatchProfileCreateParams
+   */
+  messagingUsername?: string;
 }
 
 /**
@@ -510,7 +566,43 @@ export interface EphmatchProfileUpdateParams {
    * @type {string}
    * @memberof EphmatchProfileUpdateParams
    */
+  locationCountry?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof EphmatchProfileUpdateParams
+   */
+  locationState?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof EphmatchProfileUpdateParams
+   */
+  locationTown?: string;
+  /**
+   *
+   * @type {boolean}
+   * @memberof EphmatchProfileUpdateParams
+   */
+  locationVisible?: boolean;
+  /**
+   *
+   * @type {string}
+   * @memberof EphmatchProfileUpdateParams
+   */
   matchMessage?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof EphmatchProfileUpdateParams
+   */
+  messagingPlatform?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof EphmatchProfileUpdateParams
+   */
+  messagingUsername?: string;
 }
 
 /**
@@ -1786,7 +1878,7 @@ export interface ModelsEphmatchProfile {
    */
   id?: number;
   /**
-   * If me (user) has an ephmatch entry where ephmatch.other_id=users.id and ephmatch.user_id=myID
+   * If self has liked this profile (user)
    * @type {boolean}
    * @memberof ModelsEphmatchProfile
    */
@@ -1796,7 +1888,49 @@ export interface ModelsEphmatchProfile {
    * @type {string}
    * @memberof ModelsEphmatchProfile
    */
+  locationCountry?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsEphmatchProfile
+   */
+  locationState?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsEphmatchProfile
+   */
+  locationTown?: string;
+  /**
+   * Current location columns
+   * @type {boolean}
+   * @memberof ModelsEphmatchProfile
+   */
+  locationVisible?: boolean;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsEphmatchProfile
+   */
   matchMessage?: string;
+  /**
+   * If user and self are matched
+   * @type {boolean}
+   * @memberof ModelsEphmatchProfile
+   */
+  matched?: boolean;
+  /**
+   * Messaging platform columns
+   * @type {string}
+   * @memberof ModelsEphmatchProfile
+   */
+  messagingPlatform?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsEphmatchProfile
+   */
+  messagingUsername?: string;
   /**
    *
    * @type {ModelsUser}
@@ -2958,39 +3092,51 @@ export interface ResponsesGetUserResponseUser {
 /**
  *
  * @export
- * @interface ResponsesListMatchesResponseEphmatch
+ * @interface ResponsesListMatchesResponseEphmatchMatch
  */
-export interface ResponsesListMatchesResponseEphmatch {
+export interface ResponsesListMatchesResponseEphmatchMatch {
   /**
    *
    * @type {string}
-   * @memberof ResponsesListMatchesResponseEphmatch
+   * @memberof ResponsesListMatchesResponseEphmatchMatch
    */
   createdAt?: string;
   /**
    *
    * @type {number}
-   * @memberof ResponsesListMatchesResponseEphmatch
+   * @memberof ResponsesListMatchesResponseEphmatchMatch
    */
   id?: number;
   /**
    *
-   * @type {ResponsesListMatchesResponseOther}
-   * @memberof ResponsesListMatchesResponseEphmatch
+   * @type {ResponsesListMatchesResponseMatchedUser}
+   * @memberof ResponsesListMatchesResponseEphmatchMatch
    */
-  other?: ResponsesListMatchesResponseOther;
+  matchedUser?: ResponsesListMatchesResponseMatchedUser;
   /**
    *
    * @type {number}
-   * @memberof ResponsesListMatchesResponseEphmatch
+   * @memberof ResponsesListMatchesResponseEphmatchMatch
    */
-  otherID?: number;
+  matchedUserID?: number;
   /**
    *
    * @type {boolean}
-   * @memberof ResponsesListMatchesResponseEphmatch
+   * @memberof ResponsesListMatchesResponseEphmatchMatch
    */
-  seen?: boolean;
+  seenByMatchedUser?: boolean;
+  /**
+   *
+   * @type {boolean}
+   * @memberof ResponsesListMatchesResponseEphmatchMatch
+   */
+  seenBySelf?: boolean;
+  /**
+   *
+   * @type {string}
+   * @memberof ResponsesListMatchesResponseEphmatchMatch
+   */
+  updatedAt?: string;
 }
 
 /**
@@ -3010,91 +3156,127 @@ export interface ResponsesListMatchesResponseEphmatchProfile {
    * @type {string}
    * @memberof ResponsesListMatchesResponseEphmatchProfile
    */
+  locationCountry?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ResponsesListMatchesResponseEphmatchProfile
+   */
+  locationState?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ResponsesListMatchesResponseEphmatchProfile
+   */
+  locationTown?: string;
+  /**
+   *
+   * @type {boolean}
+   * @memberof ResponsesListMatchesResponseEphmatchProfile
+   */
+  locationVisible?: boolean;
+  /**
+   *
+   * @type {string}
+   * @memberof ResponsesListMatchesResponseEphmatchProfile
+   */
   matchMessage?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ResponsesListMatchesResponseEphmatchProfile
+   */
+  messagingPlatform?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ResponsesListMatchesResponseEphmatchProfile
+   */
+  messagingUsername?: string;
 }
 
 /**
  *
  * @export
- * @interface ResponsesListMatchesResponseOther
+ * @interface ResponsesListMatchesResponseMatchedUser
  */
-export interface ResponsesListMatchesResponseOther {
+export interface ResponsesListMatchesResponseMatchedUser {
   /**
    *
    * @type {number}
-   * @memberof ResponsesListMatchesResponseOther
+   * @memberof ResponsesListMatchesResponseMatchedUser
    */
   classYear?: number;
   /**
    *
    * @type {string}
-   * @memberof ResponsesListMatchesResponseOther
+   * @memberof ResponsesListMatchesResponseMatchedUser
    */
   entry?: string;
   /**
    *
    * @type {ResponsesListMatchesResponseEphmatchProfile}
-   * @memberof ResponsesListMatchesResponseOther
+   * @memberof ResponsesListMatchesResponseMatchedUser
    */
   ephmatchProfile?: ResponsesListMatchesResponseEphmatchProfile;
   /**
    *
    * @type {number}
-   * @memberof ResponsesListMatchesResponseOther
+   * @memberof ResponsesListMatchesResponseMatchedUser
    */
   id?: number;
   /**
    *
    * @type {string}
-   * @memberof ResponsesListMatchesResponseOther
+   * @memberof ResponsesListMatchesResponseMatchedUser
    */
   major?: string;
   /**
    *
    * @type {string}
-   * @memberof ResponsesListMatchesResponseOther
+   * @memberof ResponsesListMatchesResponseMatchedUser
    */
   name?: string;
   /**
    *
    * @type {string}
-   * @memberof ResponsesListMatchesResponseOther
+   * @memberof ResponsesListMatchesResponseMatchedUser
    */
   nickname?: string;
   /**
    *
    * @type {boolean}
-   * @memberof ResponsesListMatchesResponseOther
+   * @memberof ResponsesListMatchesResponseMatchedUser
    */
   offCycle?: boolean;
   /**
    *
    * @type {string}
-   * @memberof ResponsesListMatchesResponseOther
+   * @memberof ResponsesListMatchesResponseMatchedUser
    */
   pronoun?: string;
   /**
    *
    * @type {Array<ResponsesListMatchesResponseTag>}
-   * @memberof ResponsesListMatchesResponseOther
+   * @memberof ResponsesListMatchesResponseMatchedUser
    */
   tags?: Array<ResponsesListMatchesResponseTag>;
   /**
    *
    * @type {string}
-   * @memberof ResponsesListMatchesResponseOther
+   * @memberof ResponsesListMatchesResponseMatchedUser
    */
   title?: string;
   /**
    *
    * @type {string}
-   * @memberof ResponsesListMatchesResponseOther
+   * @memberof ResponsesListMatchesResponseMatchedUser
    */
   unixID?: string;
   /**
    *
    * @type {string}
-   * @memberof ResponsesListMatchesResponseOther
+   * @memberof ResponsesListMatchesResponseMatchedUser
    */
   williamsEmail?: string;
 }

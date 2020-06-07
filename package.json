@@ -1,6 +1,6 @@
 {
-  "name": "wso-api-client",
-  "version": "1.0.0",
+  "name": "@williamsstudentsonline/wso-api-client",
+  "version": "0.0.2",
   "description": "WSO API Client for JS",
   "main": "lib/wso.js",
   "typings": "lib/wso.d.ts",
@@ -9,14 +9,16 @@
     "prepare": "npm run build",
     "build": "tsc",
     "lint": "eslint -c .eslintrc.yml src/**/*.ts",
-    "prepublishOnly" : "npm run lint",
-    "preversion" : "npm run lint",
+    "prepublishOnly": "npm run lint",
+    "preversion": "npm run lint",
     "version": "git add -A src",
     "postversion": "git push && git push --tags"
   },
   "author": "Williams Students Online",
   "license": "UNLICENSED",
-  "private": true,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "dependencies": {
     "axios": "^0.19.2",
     "jwt-decode": "latest"
@@ -35,5 +37,15 @@
   "files": [
     "lib/**/*"
   ],
-  "homepage": "https://github.com/WilliamsStudentsOnline/wso-api-client"
+  "homepage": "https://github.com/WilliamsStudentsOnline/wso-api-client",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WilliamsStudentsOnline/wso-api-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WilliamsStudentsOnline/wso-api-client/issues"
+  }
 }
