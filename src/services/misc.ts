@@ -1,5 +1,5 @@
-import { API, APIResponse } from "../api";
-import { ServerHealthCheckResponse } from "./types";
+import { API, APIResponse } from '../api';
+import { ServerHealthCheckResponse } from './types';
 
 export class MiscService {
   private api: API;
@@ -9,10 +9,10 @@ export class MiscService {
   }
 
   async getHealthCheck(): Promise<APIResponse<ServerHealthCheckResponse>> {
-    return this.api.request("get", `/api/v2/health-check`);
+    return this.api.request('get', `/api/v2/health-check`);
   }
 
   async getWords(): Promise<APIResponse<string>> {
-    return this.api.request("get", `/api/v2/words`);
+    return this.api.request('get', `/api/v2/words`);
   }
 }

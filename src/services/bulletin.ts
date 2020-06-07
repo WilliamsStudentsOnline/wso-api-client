@@ -1,4 +1,4 @@
-import { API, APIResponse } from "../api";
+import { API, APIResponse } from '../api';
 import {
   BulletinCreateBulletinParams,
   BulletinCreateDiscussionParams,
@@ -10,8 +10,8 @@ import {
   ModelsBulletin,
   ModelsBulletinRide,
   ModelsDiscussion,
-  ModelsPost
-} from "./types";
+  ModelsPost,
+} from './types';
 
 export class BulletinService {
   private api: API;
@@ -30,43 +30,34 @@ export class BulletinService {
     type?: string;
     all?: boolean;
   }): Promise<APIResponse<ModelsBulletin[]>> {
-    return this.api.request("get", "/api/v2/bulletin/bulletins", {
-      params: params
+    return this.api.request('get', '/api/v2/bulletin/bulletins', {
+      params: params,
     });
   }
 
   async getBulletin(bulletinID: number): Promise<APIResponse<ModelsBulletin>> {
-    return this.api.request("get", `/api/v2/bulletin/bulletins/${bulletinID}`);
+    return this.api.request('get', `/api/v2/bulletin/bulletins/${bulletinID}`);
   }
 
   async createBulletin(
     createParams: BulletinCreateBulletinParams
   ): Promise<APIResponse<ModelsBulletin>> {
-    return this.api.request("post", "/api/v2/bulletin/bulletins", {
-      data: createParams
+    return this.api.request('post', '/api/v2/bulletin/bulletins', {
+      data: createParams,
     });
   }
 
-  async deleteBulletin(
-    bulletinID: number
-  ): Promise<APIResponse<ModelsBulletin>> {
-    return this.api.request(
-      "delete",
-      `/api/v2/bulletin/bulletins/${bulletinID}`
-    );
+  async deleteBulletin(bulletinID: number): Promise<APIResponse<ModelsBulletin>> {
+    return this.api.request('delete', `/api/v2/bulletin/bulletins/${bulletinID}`);
   }
 
   async updateBulletin(
     bulletinID: number,
     updateParams: BulletinUpdateBulletinParams
   ): Promise<APIResponse<ModelsBulletin>> {
-    return this.api.request(
-      "patch",
-      `/api/v2/bulletin/bulletins/${bulletinID}`,
-      {
-        data: updateParams
-      }
-    );
+    return this.api.request('patch', `/api/v2/bulletin/bulletins/${bulletinID}`, {
+      data: updateParams,
+    });
   }
 
   /* Discussions */
@@ -78,16 +69,16 @@ export class BulletinService {
     preload?: string[];
     getLastPost?: boolean;
   }): Promise<APIResponse<ModelsDiscussion[]>> {
-    return this.api.request("get", "/api/v2/bulletin/discussions", {
-      params: params
+    return this.api.request('get', '/api/v2/bulletin/discussions', {
+      params: params,
     });
   }
 
   async createDiscussion(
     createParams: BulletinCreateDiscussionParams
   ): Promise<APIResponse<ModelsDiscussion>> {
-    return this.api.request("post", "/api/v2/bulletin/discussions", {
-      data: createParams
+    return this.api.request('post', '/api/v2/bulletin/discussions', {
+      data: createParams,
     });
   }
 
@@ -95,15 +86,15 @@ export class BulletinService {
     discussionID: number,
     preload: string[] = []
   ): Promise<APIResponse<ModelsDiscussion>> {
-    return this.api.request(
-      "get",
-      `/api/v2/bulletin/discussions/${discussionID}`,
-      {
-        params: {
-          preload: preload
-        }
-      }
-    );
+    return this.api.request('get', `/api/v2/bulletin/discussions/${discussionID}`, {
+      params: {
+        preload: preload,
+      },
+    });
+  }
+
+  async deleteDiscussion(discussionID: number): Promise<APIResponse<ModelsDiscussion>> {
+    return this.api.request('delete', `/api/v2/bulletin/discussions/${discussionID}`, {});
   }
 
   async getDiscussionPosts(
@@ -115,39 +106,33 @@ export class BulletinService {
       preload?: string[];
     }
   ): Promise<APIResponse<ModelsPost[]>> {
-    return this.api.request(
-      "get",
-      `/api/v2/bulletin/discussions/${discussionID}/posts`,
-      {
-        params: params
-      }
-    );
+    return this.api.request('get', `/api/v2/bulletin/discussions/${discussionID}/posts`, {
+      params: params,
+    });
   }
 
   /* Posts */
 
   async getPost(postID: number): Promise<APIResponse<ModelsPost>> {
-    return this.api.request("get", `/api/v2/bulletin/posts/${postID}`);
+    return this.api.request('get', `/api/v2/bulletin/posts/${postID}`);
   }
 
-  async createPost(
-    createParams: BulletinCreatePostParams
-  ): Promise<APIResponse<ModelsPost>> {
-    return this.api.request("post", "/api/v2/bulletin/posts", {
-      data: createParams
+  async createPost(createParams: BulletinCreatePostParams): Promise<APIResponse<ModelsPost>> {
+    return this.api.request('post', '/api/v2/bulletin/posts', {
+      data: createParams,
     });
   }
 
   async deletePost(postID: number): Promise<APIResponse<ModelsPost>> {
-    return this.api.request("delete", `/api/v2/bulletin/posts/${postID}`);
+    return this.api.request('delete', `/api/v2/bulletin/posts/${postID}`);
   }
 
   async updatePost(
     postID: number,
     updateParams: BulletinUpdatePostParams
   ): Promise<APIResponse<ModelsPost>> {
-    return this.api.request("patch", `/api/v2/bulletin/posts/${postID}`, {
-      data: updateParams
+    return this.api.request('patch', `/api/v2/bulletin/posts/${postID}`, {
+      data: updateParams,
     });
   }
 
@@ -161,33 +146,33 @@ export class BulletinService {
     type?: string;
     all?: boolean;
   }): Promise<APIResponse<ModelsBulletinRide[]>> {
-    return this.api.request("get", "/api/v2/bulletin/rides", {
-      params: params
+    return this.api.request('get', '/api/v2/bulletin/rides', {
+      params: params,
     });
   }
 
   async getRide(rideID: number): Promise<APIResponse<ModelsBulletinRide>> {
-    return this.api.request("get", `/api/v2/bulletin/rides/${rideID}`);
+    return this.api.request('get', `/api/v2/bulletin/rides/${rideID}`);
   }
 
   async createRide(
     createParams: BulletinCreateRideParams
   ): Promise<APIResponse<ModelsBulletinRide>> {
-    return this.api.request("post", "/api/v2/bulletin/rides", {
-      data: createParams
+    return this.api.request('post', '/api/v2/bulletin/rides', {
+      data: createParams,
     });
   }
 
   async deleteRide(rideID: number): Promise<APIResponse<ModelsBulletinRide>> {
-    return this.api.request("delete", `/api/v2/bulletin/rides/${rideID}`);
+    return this.api.request('delete', `/api/v2/bulletin/rides/${rideID}`);
   }
 
   async updateRide(
     rideID: number,
     updateParams: BulletinUpdateRideParams
   ): Promise<APIResponse<ModelsBulletinRide>> {
-    return this.api.request("patch", `/api/v2/bulletin/rides/${rideID}`, {
-      data: updateParams
+    return this.api.request('patch', `/api/v2/bulletin/rides/${rideID}`, {
+      data: updateParams,
     });
   }
 }

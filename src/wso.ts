@@ -1,13 +1,14 @@
-import { AuthService } from "./services/auth";
-import { API } from "./api";
-import { AutocompleteService } from "./services/autocomplete";
-import { BulletinService } from "./services/bulletin";
-import { DormtrakService } from "./services/dormtrak";
-import { EphcatchService } from "./services/ephcatch";
-import { EphmatchService } from "./services/ephmatch";
-import { FactrakService } from "./services/factrak";
-import { MiscService } from "./services/misc";
-import { UserService } from "./services/user";
+import { AuthService } from './services/auth';
+import { API } from './api';
+import { Authentication } from './auth';
+import { AutocompleteService } from './services/autocomplete';
+import { BulletinService } from './services/bulletin';
+import { DormtrakService } from './services/dormtrak';
+import { EphcatchService } from './services/ephcatch';
+import { EphmatchService } from './services/ephmatch';
+import { FactrakService } from './services/factrak';
+import { MiscService } from './services/misc';
+import { UserService } from './services/user';
 
 export class WSO {
   private api: API;
@@ -33,6 +34,15 @@ export class WSO {
     this._factrak = new FactrakService(api);
     this._misc = new MiscService(api);
     this._user = new UserService(api);
+  }
+
+  isAuthenticated(): boolean {
+    return this.api.isAuthenticated();
+  }
+
+  // returns a new API object with the newAuth object.
+  updateAuth(newAuth: Authentication): WSO {
+    return new WSO(this.api.updateAuth(newAuth));
   }
 
   get userService(): UserService {
@@ -83,3 +93,6 @@ export class WSO {
     this._user = new UserService(api);
   }
 }
+
+export * from './api';
+export * from './auth';
