@@ -15,7 +15,7 @@
     "postversion": "git push && git push --tags"
   },
   "author": "Williams Students Online",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
