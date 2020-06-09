@@ -1,5 +1,5 @@
 {
-  "name": "@williamsstudentsonline/wso-api-client",
+  "name": "wso-api-client",
   "version": "0.0.2",
   "description": "WSO API Client for JS",
   "main": "lib/wso.js",
@@ -16,9 +16,6 @@
   },
   "author": "Williams Students Online",
   "license": "MIT",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "dependencies": {
     "axios": "^0.19.2",
     "jwt-decode": "latest"
