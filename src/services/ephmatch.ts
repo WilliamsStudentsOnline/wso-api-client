@@ -1,6 +1,6 @@
 import { API, APIResponse } from '../api';
 import {
-  EphmatchCountMatchesResponse,
+  EphmatchCountMatchesResponse, EphmatchGetAvailabilityResp,
   EphmatchProfileCreateParams,
   EphmatchProfileUpdateParams,
   ModelsEphmatchProfile,
@@ -14,6 +14,12 @@ export class EphmatchService {
     this.api = api;
   }
 
+  /* Availability */
+
+  async getAvailability(): Promise<APIResponse<EphmatchGetAvailabilityResp>> {
+    return this.api.request('get', '/api/v2/ephmatch/availability');
+  }
+
   /* Matches */
 
   async listMatches(params?: {
@@ -24,7 +30,7 @@ export class EphmatchService {
     });
   }
 
-  async countMatches(): Promise<APIResponse<EphmatchCountMatchesResponse[]>> {
+  async countMatches(): Promise<APIResponse<EphmatchCountMatchesResponse>> {
     return this.api.request('get', '/api/v2/ephmatch/matches-count');
   }
 

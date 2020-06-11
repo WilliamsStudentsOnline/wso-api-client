@@ -496,6 +496,38 @@ export interface EphmatchCountMatchesResponse {
 /**
  *
  * @export
+ * @interface EphmatchGetAvailabilityResp
+ */
+export interface EphmatchGetAvailabilityResp {
+  /**
+   * If Ephmatch is currently available
+   * @type {boolean}
+   * @memberof EphmatchGetAvailabilityResp
+   */
+  available?: boolean;
+  /**
+   * Closing time for current Ephmatch era/period
+   * @type {string}
+   * @memberof EphmatchGetAvailabilityResp
+   */
+  closingTime?: string;
+  /**
+   * Next time Ephmatch will be open
+   * @type {string}
+   * @memberof EphmatchGetAvailabilityResp
+   */
+  nextOpenTime?: string;
+  /**
+   * If Ephmatch has no closing time set
+   * @type {boolean}
+   * @memberof EphmatchGetAvailabilityResp
+   */
+  openIndefinitely?: boolean;
+}
+
+/**
+ *
+ * @export
  * @interface EphmatchProfileCreateParams
  */
 export interface EphmatchProfileCreateParams {

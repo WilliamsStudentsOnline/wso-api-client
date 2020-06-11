@@ -9,12 +9,14 @@ import { EphmatchService } from './services/ephmatch';
 import { FactrakService } from './services/factrak';
 import { MiscService } from './services/misc';
 import { UserService } from './services/user';
+import {ChatService} from "./services/chat";
 
 export class WSO {
   private api: API;
   private _auth: AuthService;
   private _autocomplete: AutocompleteService;
   private _bulletin: BulletinService;
+  private _chat: ChatService;
   private _dormtrak: DormtrakService;
   private _ephcatch: EphcatchService;
   private _ephmatch: EphmatchService;
@@ -28,6 +30,7 @@ export class WSO {
     this._auth = new AuthService(api);
     this._autocomplete = new AutocompleteService(api);
     this._bulletin = new BulletinService(api);
+    this._chat = new ChatService(api);
     this._dormtrak = new DormtrakService(api);
     this._ephcatch = new EphcatchService(api);
     this._ephmatch = new EphmatchService(api);
@@ -81,6 +84,10 @@ export class WSO {
     return this._auth;
   }
 
+  get chatService(): ChatService {
+    return this._chat;
+  }
+
   private initServices(api: API) {
     this._auth = new AuthService(api);
     this._autocomplete = new AutocompleteService(api);
@@ -91,6 +98,7 @@ export class WSO {
     this._factrak = new FactrakService(api);
     this._misc = new MiscService(api);
     this._user = new UserService(api);
+    this._chat = new ChatService(api);
   }
 }
 
