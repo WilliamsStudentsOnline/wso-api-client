@@ -1,6 +1,7 @@
 import { API, APIResponse } from '../api';
 import {
-  EphmatchCountMatchesResponse, EphmatchGetAvailabilityResp,
+  EphmatchCountMatchesResponse,
+  EphmatchGetAvailabilityResp,
   EphmatchProfileCreateParams,
   EphmatchProfileUpdateParams,
   ModelsEphmatchProfile,
