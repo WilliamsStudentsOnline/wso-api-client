@@ -528,6 +528,20 @@ export interface EphmatchGetAvailabilityResp {
 /**
  *
  * @export
+ * @interface EphmatchLikeProfileResp
+ */
+export interface EphmatchLikeProfileResp {
+  /**
+   *
+   * @type {boolean}
+   * @memberof EphmatchLikeProfileResp
+   */
+  matched?: boolean;
+}
+
+/**
+ *
+ * @export
  * @interface EphmatchProfileCreateParams
  */
 export interface EphmatchProfileCreateParams {
@@ -2462,6 +2476,12 @@ export interface ModelsUser {
    */
   campusPhoneEXT?: string;
   /**
+   * Has campus status: either remote or on-campus
+   * @type {string}
+   * @memberof ModelsUser
+   */
+  campusStatus?: string;
+  /**
    *
    * @type {string}
    * @memberof ModelsUser
@@ -2909,6 +2929,12 @@ export interface ResponsesGetUserResponseUser {
    * @memberof ResponsesGetUserResponseUser
    */
   campusPhoneEXT?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ResponsesGetUserResponseUser
+   */
+  campusStatus?: string;
   /**
    *
    * @type {string}
@@ -3486,6 +3512,12 @@ export interface ResponsesListUsersResponseUser {
    * @type {string}
    * @memberof ResponsesListUsersResponseUser
    */
+  campusStatus?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ResponsesListUsersResponseUser
+   */
   cellPhone?: string;
   /**
    *
@@ -3713,6 +3745,12 @@ export interface ServerHealthCheckResponse {
  * @interface UserUpdateUserParams
  */
 export interface UserUpdateUserParams {
+  /**
+   *
+   * @type {string}
+   * @memberof UserUpdateUserParams
+   */
+  campusStatus?: string;
   /**
    *
    * @type {boolean}

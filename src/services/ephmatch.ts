@@ -2,6 +2,7 @@ import { API, APIResponse } from '../api';
 import {
   EphmatchCountMatchesResponse,
   EphmatchGetAvailabilityResp,
+  EphmatchLikeProfileResp,
   EphmatchProfileCreateParams,
   EphmatchProfileUpdateParams,
   ModelsEphmatchProfile,
@@ -78,7 +79,7 @@ export class EphmatchService {
     return this.api.request('get', `/api/v2/ephmatch/profiles/${profileUserID}`);
   }
 
-  async likeProfile(profileUserID: number): Promise<APIResponse> {
+  async likeProfile(profileUserID: number): Promise<APIResponse<EphmatchLikeProfileResp>> {
     return this.api.request('post', `/api/v2/ephmatch/profiles/${profileUserID}/like`);
   }
 

@@ -4,3 +4,4 @@ src/demo.ts
 yarn.lock
 package.lock
 .idea
+/tmp

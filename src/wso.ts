@@ -9,7 +9,7 @@ import { EphmatchService } from './services/ephmatch';
 import { FactrakService } from './services/factrak';
 import { MiscService } from './services/misc';
 import { UserService } from './services/user';
-import {ChatService} from "./services/chat";
+import { ChatService } from './services/chat';
 
 export class WSO {
   private api: API;
