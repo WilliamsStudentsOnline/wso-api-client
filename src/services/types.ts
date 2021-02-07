@@ -3795,12 +3795,6 @@ export interface UserUpdateUserParams {
   optOutEphcatch?: boolean;
   /**
    *
-   * @type {string}
-   * @memberof UserUpdateUserParams
-   */
-  pronoun?: string;
-  /**
-   *
    * @type {boolean}
    * @memberof UserUpdateUserParams
    */
