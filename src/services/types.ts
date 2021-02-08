@@ -704,6 +704,12 @@ export interface FactrakSurveyCreateParams {
    */
   comment: string;
   /**
+   * Remote, Hybrid, In-Person
+   * @type {string}
+   * @memberof FactrakSurveyCreateParams
+   */
+  courseFormat?: string;
+  /**
    * Must include either this:
    * @type {number}
    * @memberof FactrakSurveyCreateParams
@@ -758,6 +764,18 @@ export interface FactrakSurveyCreateParams {
    */
   promoteDiscussion?: number;
   /**
+   * Fall, Winter Study, Spring
+   * @type {string}
+   * @memberof FactrakSurveyCreateParams
+   */
+  semesterSeason?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof FactrakSurveyCreateParams
+   */
+  semesterYear?: number;
+  /**
    *
    * @type {boolean}
    * @memberof FactrakSurveyCreateParams
@@ -789,6 +807,12 @@ export interface FactrakSurveyUpdateParams {
    * @memberof FactrakSurveyUpdateParams
    */
   comment?: string;
+  /**
+   * Remote, Hybrid, In-Person
+   * @type {string}
+   * @memberof FactrakSurveyUpdateParams
+   */
+  courseFormat?: string;
   /**
    *
    * @type {number}
@@ -825,6 +849,18 @@ export interface FactrakSurveyUpdateParams {
    * @memberof FactrakSurveyUpdateParams
    */
   promoteDiscussion?: number;
+  /**
+   * Fall, Winter Study, Spring
+   * @type {string}
+   * @memberof FactrakSurveyUpdateParams
+   */
+  semesterSeason?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof FactrakSurveyUpdateParams
+   */
+  semesterYear?: number;
   /**
    *
    * @type {boolean}
@@ -2072,6 +2108,12 @@ export interface ModelsFactrakSurvey {
    */
   course?: ModelsCourse;
   /**
+   * Remote, Hybrid, In-Person
+   * @type {string}
+   * @memberof ModelsFactrakSurvey
+   */
+  courseFormat?: string;
+  /**
    * Belongs to course
    * @type {number}
    * @memberof ModelsFactrakSurvey
@@ -2143,6 +2185,18 @@ export interface ModelsFactrakSurvey {
    * @memberof ModelsFactrakSurvey
    */
   promoteDiscussion?: number;
+  /**
+   * Course info data
+   * @type {string}
+   * @memberof ModelsFactrakSurvey
+   */
+  semesterSeason?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsFactrakSurvey
+   */
+  semesterYear?: number;
   /**
    * Not looked at by GORM, just for returning in JSON
    * @type {number}
