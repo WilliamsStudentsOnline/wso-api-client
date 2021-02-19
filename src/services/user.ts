@@ -59,7 +59,7 @@ export class UserService {
     const token = await this.api.auth.getToken();
     return this.api.api
       .request<Blob>({
-        url: `/pic/thumb/${unixID}.jpg`,
+        url: `/pic/user/thumb/${unixID}.jpg`,
         headers: {
           Authorization: `Bearer ${token.token}`,
         },
@@ -76,7 +76,7 @@ export class UserService {
     const token = await this.api.auth.getToken();
     return this.api.api
       .request<Blob>({
-        url: `/pic/large/${unixID}.jpg`,
+        url: `/pic/user/large/${unixID}.jpg`,
         headers: {
           Authorization: `Bearer ${token.token}`,
         },
