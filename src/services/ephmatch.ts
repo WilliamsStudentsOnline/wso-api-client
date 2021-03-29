@@ -62,6 +62,23 @@ export class EphmatchService {
     });
   }
 
+  // Uploads current user's ephmatch photo
+  async uploadProfilePhoto(file: string | Blob): Promise<APIResponse> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.api.request('put', `/api/v2/ephmatch/profile/photo`, {
+      data: formData,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  }
+
+  // Deletes current user's ephmatch photo
+  async deleteProfilePhoto(): Promise<APIResponse> {
+    return this.api.request('delete', `/api/v2/ephmatch/profile/photo`);
+  }
+
   /* Profiles */
 
   async listProfiles(params?: {

@@ -274,6 +274,38 @@ export interface BulletinUpdateRideParams {
 /**
  *
  * @export
+ * @interface DormtrakDormRoomPhotoInfo
+ */
+export interface DormtrakDormRoomPhotoInfo {
+  /**
+   *
+   * @type {number}
+   * @memberof DormtrakDormRoomPhotoInfo
+   */
+  dormRoomId?: number;
+  /**
+   *
+   * @type {string}
+   * @memberof DormtrakDormRoomPhotoInfo
+   */
+  name?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof DormtrakDormRoomPhotoInfo
+   */
+  number?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof DormtrakDormRoomPhotoInfo
+   */
+  reviewId?: number;
+}
+
+/**
+ *
+ * @export
  * @interface DormtrakReviewCreateParams
  */
 export interface DormtrakReviewCreateParams {
@@ -2400,6 +2432,82 @@ export interface ModelsNeighborhoodFacts {
 /**
  *
  * @export
+ * @interface ModelsNotificationSettings
+ */
+export interface ModelsNotificationSettings {
+  /**
+   * Settings:
+   * @type {boolean}
+   * @memberof ModelsNotificationSettings
+   */
+  enableNotifications?: boolean;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsNotificationSettings
+   */
+  id?: number;
+  /**
+   *
+   * @type {boolean}
+   * @memberof ModelsNotificationSettings
+   */
+  salmonNotify?: boolean;
+  /**
+   *
+   * @type {ModelsUser}
+   * @memberof ModelsNotificationSettings
+   */
+  user?: ModelsUser;
+  /**
+   * Belongs to user
+   * @type {number}
+   * @memberof ModelsNotificationSettings
+   */
+  userID?: number;
+}
+
+/**
+ *
+ * @export
+ * @interface ModelsNotificationToken
+ */
+export interface ModelsNotificationToken {
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsNotificationToken
+   */
+  id?: number;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsNotificationToken
+   */
+  token?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsNotificationToken
+   */
+  type?: string;
+  /**
+   *
+   * @type {ModelsUser}
+   * @memberof ModelsNotificationToken
+   */
+  user?: ModelsUser;
+  /**
+   * Belongs to user
+   * @type {number}
+   * @memberof ModelsNotificationToken
+   */
+  userID?: number;
+}
+
+/**
+ *
+ * @export
  * @interface ModelsOffice
  */
 export interface ModelsOffice {
@@ -2704,6 +2812,18 @@ export interface ModelsUser {
    */
   nickname?: string;
   /**
+   * Has one notification settings
+   * @type {ModelsNotificationSettings}
+   * @memberof ModelsUser
+   */
+  notificationSettings?: ModelsNotificationSettings;
+  /**
+   * Has many notification tokens
+   * @type {Array<ModelsNotificationToken>}
+   * @memberof ModelsUser
+   */
+  notificationTokens?: Array<ModelsNotificationToken>;
+  /**
    * If user is Off-Campus and thus doesn't have a dorm
    * @type {boolean}
    * @memberof ModelsUser
@@ -2781,6 +2901,46 @@ export interface ModelsUser {
    * @memberof ModelsUser
    */
   williamsEmail?: string;
+}
+
+/**
+ *
+ * @export
+ * @interface NotificationSettingsUpdateParams
+ */
+export interface NotificationSettingsUpdateParams {
+  /**
+   *
+   * @type {boolean}
+   * @memberof NotificationSettingsUpdateParams
+   */
+  enableNotifications?: boolean;
+  /**
+   *
+   * @type {boolean}
+   * @memberof NotificationSettingsUpdateParams
+   */
+  salmonNotify?: boolean;
+}
+
+/**
+ *
+ * @export
+ * @interface NotificationTokenCreateParams
+ */
+export interface NotificationTokenCreateParams {
+  /**
+   *
+   * @type {string}
+   * @memberof NotificationTokenCreateParams
+   */
+  token?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof NotificationTokenCreateParams
+   */
+  type?: string;
 }
 
 /**

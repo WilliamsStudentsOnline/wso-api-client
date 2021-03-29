@@ -1,5 +1,6 @@
 import { API, APIResponse } from '../api';
 import {
+  DormtrakDormRoomPhotoInfo,
   DormtrakReviewCreateParams,
   DormtrakReviewUpdateParams,
   ModelsDorm,
@@ -109,5 +110,28 @@ export class DormtrakService {
     return this.api.request('patch', `/api/v2/dormtrak/reviews/${reviewID}`, {
       data: updateParams,
     });
+  }
+
+  // Uploads a review's photo
+  async uploadReviewPhoto(reviewID: number, file: string | Blob): Promise<APIResponse> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.api.request('put', `/api/v2/dormtrak/reviews/${reviewID}/photo`, {
+      data: formData,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  }
+
+  // Get a review's photos
+  async getReviewPhotos(reviewID: number): Promise<APIResponse<DormtrakDormRoomPhotoInfo[]>> {
+    return this.api.request('get', `/api/v2/dormtrak/reviews/${reviewID}/photos`);
+  }
+
+  /* Rooms */
+  // Get a room's photos
+  async getRoomPhotos(roomID: number): Promise<APIResponse<DormtrakDormRoomPhotoInfo[]>> {
+    return this.api.request('get', `/api/v2/dormtrak/rooms/${roomID}/photos`);
   }
 }
