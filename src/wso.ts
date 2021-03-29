@@ -10,6 +10,7 @@ import { FactrakService } from './services/factrak';
 import { MiscService } from './services/misc';
 import { UserService } from './services/user';
 import { ChatService } from './services/chat';
+import {NotificationService} from "./services/notification";
 
 export class WSO {
   private api: API;
@@ -22,6 +23,7 @@ export class WSO {
   private _ephmatch: EphmatchService;
   private _factrak: FactrakService;
   private _misc: MiscService;
+  private _notification: NotificationService;
   private _user: UserService;
 
   constructor(api: API) {
@@ -36,6 +38,7 @@ export class WSO {
     this._ephmatch = new EphmatchService(api);
     this._factrak = new FactrakService(api);
     this._misc = new MiscService(api);
+    this._notification = new NotificationService(api);
     this._user = new UserService(api);
   }
 
@@ -54,6 +57,10 @@ export class WSO {
 
   get miscService(): MiscService {
     return this._misc;
+  }
+
+  get notificationService(): NotificationService {
+    return this._notification;
   }
 
   get factrakService(): FactrakService {
@@ -98,6 +105,7 @@ export class WSO {
     this._factrak = new FactrakService(api);
     this._misc = new MiscService(api);
     this._user = new UserService(api);
+    this._notification = new NotificationService(api);
     this._chat = new ChatService(api);
   }
 }
