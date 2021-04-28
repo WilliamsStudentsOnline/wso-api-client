@@ -10,7 +10,8 @@ import { FactrakService } from './services/factrak';
 import { MiscService } from './services/misc';
 import { UserService } from './services/user';
 import { ChatService } from './services/chat';
-import {NotificationService} from "./services/notification";
+import { NotificationService } from './services/notification';
+import { GoodrichService } from './services/goodrich';
 
 export class WSO {
   private api: API;
@@ -22,6 +23,7 @@ export class WSO {
   private _ephcatch: EphcatchService;
   private _ephmatch: EphmatchService;
   private _factrak: FactrakService;
+  private _goodrich: GoodrichService;
   private _misc: MiscService;
   private _notification: NotificationService;
   private _user: UserService;
@@ -37,6 +39,7 @@ export class WSO {
     this._ephcatch = new EphcatchService(api);
     this._ephmatch = new EphmatchService(api);
     this._factrak = new FactrakService(api);
+    this._goodrich = new GoodrichService(api);
     this._misc = new MiscService(api);
     this._notification = new NotificationService(api);
     this._user = new UserService(api);
@@ -95,6 +98,10 @@ export class WSO {
     return this._chat;
   }
 
+  get goodrichService(): GoodrichService {
+    return this._goodrich;
+  }
+
   private initServices(api: API) {
     this._auth = new AuthService(api);
     this._autocomplete = new AutocompleteService(api);
@@ -103,6 +110,7 @@ export class WSO {
     this._ephcatch = new EphcatchService(api);
     this._ephmatch = new EphmatchService(api);
     this._factrak = new FactrakService(api);
+    this._goodrich = new GoodrichService(api);
     this._misc = new MiscService(api);
     this._user = new UserService(api);
     this._notification = new NotificationService(api);
@@ -112,3 +120,4 @@ export class WSO {
 
 export * from './api';
 export * from './auth';
+export { Goodrich } from './services/goodrich';

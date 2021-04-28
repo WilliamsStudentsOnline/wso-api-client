@@ -910,6 +910,120 @@ export interface FactrakSurveyUpdateParams {
 /**
  *
  * @export
+ * @interface GoodrichCreateOrderParams
+ */
+export interface GoodrichCreateOrderParams {
+  /**
+   *
+   * @type {boolean}
+   * @memberof GoodrichCreateOrderParams
+   */
+  comboDeal?: boolean;
+  /**
+   *
+   * @type {string}
+   * @memberof GoodrichCreateOrderParams
+   */
+  date?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof GoodrichCreateOrderParams
+   */
+  idNumber?: string;
+  /**
+   *
+   * @type {Array<number>}
+   * @memberof GoodrichCreateOrderParams
+   */
+  itemIDs?: Array<number>;
+  /**
+   *
+   * @type {string}
+   * @memberof GoodrichCreateOrderParams
+   */
+  notes?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof GoodrichCreateOrderParams
+   */
+  paymentMethod?: number;
+  /**
+   *
+   * @type {string}
+   * @memberof GoodrichCreateOrderParams
+   */
+  phoneNumber?: string;
+  /**
+   * Format: 11:10 am
+   * @type {string}
+   * @memberof GoodrichCreateOrderParams
+   */
+  timeSlot?: string;
+}
+
+/**
+ *
+ * @export
+ * @interface GoodrichTimeSlot
+ */
+export interface GoodrichTimeSlot {
+  /**
+   *
+   * @type {number}
+   * @memberof GoodrichTimeSlot
+   */
+  closedSpots?: number;
+  /**
+   *
+   * @type {string}
+   * @memberof GoodrichTimeSlot
+   */
+  formatted?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof GoodrichTimeSlot
+   */
+  hour?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof GoodrichTimeSlot
+   */
+  minute?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof GoodrichTimeSlot
+   */
+  openSpots?: number;
+}
+
+/**
+ *
+ * @export
+ * @interface GoodrichUpdateOrderParams
+ */
+export interface GoodrichUpdateOrderParams {
+  /**
+   *
+   * @type {string}
+   * @memberof GoodrichUpdateOrderParams
+   */
+  adminNotes?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof GoodrichUpdateOrderParams
+   */
+  status?: number;
+}
+
+/**
+ *
+ * @export
  * @interface IdentityCredentials
  */
 export interface IdentityCredentials {
@@ -2374,6 +2488,148 @@ export interface ModelsFactrakSurveyAvgRatings {
 /**
  *
  * @export
+ * @interface ModelsGoodrichMenuItem
+ */
+export interface ModelsGoodrichMenuItem {
+  /**
+   * false if item is out of stock
+   * @type {boolean}
+   * @memberof ModelsGoodrichMenuItem
+   */
+  available?: boolean;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsGoodrichMenuItem
+   */
+  category?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsGoodrichMenuItem
+   */
+  description?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsGoodrichMenuItem
+   */
+  id?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsGoodrichMenuItem
+   */
+  price?: number;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsGoodrichMenuItem
+   */
+  title?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsGoodrichMenuItem
+   */
+  type?: string;
+}
+
+/**
+ *
+ * @export
+ * @interface ModelsGoodrichOrder
+ */
+export interface ModelsGoodrichOrder {
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsGoodrichOrder
+   */
+  adminNotes?: string;
+  /**
+   *
+   * @type {boolean}
+   * @memberof ModelsGoodrichOrder
+   */
+  comboDeal?: boolean;
+  /**
+   * Format: 2006-01-02
+   * @type {string}
+   * @memberof ModelsGoodrichOrder
+   */
+  date?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsGoodrichOrder
+   */
+  id?: number;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsGoodrichOrder
+   */
+  idNumber?: string;
+  /**
+   * this means this field will be ignored in the DB. Use this to pull the menu items from ItemList into actual objects in the Model/Controller side.
+   * @type {Array<ModelsGoodrichMenuItem>}
+   * @memberof ModelsGoodrichOrder
+   */
+  items?: Array<ModelsGoodrichMenuItem>;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsGoodrichOrder
+   */
+  notes?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsGoodrichOrder
+   */
+  paymentMethod?: number;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsGoodrichOrder
+   */
+  phoneNumber?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsGoodrichOrder
+   */
+  status?: number;
+  /**
+   * Format: 15:04
+   * @type {string}
+   * @memberof ModelsGoodrichOrder
+   */
+  timeSlot?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsGoodrichOrder
+   */
+  totalPrice?: number;
+  /**
+   *
+   * @type {ModelsUser}
+   * @memberof ModelsGoodrichOrder
+   */
+  user?: ModelsUser;
+  /**
+   * Belongs to user
+   * @type {number}
+   * @memberof ModelsGoodrichOrder
+   */
+  userID?: number;
+}
+
+/**
+ *
+ * @export
  * @interface ModelsNeighborhood
  */
 export interface ModelsNeighborhood {
@@ -2901,6 +3157,12 @@ export interface ModelsUser {
    * @memberof ModelsUser
    */
   williamsEmail?: string;
+  /**
+   * Williams W# ID
+   * @type {string}
+   * @memberof ModelsUser
+   */
+  williamsID?: string;
 }
 
 /**
@@ -3359,6 +3621,12 @@ export interface ResponsesGetUserResponseUser {
    * @memberof ResponsesGetUserResponseUser
    */
   williamsEmail?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ResponsesGetUserResponseUser
+   */
+  williamsID?: string;
 }
 
 /**
@@ -3937,6 +4205,12 @@ export interface ResponsesListUsersResponseUser {
    * @memberof ResponsesListUsersResponseUser
    */
   williamsEmail?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ResponsesListUsersResponseUser
+   */
+  williamsID?: string;
 }
 
 /**
