@@ -1,6 +1,11 @@
 import { API, APIResponse } from '../api';
 import { AxiosResponse } from 'axios';
-import { ModelsUser, UserUpdateUserParams, UserUpdateUserTagsParams } from './types';
+import {
+  ModelsUser,
+  ResponsesGetUserResponseUser,
+  UserUpdateUserParams,
+  UserUpdateUserTagsParams,
+} from './types';
 
 export class UserService {
   private api: API;
@@ -14,13 +19,13 @@ export class UserService {
     limit?: number;
     preload?: string[];
     q?: string;
-  }): Promise<APIResponse<ModelsUser[]>> {
+  }): Promise<APIResponse<ResponsesGetUserResponseUser[]>> {
     return this.api.request('get', '/api/v2/users', {
       params: params,
     });
   }
 
-  async getUser(userID: number | 'me' = 'me'): Promise<APIResponse<ModelsUser>> {
+  async getUser(userID: number | 'me' = 'me'): Promise<APIResponse<ResponsesGetUserResponseUser>> {
     return this.api.request('get', `/api/v2/users/${userID}`);
   }
 
