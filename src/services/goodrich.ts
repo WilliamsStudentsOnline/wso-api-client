@@ -105,5 +105,7 @@ export namespace Goodrich {
     Points,
     Cash,
     CreditCard,
+    SwipePlusCash,
+    SwipePlusCreditCard,
   }
 }
