@@ -933,10 +933,10 @@ export interface GoodrichCreateOrderParams {
   idNumber?: string;
   /**
    *
-   * @type {Array<number>}
+   * @type {Array<ModelsGoodrichOrderItem>}
    * @memberof GoodrichCreateOrderParams
    */
-  itemIDs?: Array<number>;
+  items?: Array<ModelsGoodrichOrderItem>;
   /**
    *
    * @type {string}
@@ -999,6 +999,20 @@ export interface GoodrichTimeSlot {
    * @memberof GoodrichTimeSlot
    */
   openSpots?: number;
+}
+
+/**
+ *
+ * @export
+ * @interface GoodrichUpdateMenuItemParams
+ */
+export interface GoodrichUpdateMenuItemParams {
+  /**
+   *
+   * @type {boolean}
+   * @memberof GoodrichUpdateMenuItemParams
+   */
+  available?: boolean;
 }
 
 /**
@@ -2573,10 +2587,10 @@ export interface ModelsGoodrichOrder {
   idNumber?: string;
   /**
    * this means this field will be ignored in the DB. Use this to pull the menu items from ItemList into actual objects in the Model/Controller side.
-   * @type {Array<ModelsGoodrichMenuItem>}
+   * @type {Array<ModelsGoodrichOrderItem>}
    * @memberof ModelsGoodrichOrder
    */
-  items?: Array<ModelsGoodrichMenuItem>;
+  items?: Array<ModelsGoodrichOrderItem>;
   /**
    *
    * @type {string}
@@ -2625,6 +2639,32 @@ export interface ModelsGoodrichOrder {
    * @memberof ModelsGoodrichOrder
    */
   userID?: number;
+}
+
+/**
+ *
+ * @export
+ * @interface ModelsGoodrichOrderItem
+ */
+export interface ModelsGoodrichOrderItem {
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsGoodrichOrderItem
+   */
+  id?: number;
+  /**
+   *
+   * @type {ModelsGoodrichMenuItem}
+   * @memberof ModelsGoodrichOrderItem
+   */
+  item?: ModelsGoodrichMenuItem;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsGoodrichOrderItem
+   */
+  note?: string;
 }
 
 /**

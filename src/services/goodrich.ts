@@ -5,6 +5,7 @@ import {
   GoodrichCreateOrderParams,
   GoodrichUpdateOrderParams,
   GoodrichTimeSlot,
+  GoodrichUpdateMenuItemParams,
 } from './types';
 
 export class GoodrichService {
@@ -35,6 +36,7 @@ export class GoodrichService {
       data: createParams,
     });
   }
+  */
 
   async updateMenuItem(
     itemID: number,
@@ -44,7 +46,6 @@ export class GoodrichService {
       data: updateParams,
     });
   }
-  */
 
   /* Order Service */
   async listUserOrders(): Promise<APIResponse<ModelsGoodrichOrder[]>> {
