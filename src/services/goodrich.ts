@@ -6,6 +6,7 @@ import {
   GoodrichUpdateOrderParams,
   GoodrichTimeSlot,
   GoodrichUpdateMenuItemParams,
+  GoodrichOrderLease,
 } from './types';
 
 export class GoodrichService {
@@ -48,6 +49,10 @@ export class GoodrichService {
   }
 
   /* Order Service */
+  async getOrderLease(): Promise<APIResponse<GoodrichOrderLease>> {
+    return this.api.request('get', `/api/v2/goodrich/order-lease`);
+  }
+
   async listUserOrders(): Promise<APIResponse<ModelsGoodrichOrder[]>> {
     return this.api.request('get', '/api/v2/goodrich/user/orders');
   }

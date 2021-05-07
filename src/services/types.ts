@@ -942,6 +942,12 @@ export interface GoodrichCreateOrderParams {
    * @type {string}
    * @memberof GoodrichCreateOrderParams
    */
+  leaseID?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof GoodrichCreateOrderParams
+   */
   notes?: string;
   /**
    *
@@ -961,6 +967,26 @@ export interface GoodrichCreateOrderParams {
    * @memberof GoodrichCreateOrderParams
    */
   timeSlot?: string;
+}
+
+/**
+ *
+ * @export
+ * @interface GoodrichOrderLease
+ */
+export interface GoodrichOrderLease {
+  /**
+   *
+   * @type {string}
+   * @memberof GoodrichOrderLease
+   */
+  expiry?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof GoodrichOrderLease
+   */
+  id?: string;
 }
 
 /**
@@ -1013,6 +1039,18 @@ export interface GoodrichUpdateMenuItemParams {
    * @memberof GoodrichUpdateMenuItemParams
    */
   available?: boolean;
+  /**
+   *
+   * @type {number}
+   * @memberof GoodrichUpdateMenuItemParams
+   */
+  quantity?: number;
+  /**
+   *
+   * @type {boolean}
+   * @memberof GoodrichUpdateMenuItemParams
+   */
+  quantityLimit?: boolean;
 }
 
 /**
@@ -2535,6 +2573,18 @@ export interface ModelsGoodrichMenuItem {
    * @memberof ModelsGoodrichMenuItem
    */
   price?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsGoodrichMenuItem
+   */
+  quantity?: number;
+  /**
+   * Number of this menu item left; goes down with every order quantity limit describe if there is a limit on quantity
+   * @type {boolean}
+   * @memberof ModelsGoodrichMenuItem
+   */
+  quantityLimit?: boolean;
   /**
    *
    * @type {string}
