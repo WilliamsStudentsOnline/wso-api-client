@@ -2,7 +2,8 @@ import { API, APIResponse } from '../api';
 import {
   EphmatchCountMatchesResponse,
   EphmatchGetAvailabilityResp,
-  EphmatchLikeProfileResp,
+  EphmatchSetProfileRelationParams,
+  EphmatchSetProfileRelationResp,
   EphmatchProfileCreateParams,
   EphmatchProfileUpdateParams,
   ModelsEphmatchProfile,
@@ -34,6 +35,10 @@ export class EphmatchService {
 
   async countMatches(): Promise<APIResponse<EphmatchCountMatchesResponse>> {
     return this.api.request('get', '/api/v2/ephmatch/matches-count');
+  }
+
+  async unmatch(matchUserID: number): Promise<APIResponse> {
+    return this.api.request('delete', `/api/v2/ephmatch/matches/${matchUserID}`);
   }
 
   /* Self Profile */
@@ -84,6 +89,7 @@ export class EphmatchService {
   async listProfiles(params?: {
     offset?: number;
     limit?: number;
+    noRelations: boolean;
     preload?: string[];
     sort?: string;
   }): Promise<APIResponse<ModelsEphmatchProfile[]>> {
@@ -96,11 +102,31 @@ export class EphmatchService {
     return this.api.request('get', `/api/v2/ephmatch/profiles/${profileUserID}`);
   }
 
-  async likeProfile(profileUserID: number): Promise<APIResponse<EphmatchLikeProfileResp>> {
-    return this.api.request('post', `/api/v2/ephmatch/profiles/${profileUserID}/like`);
+  async likeProfile(profileUserID: number): Promise<APIResponse<EphmatchSetProfileRelationResp>> {
+    return this.setProfileRelation(profileUserID, 'like');
   }
 
-  async unlikeProfile(profileUserID: number): Promise<APIResponse> {
-    return this.api.request('post', `/api/v2/ephmatch/profiles/${profileUserID}/unlike`);
+  async dislikeProfile(
+    profileUserID: number
+  ): Promise<APIResponse<EphmatchSetProfileRelationResp>> {
+    return this.setProfileRelation(profileUserID, 'dislike');
+  }
+
+  async undoProfileRelation(
+    profileUserID: number
+  ): Promise<APIResponse<EphmatchSetProfileRelationResp>> {
+    return this.setProfileRelation(profileUserID, 'none');
+  }
+
+  async setProfileRelation(
+    profileUserID: number,
+    relation: string
+  ): Promise<APIResponse<EphmatchSetProfileRelationResp>> {
+    const params: EphmatchSetProfileRelationParams = {
+      relation: relation,
+    };
+    return this.api.request('put', `/api/v2/ephmatch/profiles/${profileUserID}/relation`, {
+      data: params,
+    });
   }
 }

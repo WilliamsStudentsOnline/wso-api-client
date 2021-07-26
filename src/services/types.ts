@@ -555,20 +555,12 @@ export interface EphmatchGetAvailabilityResp {
    * @memberof EphmatchGetAvailabilityResp
    */
   openIndefinitely?: boolean;
-}
-
-/**
- *
- * @export
- * @interface EphmatchLikeProfileResp
- */
-export interface EphmatchLikeProfileResp {
   /**
-   *
+   * Senior only ephmatch right now
    * @type {boolean}
-   * @memberof EphmatchLikeProfileResp
+   * @memberof EphmatchGetAvailabilityResp
    */
-  matched?: boolean;
+  seniorOnly?: boolean;
 }
 
 /**
@@ -681,6 +673,34 @@ export interface EphmatchProfileUpdateParams {
    * @memberof EphmatchProfileUpdateParams
    */
   messagingUsername?: string;
+}
+
+/**
+ *
+ * @export
+ * @interface EphmatchSetProfileRelationParams
+ */
+export interface EphmatchSetProfileRelationParams {
+  /**
+   *
+   * @type {string}
+   * @memberof EphmatchSetProfileRelationParams
+   */
+  relation?: string;
+}
+
+/**
+ *
+ * @export
+ * @interface EphmatchSetProfileRelationResp
+ */
+export interface EphmatchSetProfileRelationResp {
+  /**
+   *
+   * @type {boolean}
+   * @memberof EphmatchSetProfileRelationResp
+   */
+  matched?: boolean;
 }
 
 /**
@@ -2158,12 +2178,6 @@ export interface ModelsEphmatchProfile {
    */
   id?: number;
   /**
-   * If self has liked this profile (user)
-   * @type {boolean}
-   * @memberof ModelsEphmatchProfile
-   */
-  liked?: boolean;
-  /**
    *
    * @type {string}
    * @memberof ModelsEphmatchProfile
@@ -2211,6 +2225,12 @@ export interface ModelsEphmatchProfile {
    * @memberof ModelsEphmatchProfile
    */
   messagingUsername?: string;
+  /**
+   * If self has an out-relation with this profile (user)
+   * @type {string}
+   * @memberof ModelsEphmatchProfile
+   */
+  relation?: string;
   /**
    *
    * @type {ModelsUser}
@@ -3193,6 +3213,12 @@ export interface ModelsUser {
    * @memberof ModelsUser
    */
   officeID?: number;
+  /**
+   * used to calculate number of factrack surveys needed
+   * @type {number}
+   * @memberof ModelsUser
+   */
+  onCampusSemester?: number;
   /**
    *
    * @type {boolean}
