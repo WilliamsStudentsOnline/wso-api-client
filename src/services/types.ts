@@ -2506,6 +2506,12 @@ export interface ModelsFactrakSurveyAvgRatings {
    * @type {number}
    * @memberof ModelsFactrakSurveyAvgRatings
    */
+  avgMentalHealthSupport?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsFactrakSurveyAvgRatings
+   */
   avgOutsideHelpfulness?: number;
   /**
    *
@@ -2549,6 +2555,12 @@ export interface ModelsFactrakSurveyAvgRatings {
    * @memberof ModelsFactrakSurveyAvgRatings
    */
   numLeadLecture?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsFactrakSurveyAvgRatings
+   */
+  numMentalHealthSupport?: number;
   /**
    *
    * @type {number}
