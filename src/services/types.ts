@@ -802,6 +802,12 @@ export interface FactrakSurveyCreateParams {
    * @type {number}
    * @memberof FactrakSurveyCreateParams
    */
+  mentalHealthSupport?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof FactrakSurveyCreateParams
+   */
   outsideHelpfulness?: number;
   /**
    * Must include this:
@@ -889,6 +895,12 @@ export interface FactrakSurveyUpdateParams {
    * @memberof FactrakSurveyUpdateParams
    */
   leadLecture?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof FactrakSurveyUpdateParams
+   */
+  mentalHealthSupport?: number;
   /**
    *
    * @type {number}
@@ -2379,6 +2391,12 @@ export interface ModelsFactrakSurvey {
    * @memberof ModelsFactrakSurvey
    */
   leadLecture?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsFactrakSurvey
+   */
+  mentalHealthSupport?: number;
   /**
    *
    * @type {number}
