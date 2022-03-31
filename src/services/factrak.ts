@@ -107,12 +107,12 @@ export class FactrakService {
 
   async getProfessorRatings(
     professorID: number,
-    courseID?: number
-  ): Promise<APIResponse<ModelsFactrakSurveyAvgRatings>> {
+    params?: {
+      courseID?: number,
+      metric?: string
+  }): Promise<APIResponse<ModelsFactrakSurveyAvgRatings>> {
     return this.api.request('get', `/api/v2/factrak/professors/${professorID}/ratings`, {
-      params: {
-        courseID: courseID,
-      },
+      params: params,
     });
   }
 
