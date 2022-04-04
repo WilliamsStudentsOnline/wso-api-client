@@ -108,11 +108,17 @@ export class FactrakService {
   async getProfessorRatings(
     professorID: number,
     params?: {
-      courseID?: number,
-      metric?:  "course_workload" | "course_stimulating" | "would_take_another"|
-                "approachability" | "lead_lecture" | "promote_discussion"|
-                "outside_helpfulness"
-  }): Promise<APIResponse<ModelsFactrakSurveyAvgRatings>> {
+      courseID?: number;
+      metric?:
+        | 'course_workload'
+        | 'course_stimulating'
+        | 'would_take_another'
+        | 'approachability'
+        | 'lead_lecture'
+        | 'promote_discussion'
+        | 'outside_helpfulness';
+    }
+  ): Promise<APIResponse<ModelsFactrakSurveyAvgRatings>> {
     return this.api.request('get', `/api/v2/factrak/professors/${professorID}/ratings`, {
       params: params,
     });
