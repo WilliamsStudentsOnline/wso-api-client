@@ -604,6 +604,12 @@ export interface EphmatchProfileCreateParams {
    * @type {string}
    * @memberof EphmatchProfileCreateParams
    */
+  lookingFor?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof EphmatchProfileCreateParams
+   */
   matchMessage?: string;
   /**
    *
@@ -655,6 +661,12 @@ export interface EphmatchProfileUpdateParams {
    * @memberof EphmatchProfileUpdateParams
    */
   locationVisible?: boolean;
+  /**
+   *
+   * @type {string}
+   * @memberof EphmatchProfileUpdateParams
+   */
+  lookingFor?: string;
   /**
    *
    * @type {string}
@@ -1179,6 +1191,80 @@ export interface ModelsAreaOfStudy {
    * @memberof ModelsAreaOfStudy
    */
   name?: string;
+  /**
+   * Many2Many professors  (computed periodically from courses)
+   * @type {Array<ModelsUser>}
+   * @memberof ModelsAreaOfStudy
+   */
+  professors?: Array<ModelsUser>;
+}
+
+/**
+ *
+ * @export
+ * @interface ModelsBannedUser
+ */
+export interface ModelsBannedUser {
+  /**
+   *
+   * @type {boolean}
+   * @memberof ModelsBannedUser
+   */
+  bulletinRead?: boolean;
+  /**
+   *
+   * @type {boolean}
+   * @memberof ModelsBannedUser
+   */
+  bulletinWrite?: boolean;
+  /**
+   *
+   * @type {boolean}
+   * @memberof ModelsBannedUser
+   */
+  dormtrak?: boolean;
+  /**
+   *
+   * @type {boolean}
+   * @memberof ModelsBannedUser
+   */
+  ephcatch?: boolean;
+  /**
+   *
+   * @type {boolean}
+   * @memberof ModelsBannedUser
+   */
+  ephmatch?: boolean;
+  /**
+   * If banned from this service. True means user is banned; false means user is not banned
+   * @type {boolean}
+   * @memberof ModelsBannedUser
+   */
+  factrak?: boolean;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsBannedUser
+   */
+  id?: number;
+  /**
+   * Reason why user was banned
+   * @type {string}
+   * @memberof ModelsBannedUser
+   */
+  reason?: string;
+  /**
+   * Belongs to user
+   * @type {ModelsUser}
+   * @memberof ModelsBannedUser
+   */
+  user?: ModelsUser;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsBannedUser
+   */
+  userID?: number;
 }
 
 /**
@@ -1877,6 +1963,24 @@ export interface ModelsDormRoom {
 export interface ModelsDormtrakRanking {
   /**
    *
+   * @type {Array<ModelsDorm>}
+   * @memberof ModelsDormtrakRanking
+   */
+  bestLocation?: Array<ModelsDorm>;
+  /**
+   *
+   * @type {Array<ModelsDorm>}
+   * @memberof ModelsDormtrakRanking
+   */
+  bestSatisfaction?: Array<ModelsDorm>;
+  /**
+   *
+   * @type {Array<ModelsDorm>}
+   * @memberof ModelsDormtrakRanking
+   */
+  bestWifi?: Array<ModelsDorm>;
+  /**
+   *
    * @type {Array<ModelsDormRoom>}
    * @memberof ModelsDormtrakRanking
    */
@@ -1893,6 +1997,12 @@ export interface ModelsDormtrakRanking {
    * @memberof ModelsDormtrakRanking
    */
   fewestBathrooms?: Array<ModelsDorm>;
+  /**
+   *
+   * @type {Array<ModelsDorm>}
+   * @memberof ModelsDormtrakRanking
+   */
+  leastLoudness?: Array<ModelsDorm>;
   /**
    *
    * @type {Array<ModelsDorm>}
@@ -1934,6 +2044,12 @@ export interface ModelsDormtrakRanking {
    * @type {Array<ModelsDorm>}
    * @memberof ModelsDormtrakRanking
    */
+  mostLoudness?: Array<ModelsDorm>;
+  /**
+   *
+   * @type {Array<ModelsDorm>}
+   * @memberof ModelsDormtrakRanking
+   */
   mostSingles?: Array<ModelsDorm>;
   /**
    *
@@ -1947,6 +2063,24 @@ export interface ModelsDormtrakRanking {
    * @memberof ModelsDormtrakRanking
    */
   smallestSingles?: Array<ModelsDormRoom>;
+  /**
+   *
+   * @type {Array<ModelsDorm>}
+   * @memberof ModelsDormtrakRanking
+   */
+  worstLocation?: Array<ModelsDorm>;
+  /**
+   *
+   * @type {Array<ModelsDorm>}
+   * @memberof ModelsDormtrakRanking
+   */
+  worstSatisfaction?: Array<ModelsDorm>;
+  /**
+   *
+   * @type {Array<ModelsDorm>}
+   * @memberof ModelsDormtrakRanking
+   */
+  worstWifi?: Array<ModelsDorm>;
 }
 
 /**
@@ -2213,6 +2347,12 @@ export interface ModelsEphmatchProfile {
    * @memberof ModelsEphmatchProfile
    */
   locationVisible?: boolean;
+  /**
+   * Looking for:
+   * @type {string}
+   * @memberof ModelsEphmatchProfile
+   */
+  lookingFor?: string;
   /**
    *
    * @type {string}
@@ -3022,11 +3162,23 @@ export interface ModelsUser {
    */
   admin?: boolean;
   /**
+   * Many2Many Area of Studies iff professor (computed periodically from courses)
+   * @type {Array<ModelsAreaOfStudy>}
+   * @memberof ModelsUser
+   */
+  areasOfStudy?: Array<ModelsAreaOfStudy>;
+  /**
    *
    * @type {boolean}
    * @memberof ModelsUser
    */
   atWilliams?: boolean;
+  /**
+   * Has one (or zero) banned users
+   * @type {ModelsBannedUser}
+   * @memberof ModelsUser
+   */
+  bannedUser?: ModelsBannedUser;
   /**
    *
    * @type {string}
@@ -3058,7 +3210,7 @@ export interface ModelsUser {
    */
   department?: ModelsDepartment;
   /**
-   * Belongs to Department iff professor
+   * Belongs to Department iff professor (fetched from Williams LDAP)
    * @type {number}
    * @memberof ModelsUser
    */
@@ -3866,6 +4018,12 @@ export interface ResponsesListMatchesResponseEphmatchProfile {
    * @type {string}
    * @memberof ResponsesListMatchesResponseEphmatchProfile
    */
+  lookingFor?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ResponsesListMatchesResponseEphmatchProfile
+   */
   matchMessage?: string;
   /**
    *
@@ -4371,6 +4529,58 @@ export interface ServerHealthCheckResponse {
    * @memberof ServerHealthCheckResponse
    */
   ok?: boolean;
+}
+
+/**
+ *
+ * @export
+ * @interface ServicesBaseErrorResponse
+ */
+export interface ServicesBaseErrorResponse {
+  /**
+   *
+   * @type {ServicesRespError}
+   * @memberof ServicesBaseErrorResponse
+   */
+  error?: ServicesRespError;
+  /**
+   *
+   * @type {number}
+   * @memberof ServicesBaseErrorResponse
+   */
+  status?: number;
+  /**
+   *
+   * @type {boolean}
+   * @memberof ServicesBaseErrorResponse
+   */
+  updateToken?: boolean;
+}
+
+/**
+ *
+ * @export
+ * @interface ServicesRespError
+ */
+export interface ServicesRespError {
+  /**
+   *
+   * @type {number}
+   * @memberof ServicesRespError
+   */
+  errorCode?: number;
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof ServicesRespError
+   */
+  errors?: Array<string>;
+  /**
+   *
+   * @type {string}
+   * @memberof ServicesRespError
+   */
+  message?: string;
 }
 
 /**
