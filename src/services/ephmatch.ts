@@ -1,4 +1,5 @@
 import { API, APIResponse } from '../api';
+import { AxiosResponse } from 'axios';
 import {
   EphmatchCountMatchesResponse,
   EphmatchGetAvailabilityResp,
@@ -65,6 +66,23 @@ export class EphmatchService {
     return this.api.request('patch', '/api/v2/ephmatch/profile', {
       data: updateParams,
     });
+  }
+
+  // Gets the thumbnail photo of a specified user.
+  async getEphmatchPhoto(unixID: string): Promise<Blob> {
+    const token = await this.api.auth.getToken();
+    return this.api.api
+      .request<Blob>({
+        url: `/pic/ephmatch/${unixID}.jpg`,
+        headers: {
+          Authorization: `Bearer ${token.token}`,
+        },
+        responseType: 'blob',
+        validateStatus: (status: number) => {
+          return status >= 200 && status < 300;
+        },
+      })
+      .then((resp: AxiosResponse<Blob>) => resp.data);
   }
 
   // Uploads current user's ephmatch photo
