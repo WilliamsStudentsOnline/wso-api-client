@@ -14,7 +14,7 @@ import { NotificationService } from './services/notification';
 import { GoodrichService } from './services/goodrich';
 
 export class WSO {
-  private api: API;
+  public api: API;
   private _auth: AuthService;
   private _autocomplete: AutocompleteService;
   private _bulletin: BulletinService;
