@@ -11,7 +11,7 @@ export class AutocompleteService {
   async autocompleteAreaOfStudy(
     query: string,
     limit?: number
-  ): Promise<APIResponse<AutocompleteACEntry>> {
+  ): Promise<APIResponse<AutocompleteACEntry[]>> {
     return this.api.request('get', '/api/v2/autocomplete/area-of-study', {
       params: {
         q: query,
@@ -23,7 +23,7 @@ export class AutocompleteService {
   async autocompleteCourse(
     query: string,
     limit?: number
-  ): Promise<APIResponse<AutocompleteACEntry>> {
+  ): Promise<APIResponse<AutocompleteACEntry[]>> {
     return this.api.request('get', '/api/v2/autocomplete/course', {
       params: {
         q: query,
@@ -35,7 +35,7 @@ export class AutocompleteService {
   async autocompleteFactrak(
     query: string,
     limit?: number
-  ): Promise<APIResponse<AutocompleteACEntry>> {
+  ): Promise<APIResponse<AutocompleteACEntry[]>> {
     return this.api.request('get', '/api/v2/autocomplete/factrak', {
       params: {
         q: query,
@@ -47,7 +47,7 @@ export class AutocompleteService {
   async autocompleteProfessor(
     query: string,
     limit?: number
-  ): Promise<APIResponse<AutocompleteACEntry>> {
+  ): Promise<APIResponse<AutocompleteACEntry[]>> {
     return this.api.request('get', '/api/v2/autocomplete/professor', {
       params: {
         q: query,
@@ -56,7 +56,10 @@ export class AutocompleteService {
     });
   }
 
-  async autocompleteTag(query: string, limit?: number): Promise<APIResponse<AutocompleteACEntry>> {
+  async autocompleteTag(
+    query: string,
+    limit?: number
+  ): Promise<APIResponse<AutocompleteACEntry[]>> {
     return this.api.request('get', '/api/v2/autocomplete/tag', {
       params: {
         q: query,
