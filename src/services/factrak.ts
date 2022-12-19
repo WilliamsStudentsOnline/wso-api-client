@@ -13,6 +13,16 @@ import {
   ModelsUser,
 } from './types';
 
+enum FactrakMetrics {
+  Approachability = 'approachability',
+  CourseWorkload = 'course_workload',
+  LeadLecture = 'lead_lecture',
+  OutsideHelpfulness = 'outside_helpfulness',
+  PromoteDiscussion = 'promote_discussion',
+  WouldTakeAnother = 'would_take_another',
+  CourseStimulating = 'course_stimulating',
+}
+
 export class FactrakService {
   private api: API;
 
@@ -82,7 +92,6 @@ export class FactrakService {
   }
 
   /* Professors */
-
   async listProfessors(params?: {
     offset?: number;
     limit?: number;
@@ -90,6 +99,8 @@ export class FactrakService {
     areaOfStudyID?: number;
     departmentID?: number;
     courseID?: number;
+    metric?: FactrakMetrics;
+    ascending?: boolean;
     q?: string;
   }): Promise<APIResponse<ModelsUser[]>> {
     return this.api.request('get', `/api/v2/factrak/professors`, {
@@ -109,14 +120,7 @@ export class FactrakService {
     professorID: number,
     params?: {
       courseID?: number;
-      metric?:
-        | 'course_workload'
-        | 'course_stimulating'
-        | 'would_take_another'
-        | 'approachability'
-        | 'lead_lecture'
-        | 'promote_discussion'
-        | 'outside_helpfulness';
+      metric?: FactrakMetrics;
     }
   ): Promise<APIResponse<ModelsFactrakSurveyAvgRatings>> {
     return this.api.request('get', `/api/v2/factrak/professors/${professorID}/ratings`, {
