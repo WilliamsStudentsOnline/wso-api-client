@@ -74,6 +74,72 @@ export interface AutocompleteACEntry {
 /**
  *
  * @export
+ * @interface BooktrakCreateBookListingParams
+ */
+export interface BooktrakCreateBookListingParams {
+  /**
+   *
+   * @type {number}
+   * @memberof BooktrakCreateBookListingParams
+   */
+  bookID: number;
+  /**
+   *
+   * @type {number}
+   * @memberof BooktrakCreateBookListingParams
+   */
+  condition?: ModelsBookCondition;
+  /**
+   *
+   * @type {string}
+   * @memberof BooktrakCreateBookListingParams
+   */
+  description?: string;
+  /**
+   *
+   * @type {boolean}
+   * @memberof BooktrakCreateBookListingParams
+   */
+  isBuyListing: boolean;
+}
+
+/**
+ *
+ * @export
+ * @interface BooktrakCreateOrUpdateBookParams
+ */
+export interface BooktrakCreateOrUpdateBookParams {
+  /**
+   *
+   * @type {string}
+   * @memberof BooktrakCreateOrUpdateBookParams
+   */
+  isbn: string;
+  /**
+   *
+   * @type {Array<number>}
+   * @memberof BooktrakCreateOrUpdateBookParams
+   */
+  courseIDs: Array<number>;
+}
+
+/**
+ *
+ * @export
+ * @interface BooktrakUpdateBookCoursesParams
+ */
+export interface BooktrakUpdateBookCoursesParams {
+  /**
+   *
+   * @type {Array<number>}
+   * @memberof BooktrakUpdateBookCoursesParams
+   */
+  courseIDs: Array<number>;
+}
+
+/**
+ *
+ * @export
  * @interface BulletinCreateBulletinParams
  */
 export interface BulletinCreateBulletinParams {
@@ -1270,6 +1336,151 @@ export interface ModelsBannedUser {
 /**
  *
  * @export
+ * @interface ModelsBook
+ */
+export interface ModelsBook {
+  /**
+   * ISBN_10: ISBN-10 of this book.
+   * @type {string}
+   * @memberof ModelsBook
+   */
+  isbn10?: string;
+  /**
+   * ISBN_13: ISBN-13 of this book.
+   * @type {string}
+   * @memberof ModelsBook
+   */
+  isbn13?: string;
+  /**
+   * Authors: The names of the authors and/or editors for this book.
+   * @type {Array<string>}
+   * @memberof ModelsBook
+   */
+  authors?: Array<string>;
+  /**
+   * Has many Book Listings
+   * @type {Array<ModelsBookListing>}
+   * @memberof ModelsBook
+   */
+  bookListings?: Array<ModelsBookListing>;
+  /**
+   * Many2Many courses
+   * @type {Array<ModelsCourse>}
+   * @memberof ModelsBook
+   */
+  courses?: Array<ModelsCourse>;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsBook
+   */
+  id?: number;
+  /**
+   * ImageLink: Image link for book cover (Medium)
+   * @type {string}
+   * @memberof ModelsBook
+   */
+  imageLinks?: string;
+  /**
+   * InfoLink: URL to view information about this book on the Google Books site.
+   * @type {string}
+   * @memberof ModelsBook
+   */
+  infoLink?: string;
+  /**
+   * Publisher: Publisher of this book.
+   * @type {string}
+   * @memberof ModelsBook
+   */
+  publisher?: string;
+  /**
+   * Subtitle: Book subtitle.
+   * @type {string}
+   * @memberof ModelsBook
+   */
+  subtitle?: string;
+  /**
+   * Title: Book title.
+   * @type {string}
+   * @memberof ModelsBook
+   */
+  title?: string;
+}
+
+/**
+ *
+ * @export
+ * @interface ModelsBookCondition
+ */
+export enum ModelsBookCondition {
+  Poor,
+  Fair,
+  Good,
+  VeryGood,
+  LikeNew,
+  New,
+  MAX,
+}
+
+/**
+ *
+ * @export
+ * @interface ModelsBookListing
+ */
+export interface ModelsBookListing {
+  /**
+   * Belongs to book
+   * @type {number}
+   * @memberof ModelsBookListing
+   */
+  bookID?: number;
+  /**
+   *
+   * @type {ModelsBook}
+   * @memberof ModelsBookListing
+   */
+  book?: ModelsBook;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsBookListing
+   */
+  condition?: ModelsBookCondition;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsBookListing
+   */
+  description?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsBookListing
+   */
+  id?: number;
+  /**
+   *
+   * @type {boolean}
+   * @memberof ModelsBookListing
+   */
+  isBuyListing?: boolean;
+  /**
+   *
+   * @type {ModelsUser}
+   * @memberof ModelsBookListing
+   */
+  user?: ModelsUser;
+  /**
+   * Belongs to user (student)
+   * @type {number}
+   * @memberof ModelsBookListing
+   */
+  userID?: number;
+}
+
+/**
+ *
+ * @export
  * @interface ModelsBulletin
  */
 export interface ModelsBulletin {
@@ -1384,7 +1595,6 @@ export interface ModelsBulletinRide {
    */
   userID?: number;
 }
-
 /**
  *
  * @export
@@ -1403,6 +1613,12 @@ export interface ModelsCourse {
    * @memberof ModelsCourse
    */
   areaOfStudyID?: number;
+  /**
+   * Many2Many books
+   * @type {Array<ModelsBook>}
+   * @memberof ModelsCourse
+   */
+  books?: Array<ModelsBook>;
   /**
    * Has many factrak surveys
    * @type {Array<ModelsFactrakSurvey>}

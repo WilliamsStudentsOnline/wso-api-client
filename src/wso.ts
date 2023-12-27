@@ -12,11 +12,13 @@ import { UserService } from './services/user';
 import { ChatService } from './services/chat';
 import { NotificationService } from './services/notification';
 import { GoodrichService } from './services/goodrich';
+import { BooktrakService } from './services/booktrak';
 
 export class WSO {
   public api: API;
   private _auth: AuthService;
   private _autocomplete: AutocompleteService;
+  private _booktrak: BooktrakService;
   private _bulletin: BulletinService;
   private _chat: ChatService;
   private _dormtrak: DormtrakService;
@@ -34,6 +36,7 @@ export class WSO {
     this._auth = new AuthService(api);
     this._autocomplete = new AutocompleteService(api);
     this._bulletin = new BulletinService(api);
+    this._booktrak = new BooktrakService(api);
     this._chat = new ChatService(api);
     this._dormtrak = new DormtrakService(api);
     this._ephcatch = new EphcatchService(api);
@@ -80,6 +83,10 @@ export class WSO {
 
   get dormtrakService(): DormtrakService {
     return this._dormtrak;
+  }
+
+  get booktrakService(): BooktrakService {
+    return this._booktrak;
   }
 
   get bulletinService(): BulletinService {
