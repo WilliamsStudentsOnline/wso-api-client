@@ -3276,6 +3276,12 @@ export interface ModelsUser {
    */
   factrakAgreements?: Array<ModelsFactrakAgreement>;
   /**
+   * Only in rankings request
+   * @type {number}
+   * @memberof ModelsUser
+   */
+  factrakScore?: number;
+  /**
    *
    * @type {number}
    * @memberof ModelsUser
