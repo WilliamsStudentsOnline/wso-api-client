@@ -13,7 +13,7 @@ import {
   ModelsUser,
 } from './types';
 
-enum FactrakMetric {
+export enum FactrakMetric {
   Approachability = 'approachability',
   CourseWorkload = 'course_workload',
   LeadLecture = 'lead_lecture',
