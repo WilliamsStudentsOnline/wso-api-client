@@ -1,7 +1,7 @@
 import { API, APIResponse } from '../api';
 import {
   BooktrakCreateBookListingParams,
-  BooktrakCreateOrUpdateBookParams,
+  BooktrakCreateBookParams,
   BooktrakUpdateBookCoursesParams,
   ModelsBook,
   ModelsBookListing,
@@ -24,8 +24,7 @@ export class BooktrakService {
     limit?: number;
     title?: string;
     publisher?: string;
-    isbn_10?: string;
-    isbn_13?: string;
+    isbn?: string;
   }): Promise<APIResponse<ModelsBook[]>> {
     return this.api.request('get', `/api/v2/booktrak/books`, {
       params: params,
@@ -38,20 +37,18 @@ export class BooktrakService {
     });
   }
 
-  async createOrUpdateBook(
-    createParams: BooktrakCreateOrUpdateBookParams
-  ): Promise<APIResponse<ModelsBook>> {
+  async createBook(params: BooktrakCreateBookParams): Promise<APIResponse<ModelsBook>> {
     return this.api.request('post', `/api/v2/booktrak/books`, {
-      data: createParams,
+      data: params,
     });
   }
 
-  async updateBook(
+  async updateBookCourses(
     bookID: number,
-    updateParams: BooktrakUpdateBookCoursesParams
+    params: BooktrakUpdateBookCoursesParams
   ): Promise<APIResponse<ModelsBook>> {
-    return this.api.request('post', `/api/v2/booktrak/books/${bookID}`, {
-      data: updateParams,
+    return this.api.request('patch', `/api/v2/booktrak/books/${bookID}`, {
+      data: params,
     });
   }
 
@@ -66,11 +63,10 @@ export class BooktrakService {
     bookID?: number;
     courseID?: number;
     userID?: number;
-    isbn10?: string;
-    isbn13?: string;
-    minCondition?: number;
-    maxCondition?: number;
-    isBuyListing?: boolean;
+    isbn?: string;
+    minCondition?: ModelsBookListing.ConditionEnum;
+    maxCondition?: ModelsBookListing.ConditionEnum;
+    listingType?: ModelsBookListing.ListingTypeEnum;
   }): Promise<APIResponse<ModelsBookListing[]>> {
     return this.api.request('get', `/api/v2/booktrak/listings`, {
       params: params,
@@ -78,10 +74,10 @@ export class BooktrakService {
   }
 
   async createBookListing(
-    createParams: BooktrakCreateBookListingParams
+    params: BooktrakCreateBookListingParams
   ): Promise<APIResponse<ModelsBookListing>> {
     return this.api.request('post', `/api/v2/booktrak/listings`, {
-      data: createParams,
+      data: params,
     });
   }
 
