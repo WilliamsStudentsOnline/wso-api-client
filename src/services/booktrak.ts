@@ -25,6 +25,7 @@ export class BooktrakService {
     title?: string;
     publisher?: string;
     isbn?: string;
+    preload?: string[];
   }): Promise<APIResponse<ModelsBook[]>> {
     return this.api.request('get', `/api/v2/booktrak/books`, {
       params: params,
@@ -67,6 +68,7 @@ export class BooktrakService {
     minCondition?: ModelsBookListing.ConditionEnum;
     maxCondition?: ModelsBookListing.ConditionEnum;
     listingType?: ModelsBookListing.ListingTypeEnum;
+    preload?: string[];
   }): Promise<APIResponse<ModelsBookListing[]>> {
     return this.api.request('get', `/api/v2/booktrak/listings`, {
       params: params,
