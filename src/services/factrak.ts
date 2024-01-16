@@ -13,13 +13,19 @@ import {
   ModelsUser,
 } from './types';
 
-export enum FactrakMetric {
+export enum FactrakProfessorMetric {
   Approachability = 'approachability',
   CourseWorkload = 'course_workload',
   LeadLecture = 'lead_lecture',
   OutsideHelpfulness = 'outside_helpfulness',
   PromoteDiscussion = 'promote_discussion',
   WouldTakeAnother = 'would_take_another',
+  CourseStimulating = 'course_stimulating',
+}
+
+export enum FactrakCourseMetric {
+  ReccomendCourse = "would_recommend_course",
+  CourseWorkload = 'course_workload',
   CourseStimulating = 'course_stimulating',
 }
 
@@ -56,6 +62,7 @@ export class FactrakService {
     areaOfStudyID?: number;
     departmentID?: number;
     professorID?: number;
+    metric?: FactrakCourseMetric;
   }): Promise<APIResponse<ModelsCourse[]>> {
     return this.api.request('get', `/api/v2/factrak/courses`, {
       params: params,
@@ -99,7 +106,7 @@ export class FactrakService {
     areaOfStudyID?: number;
     departmentID?: number;
     courseID?: number;
-    metric?: FactrakMetric;
+    metric?: FactrakProfessorMetric;
     ascending?: boolean;
     q?: string;
   }): Promise<APIResponse<ModelsUser[]>> {
@@ -120,7 +127,7 @@ export class FactrakService {
     professorID: number,
     params?: {
       courseID?: number;
-      metric?: FactrakMetric;
+      metric?: FactrakProfessorMetric;
     }
   ): Promise<APIResponse<ModelsFactrakSurveyAvgRatings>> {
     return this.api.request('get', `/api/v2/factrak/professors/${professorID}/ratings`, {
