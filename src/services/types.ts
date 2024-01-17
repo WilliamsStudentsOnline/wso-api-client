@@ -155,6 +155,26 @@ export interface BulletinCreatePostParams {
   discussionID: number;
 }
 
+
+/**
+ * @export
+ * @namespace BulletinCreateRideParams
+ */
+export namespace BulletinCreateRideParams {
+  /**
+   * @export
+   * @enum {string}
+   */
+  export enum LocationEnum {
+    Empty = <any>'',
+    WILLIAMS = <any>'WILLIAMS',
+    ALBANY = <any>'ALBANY',
+    NYC = <any>'NYC',
+    BOSTON = <any>'BOSTON',
+    PITTSFIELD = <any>'PITTSFIELD',
+  }
+}
+
 /**
  *
  * @export
@@ -178,7 +198,7 @@ export interface BulletinCreateRideParams {
    * @type {string}
    * @memberof BulletinCreateRideParams
    */
-  destination: string;
+  destination?: BulletinCreateRideParams.LocationEnum;
   /**
    *
    * @type {boolean}
@@ -190,7 +210,19 @@ export interface BulletinCreateRideParams {
    * @type {string}
    * @memberof BulletinCreateRideParams
    */
-  source: string;
+  source?: BulletinCreateRideParams.LocationEnum;
+  /**
+   *
+   * @type {number}
+   * @memberof BulletinCreateRideParams
+   */
+  availableSeats: number;
+  /**
+   *
+   * @type {number}
+   * @memberof BulletinCreateRideParams
+   */
+  price: number;
 }
 
 /**
