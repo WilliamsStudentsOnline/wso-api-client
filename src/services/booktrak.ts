@@ -83,6 +83,15 @@ export class BooktrakService {
     });
   }
 
+  async updateBookListing(
+    params: BooktrakCreateBookListingParams,
+    bookListingID: number
+  ): Promise<APIResponse<ModelsBookListing>> {
+    return this.api.request('put', `/api/v2/booktrak/listings/${bookListingID}`, {
+      data: params,
+    });
+  }
+
   async deleteBookListing(bookListingID: number): Promise<APIResponse<ModelsBookListing>> {
     return this.api.request('delete', `/api/v2/booktrak/listings/${bookListingID}`);
   }
