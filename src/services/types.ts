@@ -1403,6 +1403,12 @@ export interface ModelsCourse {
    * @memberof ModelsCourse
    */
   areaOfStudyID?: number;
+   /**
+   * Only in rankings request
+   * @type {number}
+   * @memberof ModelsUser
+   */
+   factrakScore?: number;
   /**
    * Has many factrak surveys
    * @type {Array<ModelsFactrakSurvey>}
