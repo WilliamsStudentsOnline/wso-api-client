@@ -5,6 +5,7 @@ import {
   BooktrakUpdateBookCoursesParams,
   ModelsBook,
   ModelsBookListing,
+  ServerHealthCheckResponse,
 } from './types';
 
 export class BooktrakService {
@@ -12,6 +13,10 @@ export class BooktrakService {
 
   constructor(api: API) {
     this.api = api;
+  }
+
+  async healthCheck(): Promise<APIResponse<ServerHealthCheckResponse>> {
+    return this.api.request('get', '/api/v2/booktrak/health-check');
   }
 
   /* Book */
