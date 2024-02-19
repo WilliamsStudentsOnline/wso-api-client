@@ -1609,6 +1609,12 @@ export interface ModelsCourse {
    */
   areaOfStudyID?: number;
   /**
+   * Only in rankings request
+   * @type {number}
+   * @memberof ModelsUser
+   */
+  factrakScore?: number;
+  /**
    * Many2Many books
    * @type {Array<ModelsBook>}
    * @memberof ModelsCourse
