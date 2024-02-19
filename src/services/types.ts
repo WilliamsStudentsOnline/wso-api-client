@@ -24,7 +24,6 @@ export interface AdminKubeJobReturn {
    */
   jobID?: string;
 }
-
 /**
  *
  * @export
@@ -44,7 +43,6 @@ export interface AuthAuthResponse {
    */
   token?: string;
 }
-
 /**
  *
  * @export
@@ -70,7 +68,92 @@ export interface AutocompleteACEntry {
    */
   value?: string;
 }
+/**
+ *
+ * @export
+ * @interface BooktrakCreateBookListingParams
+ */
+export interface BooktrakCreateBookListingParams {
+  /**
+   *
+   * @type {number}
+   * @memberof BooktrakCreateBookListingParams
+   */
+  bookID: number;
+  /**
+   *
+   * @type {string}
+   * @memberof BooktrakCreateBookListingParams
+   */
+  condition?: BooktrakCreateBookListingParams.ConditionEnum;
+  /**
+   *
+   * @type {string}
+   * @memberof BooktrakCreateBookListingParams
+   */
+  description?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof BooktrakCreateBookListingParams
+   */
+  listingType: BooktrakCreateBookListingParams.ListingTypeEnum;
+}
 
+/**
+ * @export
+ * @namespace BooktrakCreateBookListingParams
+ */
+export namespace BooktrakCreateBookListingParams {
+  /**
+   * @export
+   * @enum {string}
+   */
+  export enum ConditionEnum {
+    Empty = <any>'',
+    POOR = <any>'POOR',
+    FAIR = <any>'FAIR',
+    GOOD = <any>'GOOD',
+    VERYGOOD = <any>'VERY_GOOD',
+    LIKENEW = <any>'LIKE_NEW',
+    NEW = <any>'NEW',
+  }
+  /**
+   * @export
+   * @enum {string}
+   */
+  export enum ListingTypeEnum {
+    Empty = <any>'',
+    BUY = <any>'BUY',
+    SELL = <any>'SELL',
+  }
+}
+/**
+ *
+ * @export
+ * @interface BooktrakCreateBookParams
+ */
+export interface BooktrakCreateBookParams {
+  /**
+   *
+   * @type {string}
+   * @memberof BooktrakCreateBookParams
+   */
+  isbn: string;
+}
+/**
+ *
+ * @export
+ * @interface BooktrakUpdateBookCoursesParams
+ */
+export interface BooktrakUpdateBookCoursesParams {
+  /**
+   *
+   * @type {Array<number>}
+   * @memberof BooktrakUpdateBookCoursesParams
+   */
+  courseIDs: Array<number>;
+}
 /**
  *
  * @export
@@ -114,7 +197,6 @@ export interface BulletinCreateBulletinParams {
    */
   type: string;
 }
-
 /**
  *
  * @export
@@ -134,7 +216,6 @@ export interface BulletinCreateDiscussionParams {
    */
   title: string;
 }
-
 /**
  *
  * @export
@@ -154,7 +235,6 @@ export interface BulletinCreatePostParams {
    */
   discussionID: number;
 }
-
 /**
  *
  * @export
@@ -192,7 +272,6 @@ export interface BulletinCreateRideParams {
    */
   source: string;
 }
-
 /**
  *
  * @export
@@ -230,7 +309,6 @@ export interface BulletinUpdateBulletinParams {
    */
   title?: string;
 }
-
 /**
  *
  * @export
@@ -244,7 +322,6 @@ export interface BulletinUpdatePostParams {
    */
   content?: string;
 }
-
 /**
  *
  * @export
@@ -270,7 +347,6 @@ export interface BulletinUpdateRideParams {
    */
   offer?: boolean;
 }
-
 /**
  *
  * @export
@@ -302,7 +378,6 @@ export interface DormtrakDormRoomPhotoInfo {
    */
   reviewId?: number;
 }
-
 /**
  *
  * @export
@@ -406,7 +481,6 @@ export interface DormtrakReviewCreateParams {
    */
   wifi?: number;
 }
-
 /**
  *
  * @export
@@ -504,7 +578,6 @@ export interface DormtrakReviewUpdateParams {
    */
   wifi?: number;
 }
-
 /**
  *
  * @export
@@ -524,7 +597,6 @@ export interface EphmatchCountMatchesResponse {
    */
   unseen?: number;
 }
-
 /**
  *
  * @export
@@ -562,7 +634,6 @@ export interface EphmatchGetAvailabilityResp {
    */
   seniorOnly?: boolean;
 }
-
 /**
  *
  * @export
@@ -624,7 +695,6 @@ export interface EphmatchProfileCreateParams {
    */
   messagingUsername?: string;
 }
-
 /**
  *
  * @export
@@ -686,7 +756,6 @@ export interface EphmatchProfileUpdateParams {
    */
   messagingUsername?: string;
 }
-
 /**
  *
  * @export
@@ -700,7 +769,6 @@ export interface EphmatchSetProfileRelationParams {
    */
   relation?: string;
 }
-
 /**
  *
  * @export
@@ -714,7 +782,6 @@ export interface EphmatchSetProfileRelationResp {
    */
   matched?: boolean;
 }
-
 /**
  *
  * @export
@@ -728,7 +795,6 @@ export interface FactrakAgreementCreateParams {
    */
   agree?: boolean;
 }
-
 /**
  *
  * @export
@@ -742,7 +808,6 @@ export interface FactrakAgreementUpdateParams {
    */
   agree?: boolean;
 }
-
 /**
  *
  * @export
@@ -858,7 +923,6 @@ export interface FactrakSurveyCreateParams {
    */
   wouldTakeAnother?: boolean;
 }
-
 /**
  *
  * @export
@@ -1012,7 +1076,6 @@ export interface GoodrichCreateOrderParams {
    */
   timeSlot?: string;
 }
-
 /**
  *
  * @export
@@ -1032,7 +1095,6 @@ export interface GoodrichOrderLease {
    */
   id?: string;
 }
-
 /**
  *
  * @export
@@ -1070,7 +1132,6 @@ export interface GoodrichTimeSlot {
    */
   openSpots?: number;
 }
-
 /**
  *
  * @export
@@ -1096,7 +1157,6 @@ export interface GoodrichUpdateMenuItemParams {
    */
   quantityLimit?: boolean;
 }
-
 /**
  *
  * @export
@@ -1116,7 +1176,6 @@ export interface GoodrichUpdateOrderParams {
    */
   status?: number;
 }
-
 /**
  *
  * @export
@@ -1148,7 +1207,6 @@ export interface IdentityCredentials {
    */
   useIP?: boolean;
 }
-
 /**
  *
  * @export
@@ -1198,7 +1256,6 @@ export interface ModelsAreaOfStudy {
    */
   professors?: Array<ModelsUser>;
 }
-
 /**
  *
  * @export
@@ -1254,7 +1311,7 @@ export interface ModelsBannedUser {
    */
   reason?: string;
   /**
-   * Belongs to user
+   *
    * @type {ModelsUser}
    * @memberof ModelsBannedUser
    */
@@ -1266,7 +1323,157 @@ export interface ModelsBannedUser {
    */
   userID?: number;
 }
+/**
+ *
+ * @export
+ * @interface ModelsBook
+ */
+export interface ModelsBook {
+  /**
+   * The names of the authors and/or editors for this book.
+   * @type {Array<string>}
+   * @memberof ModelsBook
+   */
+  authors?: Array<string>;
+  /**
+   * Has many Book Listings
+   * @type {Array<ModelsBookListing>}
+   * @memberof ModelsBook
+   */
+  bookListings?: Array<ModelsBookListing>;
+  /**
+   * Many2Many courses
+   * @type {Array<ModelsCourse>}
+   * @memberof ModelsBook
+   */
+  courses?: Array<ModelsCourse>;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsBook
+   */
+  id?: number;
+  /**
+   * Image link for book cover (Medium)
+   * @type {string}
+   * @memberof ModelsBook
+   */
+  imageLink?: string;
+  /**
+   * URL to view information about this book on the Google Books site.
+   * @type {string}
+   * @memberof ModelsBook
+   */
+  infoLink?: string;
+  /**
+   * ISBN-13 of this book (all books have this)
+   * @type {string}
+   * @memberof ModelsBook
+   */
+  isbn13?: string;
+  /**
+   * Publisher of this book.
+   * @type {string}
+   * @memberof ModelsBook
+   */
+  publisher?: string;
+  /**
+   * Book subtitle.
+   * @type {string}
+   * @memberof ModelsBook
+   */
+  subtitle?: string;
+  /**
+   * Book title.
+   * @type {string}
+   * @memberof ModelsBook
+   */
+  title?: string;
+}
+/**
+ *
+ * @export
+ * @interface ModelsBookListing
+ */
+export interface ModelsBookListing {
+  /**
+   *
+   * @type {ModelsBook}
+   * @memberof ModelsBookListing
+   */
+  book?: ModelsBook;
+  /**
+   * Belongs to book (FK)
+   * @type {number}
+   * @memberof ModelsBookListing
+   */
+  bookID?: number;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsBookListing
+   */
+  condition?: ModelsBookListing.ConditionEnum;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsBookListing
+   */
+  description?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof ModelsBookListing
+   */
+  id?: number;
+  /**
+   *
+   * @type {string}
+   * @memberof ModelsBookListing
+   */
+  listingType?: ModelsBookListing.ListingTypeEnum;
+  /**
+   *
+   * @type {ModelsUser}
+   * @memberof ModelsBookListing
+   */
+  user?: ModelsUser;
+  /**
+   * Belongs to user (FK)
+   * @type {number}
+   * @memberof ModelsBookListing
+   */
+  userID?: number;
+}
 
+/**
+ * @export
+ * @namespace ModelsBookListing
+ */
+export namespace ModelsBookListing {
+  /**
+   * @export
+   * @enum {string}
+   */
+  export enum ConditionEnum {
+    Empty = <any>'',
+    POOR = <any>'POOR',
+    FAIR = <any>'FAIR',
+    GOOD = <any>'GOOD',
+    VERYGOOD = <any>'VERY_GOOD',
+    LIKENEW = <any>'LIKE_NEW',
+    NEW = <any>'NEW',
+  }
+  /**
+   * @export
+   * @enum {string}
+   */
+  export enum ListingTypeEnum {
+    Empty = <any>'',
+    BUY = <any>'BUY',
+    SELL = <any>'SELL',
+  }
+}
 /**
  *
  * @export
@@ -1328,7 +1535,6 @@ export interface ModelsBulletin {
    */
   userID?: number;
 }
-
 /**
  *
  * @export
@@ -1384,7 +1590,6 @@ export interface ModelsBulletinRide {
    */
   userID?: number;
 }
-
 /**
  *
  * @export
@@ -1410,6 +1615,12 @@ export interface ModelsCourse {
    */
    factrakScore?: number;
   /**
+   * Many2Many books
+   * @type {Array<ModelsBook>}
+   * @memberof ModelsCourse
+   */
+  books?: Array<ModelsBook>;
+  /**
    * Has many factrak surveys
    * @type {Array<ModelsFactrakSurvey>}
    * @memberof ModelsCourse
@@ -1434,7 +1645,6 @@ export interface ModelsCourse {
    */
   professors?: Array<ModelsUser>;
 }
-
 /**
  *
  * @export
@@ -1466,7 +1676,6 @@ export interface ModelsDepartment {
    */
   users?: Array<ModelsUser>;
 }
-
 /**
  *
  * @export
@@ -1522,7 +1731,6 @@ export interface ModelsDiscussion {
    */
   userID?: number;
 }
-
 /**
  *
  * @export
@@ -1668,7 +1876,6 @@ export interface ModelsDorm {
    */
   wifi?: number;
 }
-
 /**
  *
  * @export
@@ -1814,7 +2021,6 @@ export interface ModelsDormFacts {
    */
   washersCount?: number;
 }
-
 /**
  *
  * @export
@@ -1960,7 +2166,6 @@ export interface ModelsDormRoom {
    */
   walkthrough?: boolean;
 }
-
 /**
  *
  * @export
@@ -2088,7 +2293,6 @@ export interface ModelsDormtrakRanking {
    */
   worstWifi?: Array<ModelsDorm>;
 }
-
 /**
  *
  * @export
@@ -2222,7 +2426,6 @@ export interface ModelsDormtrakReview {
    */
   wifi?: number;
 }
-
 /**
  *
  * @export
@@ -2242,7 +2445,7 @@ export interface ModelsEphcatch {
    */
   id?: number;
   /**
-   * Belongs to other
+   *
    * @type {ModelsUser}
    * @memberof ModelsEphcatch
    */
@@ -2260,7 +2463,7 @@ export interface ModelsEphcatch {
    */
   seen?: boolean;
   /**
-   * Belongs to user
+   *
    * @type {ModelsUser}
    * @memberof ModelsEphcatch
    */
@@ -2272,7 +2475,6 @@ export interface ModelsEphcatch {
    */
   userID?: number;
 }
-
 /**
  *
  * @export
@@ -2304,7 +2506,6 @@ export interface ModelsEphcatcher {
    */
   unixID?: string;
 }
-
 /**
  *
  * @export
@@ -2402,7 +2603,6 @@ export interface ModelsEphmatchProfile {
    */
   userID?: number;
 }
-
 /**
  *
  * @export
@@ -2446,7 +2646,6 @@ export interface ModelsFactrakAgreement {
    */
   userID?: number;
 }
-
 /**
  *
  * @export
@@ -2616,7 +2815,6 @@ export interface ModelsFactrakSurvey {
    */
   wouldTakeAnother?: boolean;
 }
-
 /**
  *
  * @export
@@ -2732,7 +2930,6 @@ export interface ModelsFactrakSurveyAvgRatings {
    */
   numWouldTakeAnother?: number;
 }
-
 /**
  *
  * @export
@@ -2794,7 +2991,6 @@ export interface ModelsGoodrichMenuItem {
    */
   type?: string;
 }
-
 /**
  *
  * @export
@@ -2886,7 +3082,6 @@ export interface ModelsGoodrichOrder {
    */
   userID?: number;
 }
-
 /**
  *
  * @export
@@ -2912,7 +3107,6 @@ export interface ModelsGoodrichOrderItem {
    */
   note?: string;
 }
-
 /**
  *
  * @export
@@ -2944,7 +3138,6 @@ export interface ModelsNeighborhood {
    */
   trakked?: boolean;
 }
-
 /**
  *
  * @export
@@ -2970,7 +3163,6 @@ export interface ModelsNeighborhoodFacts {
    */
   sophomoreCount?: number;
 }
-
 /**
  *
  * @export
@@ -3008,7 +3200,6 @@ export interface ModelsNotificationSettings {
    */
   userID?: number;
 }
-
 /**
  *
  * @export
@@ -3046,7 +3237,6 @@ export interface ModelsNotificationToken {
    */
   userID?: number;
 }
-
 /**
  *
  * @export
@@ -3072,7 +3262,6 @@ export interface ModelsOffice {
    */
   users?: Array<ModelsUser>;
 }
-
 /**
  *
  * @export
@@ -3128,7 +3317,6 @@ export interface ModelsPost {
    */
   userID?: number;
 }
-
 /**
  *
  * @export
@@ -3154,7 +3342,6 @@ export interface ModelsTag {
    */
   users?: Array<ModelsUser>;
 }
-
 /**
  *
  * @export
@@ -3180,7 +3367,7 @@ export interface ModelsUser {
    */
   atWilliams?: boolean;
   /**
-   * Has one (or zero) banned users
+   *
    * @type {ModelsBannedUser}
    * @memberof ModelsUser
    */
@@ -3264,7 +3451,7 @@ export interface ModelsUser {
    */
   ephcatches?: Array<ModelsEphcatch>;
   /**
-   * Has one ephmatch profile
+   *
    * @type {ModelsEphmatchProfile}
    * @memberof ModelsUser
    */
@@ -3282,7 +3469,7 @@ export interface ModelsUser {
    */
   factrakAgreements?: Array<ModelsFactrakAgreement>;
   /**
-   * Only in rankings request
+   * Only for professor retrieval with rankings
    * @type {number}
    * @memberof ModelsUser
    */
@@ -3372,7 +3559,7 @@ export interface ModelsUser {
    */
   nickname?: string;
   /**
-   * Has one notification settings
+   *
    * @type {ModelsNotificationSettings}
    * @memberof ModelsUser
    */
@@ -3474,7 +3661,6 @@ export interface ModelsUser {
    */
   williamsID?: string;
 }
-
 /**
  *
  * @export
@@ -3494,7 +3680,6 @@ export interface NotificationSettingsUpdateParams {
    */
   salmonNotify?: boolean;
 }
-
 /**
  *
  * @export
@@ -3514,7 +3699,6 @@ export interface NotificationTokenCreateParams {
    */
   type?: string;
 }
-
 /**
  *
  * @export
@@ -3534,7 +3718,6 @@ export interface OldAuthResponse {
    */
   token?: string;
 }
-
 /**
  *
  * @export
@@ -3566,7 +3749,19 @@ export interface OldLoginParams {
    */
   useIP?: boolean;
 }
-
+/**
+ *
+ * @export
+ * @interface ProfilePhotoBody
+ */
+export interface ProfilePhotoBody {
+  /**
+   * Profile Photo
+   * @type {Blob}
+   * @memberof ProfilePhotoBody
+   */
+  file: Blob;
+}
 /**
  *
  * @export
@@ -3586,7 +3781,6 @@ export interface ResponsesGetUserResponseDepartment {
    */
   name?: string;
 }
-
 /**
  *
  * @export
@@ -3612,7 +3806,6 @@ export interface ResponsesGetUserResponseDorm {
    */
   neighborhoodID?: number;
 }
-
 /**
  *
  * @export
@@ -3650,7 +3843,6 @@ export interface ResponsesGetUserResponseDormRoom {
    */
   roomType?: string;
 }
-
 /**
  *
  * @export
@@ -3670,7 +3862,6 @@ export interface ResponsesGetUserResponseOffice {
    */
   number?: string;
 }
-
 /**
  *
  * @export
@@ -3690,7 +3881,6 @@ export interface ResponsesGetUserResponseTag {
    */
   name?: string;
 }
-
 /**
  *
  * @export
@@ -3938,7 +4128,6 @@ export interface ResponsesGetUserResponseUser {
    */
   williamsID?: string;
 }
-
 /**
  *
  * @export
@@ -3988,7 +4177,6 @@ export interface ResponsesListMatchesResponseEphmatchMatch {
    */
   updatedAt?: string;
 }
-
 /**
  *
  * @export
@@ -4050,7 +4238,6 @@ export interface ResponsesListMatchesResponseEphmatchProfile {
    */
   messagingUsername?: string;
 }
-
 /**
  *
  * @export
@@ -4136,7 +4323,6 @@ export interface ResponsesListMatchesResponseMatchedUser {
    */
   williamsEmail?: string;
 }
-
 /**
  *
  * @export
@@ -4156,7 +4342,6 @@ export interface ResponsesListMatchesResponseTag {
    */
   name?: string;
 }
-
 /**
  *
  * @export
@@ -4176,7 +4361,6 @@ export interface ResponsesListUsersResponseDepartment {
    */
   name?: string;
 }
-
 /**
  *
  * @export
@@ -4202,7 +4386,6 @@ export interface ResponsesListUsersResponseDorm {
    */
   neighborhoodID?: number;
 }
-
 /**
  *
  * @export
@@ -4240,7 +4423,6 @@ export interface ResponsesListUsersResponseDormRoom {
    */
   roomType?: string;
 }
-
 /**
  *
  * @export
@@ -4260,7 +4442,6 @@ export interface ResponsesListUsersResponseOffice {
    */
   number?: string;
 }
-
 /**
  *
  * @export
@@ -4280,7 +4461,6 @@ export interface ResponsesListUsersResponseTag {
    */
   name?: string;
 }
-
 /**
  *
  * @export
@@ -4528,7 +4708,19 @@ export interface ResponsesListUsersResponseUser {
    */
   williamsID?: string;
 }
-
+/**
+ *
+ * @export
+ * @interface ReviewIDPhotoBody
+ */
+export interface ReviewIDPhotoBody {
+  /**
+   * Dorm Room Photo
+   * @type {Blob}
+   * @memberof ReviewIDPhotoBody
+   */
+  file: Blob;
+}
 /**
  *
  * @export
@@ -4542,7 +4734,6 @@ export interface ServerHealthCheckResponse {
    */
   ok?: boolean;
 }
-
 /**
  *
  * @export
@@ -4568,7 +4759,6 @@ export interface ServicesBaseErrorResponse {
    */
   updateToken?: boolean;
 }
-
 /**
  *
  * @export
@@ -4594,7 +4784,19 @@ export interface ServicesRespError {
    */
   message?: string;
 }
-
+/**
+ *
+ * @export
+ * @interface UserIDPhotoBody
+ */
+export interface UserIDPhotoBody {
+  /**
+   * Profile Photo
+   * @type {Blob}
+   * @memberof UserIDPhotoBody
+   */
+  file: Blob;
+}
 /**
  *
  * @export
@@ -4656,7 +4858,6 @@ export interface UserUpdateUserParams {
    */
   visible?: boolean;
 }
-
 /**
  *
  * @export
