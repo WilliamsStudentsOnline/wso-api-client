@@ -24,7 +24,7 @@ export enum FactrakProfessorMetric {
 }
 
 export enum FactrakCourseMetric {
-  WouldRecommendCourse = "would_recommend_course",
+  WouldRecommendCourse = 'would_recommend_course',
   CourseWorkload = 'course_workload',
   CourseStimulating = 'course_stimulating',
 }
