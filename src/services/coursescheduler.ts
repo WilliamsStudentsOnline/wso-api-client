@@ -1,5 +1,4 @@
 import { API, APIResponse } from '../api';
-import { LoginData } from './auth';
 import { CourseSelectionSetRequest, ModelsCourseSelectionString } from './types';
 export class CourseSchedulerService {
     private api: API;
