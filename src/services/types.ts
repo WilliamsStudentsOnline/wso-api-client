@@ -1646,7 +1646,7 @@ export interface ModelsCourse {
   professors?: Array<ModelsUser>;
 }
 /**
- * 
+ *
  * @export
  * @interface ModelsCourseSelectionString
  */
@@ -1659,7 +1659,7 @@ export interface ModelsCourseSelectionString {
   courses?: string;
 }
 /**
- * 
+ *
  * @export
  * @interface CourseSelectionSetRequest
  */
