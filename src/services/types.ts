@@ -1646,6 +1646,32 @@ export interface ModelsCourse {
   professors?: Array<ModelsUser>;
 }
 /**
+ * 
+ * @export
+ * @interface ModelsCourseSelectionString
+ */
+export interface ModelsCourseSelectionString {
+  /**
+   * Parseable string containing user course selections
+   * @type {string}
+   * @memberof ModelsCourseSelectionString
+   */
+  courses?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CourseSelectionSetRequest
+ */
+export interface CourseSelectionSetRequest {
+  /**
+   * Parseable string containing user course selections
+   * @type {string}
+   * @memberof CourseSelectionSetRequest
+   */
+  courses?: string;
+}
+/**
  *
  * @export
  * @interface ModelsDepartment
