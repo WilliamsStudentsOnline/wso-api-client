@@ -1,6 +1,6 @@
 {
   "name": "wso-api-client",
-  "version": "24.02.19",
+  "version": "24.11.10",
   "description": "WSO API Client for JS",
   "main": "lib/wso.js",
   "typings": "lib/wso.d.ts",
