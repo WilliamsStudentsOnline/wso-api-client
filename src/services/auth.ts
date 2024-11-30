@@ -144,6 +144,9 @@ export enum Scope {
   Dormtrak = 'service:dormtrak',
   // Ability to create reviews, etc. (must be upperclass)
   DormtrakWrite = 'service:dormtrak:write',
+  DormtrakLimited = 'service:factrak:limited',
+  DormtrakFull = 'service.dormtrak.full',
+  DormtrakAdmin = 'service.dormtrak.admin',
 
   Ephcatch = 'service:ephcatch',
   Bulletin = 'service:bulletin',

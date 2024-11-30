@@ -3460,6 +3460,12 @@ export interface ModelsUser {
   dormtrakReviews?: Array<ModelsDormtrakReview>;
   /**
    *
+   * @type {number}
+   * @memberof ModelsUser
+   */
+   dormtrakReviewDeficit?: number;
+  /**
+   *
    * @type {string}
    * @memberof ModelsUser
    */
@@ -3518,11 +3524,11 @@ export interface ModelsUser {
    * @memberof ModelsUser
    */
   hasAcceptedDormtrakPolicy?: boolean;
-  /**
-   *
-   * @type {boolean}
-   * @memberof ModelsUser
-   */
+   /**
+    * As we cannot be both a student and a professor, this combines either a student or a dorm's dormtrak survey. We populate this field as a hook AfterFind.
+    * @type {Array<ModelsDormtrakReview>}
+    * @memberof ModelsUser
+    */
   hasAcceptedFactrakPolicy?: boolean;
   /**
    *
