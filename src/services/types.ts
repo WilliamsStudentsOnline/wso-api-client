@@ -4153,6 +4153,18 @@ export interface ResponsesGetUserResponseUser {
    * @memberof ResponsesGetUserResponseUser
    */
   williamsID?: string;
+  /**
+   *
+   * @type {boolean}
+   * @memberof ResponsesGetUserResponseUser
+   */
+  dietaryPref?: boolean;
+  /**
+   *
+   * @type {boolean}
+   * @memberof ResponsesGetUserResponseUser
+   */
+  dietaryPrefVisible?: boolean;
 }
 /**
  *
