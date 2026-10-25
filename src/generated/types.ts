@@ -986,3 +986,37 @@ export type ModelsCourseSelectionString = CourseschedulerCourseSelectionsString;
 export interface CourseSelectionSetRequest {
   courses?: string;
 }
+
+export namespace BooktrakCreateBookListingParams {
+  export enum ConditionEnum {
+    Empty = '',
+    POOR = 'POOR',
+    FAIR = 'FAIR',
+    GOOD = 'GOOD',
+    VERYGOOD = 'VERY_GOOD',
+    LIKENEW = 'LIKE_NEW',
+    NEW = 'NEW',
+  }
+  export enum ListingTypeEnum {
+    Empty = '',
+    BUY = 'BUY',
+    SELL = 'SELL',
+  }
+}
+
+export namespace ModelsBookListing {
+  export enum ConditionEnum {
+    Empty = '',
+    POOR = 'POOR',
+    FAIR = 'FAIR',
+    GOOD = 'GOOD',
+    VERYGOOD = 'VERY_GOOD',
+    LIKENEW = 'LIKE_NEW',
+    NEW = 'NEW',
+  }
+  export enum ListingTypeEnum {
+    Empty = '',
+    BUY = 'BUY',
+    SELL = 'SELL',
+  }
+}

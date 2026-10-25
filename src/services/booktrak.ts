@@ -38,6 +38,20 @@ export class BooktrakService extends GeneratedBooktrakService {
     return this.api.request('get', `/api/v2/booktrak/listings/${bookListingID}`);
   }
 
+  async listBookListings(params?: {
+    offset?: number;
+    limit?: number;
+    courseID?: number;
+    userID?: number;
+    isbn?: string;
+    minCondition?: string | ModelsBookListing.ConditionEnum;
+    maxCondition?: string | ModelsBookListing.ConditionEnum;
+    listingType?: string | ModelsBookListing.ListingTypeEnum;
+    preload?: string[];
+  }): Promise<APIResponse<ModelsBookListing[]>> {
+    return super.listBookListings(params as any);
+  }
+
   // (id, params) or legacy (params, id)
   async updateBookListing(
     a: number | Record<string, any>,
