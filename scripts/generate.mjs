@@ -1,14 +1,5 @@
 #!/usr/bin/env node
-/**
- * Generate TypeScript types + *Service wrappers from a WSO OpenAPI 2.0 contract.
- *
- *   yarn codegen                         # interactive (or --latest if non-TTY)
- *   yarn codegen --tag 2026.10.25
- *   yarn codegen --tag 2026-10-25-2
- *   yarn codegen --tag openapi-v2026.10.25
- *   yarn codegen --latest
- *   yarn codegen --spec path/to/openapi.json
- */
+// Generate src/generated from wso-go OpenAPI release assets. See README.
 
 import fs from 'fs';
 import path from 'path';
@@ -350,8 +341,7 @@ async function loadSpec(args) {
   if (args.spec) {
     const text = fs.readFileSync(args.spec, 'utf8');
     if (args.spec.endsWith('.json')) return JSON.parse(text);
-    // minimal: require json for --spec without pyyaml; try json first
-    throw new Error('use --spec path/to/openapi.json (YAML needs conversion) or --tag');
+    throw new Error('use --spec path/to/openapi.json or --tag');
   }
   const tag = args.tag || (await latestOpenapiTag());
   console.log(`==> fetching contract ${tag}`);

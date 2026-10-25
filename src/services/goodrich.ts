@@ -1,6 +1,6 @@
 export { GoodrichService } from '../generated/services/goodrich';
 
-/** Client-side enums (not in OpenAPI). */
+// enums not in OpenAPI
 export namespace Goodrich {
   export enum OrderStatus {
     Unknown = 0,

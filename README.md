@@ -1,28 +1,16 @@
 # WSO API Client
 
-TypeScript client for the WSO API. Ship via **git tags** (not npm).
+TypeScript client for the WSO API, shipped via git tags.
 
-Most `*Service` methods and types are generated from `wso-go` `openapi-v*` release assets. Hand-written: `api.ts`, `auth.ts`, `services/auth.ts`, `wso.ts`, plus small compat wrappers under `src/services/`.
+Most `*Service` methods and types are generated from `wso-go` `openapi-v*` release assets. For compatibility reasons, we maintain handwritten `api.ts`, `auth.ts`, `services/auth.ts`, `wso.ts`, and small wrappers under `src/services/`.
 
-## Install
-
-```json
-"wso-api-client": "git+https://github.com/WilliamsStudentsOnline/wso-api-client.git#v2026.10.25"
-```
-
-## Codegen
-
-Uses Node only (no Python). Fetches `openapi.json` from the GitHub Release.
+To update the API client:
 
 ```bash
-yarn codegen                 # interactive (default = latest openapi-v*)
-yarn codegen --tag 2026.10.25
-yarn codegen --tag 2026-10-25-2   # same-day suffix → openapi-v2026.10.25-2
+# interactive
+yarn codegen
+# manual
+yarn codegen --tag yyyy.mm.dd
+yarn codegen --tag yyyy.mm.dd-n # if multiple publishes in the same day
 yarn codegen --latest
 ```
-
-Then `yarn build`.
-
-## CI
-
-`.github/workflows/codegen.yml` — `workflow_dispatch` / `repository_dispatch` regenerates and opens/updates PR branch `codegen/openapi`.

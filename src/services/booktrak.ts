@@ -8,7 +8,6 @@ import {
   ServerHealthCheckResponse,
 } from '../generated/types';
 
-/** Fixes OpenAPI path/method gaps (health-check, search, booktrak paths, POST create). */
 export class BooktrakService extends GeneratedBooktrakService {
   async healthCheck(): Promise<APIResponse<ServerHealthCheckResponse>> {
     return this.api.request('get', '/api/v2/booktrak/health-check');
@@ -42,7 +41,7 @@ export class BooktrakService extends GeneratedBooktrakService {
     return this.api.request('get', `/api/v2/booktrak/listings/${bookListingID}`);
   }
 
-  /** Accepts (id, params) or legacy (params, id). */
+  // (id, params) or legacy (params, id)
   async updateBookListing(
     a: number | Record<string, any>,
     b?: number | Record<string, any>

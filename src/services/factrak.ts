@@ -18,7 +18,6 @@ export enum FactrakCourseMetric {
   CourseStimulating = 'course_stimulating',
 }
 
-/** Positional optional query args for older call sites. */
 export class FactrakService extends GeneratedFactrakService {
   async getCourse(
     courseID: number,
@@ -86,7 +85,7 @@ export class FactrakService extends GeneratedFactrakService {
   async listSurveys(params?: Record<string, any>): Promise<APIResponse<any>> {
     if (!params) return super.listSurveys();
     const { start, ...rest } = params;
-    // old clients passed `start: Date`; API expects offset string — drop silently
+    // drop legacy `start: Date` (API uses offset string)
     void start;
     return super.listSurveys(rest);
   }

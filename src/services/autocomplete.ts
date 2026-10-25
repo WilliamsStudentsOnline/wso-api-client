@@ -1,7 +1,6 @@
 import { API, APIResponse } from '../api';
 import { AutocompleteACEntry } from './types';
 
-/** Positional (query, limit?) wrappers — matches pre-codegen call sites. */
 export class AutocompleteService {
   private api: API;
 

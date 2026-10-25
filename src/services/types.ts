@@ -1,7 +1,7 @@
-/** Re-export generated OpenAPI types (React imports `lib/services/types`). */
+// Re-export generated types (stable import path for wso-react)
 export * from '../generated/types';
 
-/** Client-side enums removed from OpenAPI (swagger used free-form strings). */
+// Book listing enums dropped from OpenAPI (swagger used free-form strings)
 export namespace BooktrakCreateBookListingParams {
   export enum ConditionEnum {
     Empty = '' as any,
