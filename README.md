@@ -1,56 +1,28 @@
 # WSO API Client
 
-TypeScript client for the WSO API. Distributed via **git tags** (not npm).
+TypeScript client for the WSO API. Ship via **git tags** (not npm).
 
-Types and most `*Service` methods are **generated** from the public `wso-go` OpenAPI contract (`openapi-v*` GitHub Release assets). Auth/transport (`api.ts`, `auth.ts`, `services/auth.ts`) and the thin `WSO` facade stay hand-written.
+Most `*Service` methods and types are generated from `wso-go` `openapi-v*` release assets. Hand-written: `api.ts`, `auth.ts`, `services/auth.ts`, `wso.ts`, plus small compat wrappers under `src/services/`.
 
-## Install (consumers)
-
-Pin a git tag (example):
+## Install
 
 ```json
 "wso-api-client": "git+https://github.com/WilliamsStudentsOnline/wso-api-client.git#v2026.10.25"
 ```
 
-Or in Yarn/npm:
+## Codegen
+
+Uses Node only (no Python). Fetches `openapi.json` from the GitHub Release.
 
 ```bash
-yarn add wso-api-client@git+https://github.com/WilliamsStudentsOnline/wso-api-client.git#v2026.10.25
+yarn codegen                 # interactive (default = latest openapi-v*)
+yarn codegen --tag 2026.10.25
+yarn codegen --tag 2026-10-25-2   # same-day suffix → openapi-v2026.10.25-2
+yarn codegen --latest
 ```
 
-## Regenerate from an OpenAPI contract
+Then `yarn build`.
 
-Requires Python 3 + PyYAML (`pip install pyyaml`).
+## CI
 
-```bash
-# from a local swagger file (e.g. sibling wso-go checkout)
-yarn generate -- --spec ../wso-go/docs/swagger.yaml
-
-# from a published wso-go contract tag
-yarn generate -- --tag openapi-v2026.10.25
-
-# newest openapi-v* release on wso-go
-yarn generate:latest
-```
-
-Then `yarn build` (emits `lib/`).
-
-## Publish a client version
-
-After codegen looks good:
-
-```bash
-git tag v2026.10.25
-git push origin v2026.10.25
-```
-
-Consumers bump their git pin to that tag. No npm publish.
-
-## Layout
-
-| Path | Role |
-| --- | --- |
-| `scripts/generate.py` | OpenAPI → `src/generated/` |
-| `src/generated/` | Types + service methods (`API.request` → `APIResponse<T>`) |
-| `src/services/*.ts` | Thin re-exports / small hand extensions (photos, enums) |
-| `src/api.ts`, `src/auth.ts`, `src/services/auth.ts`, `src/wso.ts` | Hand-written |
+`.github/workflows/codegen.yml` — `workflow_dispatch` / `repository_dispatch` regenerates and opens/updates PR branch `codegen/openapi`.

@@ -17,7 +17,7 @@ export class BooktrakService {
   }
 
   async createBook(createParams: BooktrakCreateBookParams): Promise<APIResponse<ModelsBook>> {
-    return this.api.request('put', `/api/v2/booktrak/books`, {
+    return this.api.request('post', `/api/v2/booktrak/books`, {
       data: createParams,
     });
   }
@@ -33,11 +33,11 @@ export class BooktrakService {
   }
 
   async getBook(bookID: number): Promise<APIResponse<ModelsBook>> {
-    return this.api.request('get', `/api/v2/books/${bookID}`);
+    return this.api.request('get', `/api/v2/booktrak/books/${bookID}`);
   }
 
   async getBookListing(bookListingID: number): Promise<APIResponse<ModelsBookListing>> {
-    return this.api.request('get', `/api/v2/listings/${bookListingID}`);
+    return this.api.request('get', `/api/v2/booktrak/listings/${bookListingID}`);
   }
 
   async listBookListings(params?: {

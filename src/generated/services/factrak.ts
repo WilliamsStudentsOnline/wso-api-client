@@ -118,19 +118,6 @@ export class FactrakService {
     return this.api.request('get', `/api/v2/factrak/courses/${courseID}/professors`);
   }
 
-  async listCourseSurveys(courseID: number, params?: {
-    offset?: string;
-    limit?: number;
-    professorID?: number;
-    preload?: Array<string>;
-    populateAgreements?: boolean;
-    populateClientAgreement?: boolean;
-  }): Promise<APIResponse<Array<ModelsFactrakSurvey>>> {
-    return this.api.request('get', `/api/v2/factrak/courses/${courseID}/surveys`, {
-      params: params,
-    });
-  }
-
   async listCourses(params?: {
     offset?: number;
     limit?: number;
@@ -143,6 +130,19 @@ export class FactrakService {
     direction?: boolean;
   }): Promise<APIResponse<Array<ModelsCourse>>> {
     return this.api.request('get', `/api/v2/factrak/courses`, {
+      params: params,
+    });
+  }
+
+  async listCourseSurveys(courseID: number, params?: {
+    offset?: string;
+    limit?: number;
+    professorID?: number;
+    preload?: Array<string>;
+    populateAgreements?: boolean;
+    populateClientAgreement?: boolean;
+  }): Promise<APIResponse<Array<ModelsFactrakSurvey>>> {
+    return this.api.request('get', `/api/v2/factrak/courses/${courseID}/surveys`, {
       params: params,
     });
   }
@@ -178,19 +178,6 @@ export class FactrakService {
     return this.api.request('get', `/api/v2/factrak/professors/${professorID}/courses`);
   }
 
-  async listProfessorSurveys(professorID: number, params?: {
-    offset?: string;
-    limit?: number;
-    courseID?: number;
-    preload?: Array<string>;
-    populateAgreements?: boolean;
-    populateClientAgreement?: boolean;
-  }): Promise<APIResponse<Array<ModelsFactrakSurvey>>> {
-    return this.api.request('get', `/api/v2/factrak/professors/${professorID}/surveys`, {
-      params: params,
-    });
-  }
-
   async listProfessors(params?: {
     offset?: number;
     limit?: number;
@@ -203,6 +190,19 @@ export class FactrakService {
     ascending?: boolean;
   }): Promise<APIResponse<Array<ModelsUser>>> {
     return this.api.request('get', `/api/v2/factrak/professors`, {
+      params: params,
+    });
+  }
+
+  async listProfessorSurveys(professorID: number, params?: {
+    offset?: string;
+    limit?: number;
+    courseID?: number;
+    preload?: Array<string>;
+    populateAgreements?: boolean;
+    populateClientAgreement?: boolean;
+  }): Promise<APIResponse<Array<ModelsFactrakSurvey>>> {
+    return this.api.request('get', `/api/v2/factrak/professors/${professorID}/surveys`, {
       params: params,
     });
   }

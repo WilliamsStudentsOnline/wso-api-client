@@ -1,1 +1,56 @@
-export { AutocompleteService } from '../generated/services/autocomplete';
+import { API, APIResponse } from '../api';
+import { AutocompleteACEntry } from './types';
+
+/** Positional (query, limit?) wrappers — matches pre-codegen call sites. */
+export class AutocompleteService {
+  private api: API;
+
+  constructor(api: API) {
+    this.api = api;
+  }
+
+  async autocompleteAreaOfStudy(
+    query: string,
+    limit?: number
+  ): Promise<APIResponse<AutocompleteACEntry[]>> {
+    return this.api.request('get', '/api/v2/autocomplete/area-of-study', {
+      params: { q: query, limit },
+    });
+  }
+
+  async autocompleteCourse(
+    query: string,
+    limit?: number
+  ): Promise<APIResponse<AutocompleteACEntry[]>> {
+    return this.api.request('get', '/api/v2/autocomplete/course', {
+      params: { q: query, limit },
+    });
+  }
+
+  async autocompleteFactrak(
+    query: string,
+    limit?: number
+  ): Promise<APIResponse<AutocompleteACEntry[]>> {
+    return this.api.request('get', '/api/v2/autocomplete/factrak', {
+      params: { q: query, limit },
+    });
+  }
+
+  async autocompleteProfessor(
+    query: string,
+    limit?: number
+  ): Promise<APIResponse<AutocompleteACEntry[]>> {
+    return this.api.request('get', '/api/v2/autocomplete/professor', {
+      params: { q: query, limit },
+    });
+  }
+
+  async autocompleteTag(
+    query: string,
+    limit?: number
+  ): Promise<APIResponse<AutocompleteACEntry[]>> {
+    return this.api.request('get', '/api/v2/autocomplete/tag', {
+      params: { q: query, limit },
+    });
+  }
+}

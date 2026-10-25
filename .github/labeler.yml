@@ -1,9 +1,0 @@
-# Auto-label PRs based on changed files.
-# See https://github.com/actions/labeler
-
-codegen:
-  - changed-files:
-      - any-glob-to-any-file:
-          - src/generated/**
-          - scripts/generate.py
-          - .github/workflows/codegen.yml

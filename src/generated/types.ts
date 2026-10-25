@@ -1,8 +1,5 @@
 /* eslint-disable */
-/**
- * Generated from WSO OpenAPI — do not edit.
- * Re-run: yarn generate
- */
+/** Generated from WSO OpenAPI — do not edit. yarn codegen */
 
 export interface AuthAuthResponse {
   expire?: string;
@@ -13,6 +10,14 @@ export interface AutocompleteACEntry {
   id?: number;
   type?: string;
   value?: string;
+}
+
+export interface BannerBanner {
+  link?: string;
+  sub?: string;
+  text?: string;
+  type?: string;
+  visible?: boolean;
 }
 
 export interface BooktrakCreateBookListingParams {
@@ -978,7 +983,6 @@ export interface UserUpdateUserTagsParams {
 /** @deprecated alias for CourseschedulerCourseSelectionsString */
 export type ModelsCourseSelectionString = CourseschedulerCourseSelectionsString;
 
-/** Hand-shaped body used by older clients; OpenAPI body is a bare string */
 export interface CourseSelectionSetRequest {
   courses?: string;
 }

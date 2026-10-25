@@ -51,7 +51,7 @@ export class BulletinService {
   }
 
   async deleteDiscussion(discussionID: number): Promise<APIResponse<ModelsDiscussion>> {
-    return this.api.request('delete', `/api/v2/bulletin/discussion/${discussionID}`);
+    return this.api.request('delete', `/api/v2/bulletin/discussions/${discussionID}`);
   }
 
   async deletePost(postID: number): Promise<APIResponse<ModelsPost>> {

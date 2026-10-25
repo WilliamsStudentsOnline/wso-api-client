@@ -21,10 +21,6 @@ export class EphcatchService {
     return this.api.request('post', `/api/v2/ephcatch/ephcatchers/${ephcatcherID}/like`);
   }
 
-  async listEphcatchMatches(): Promise<APIResponse<Array<ModelsUser>>> {
-    return this.api.request('get', `/api/v2/ephcatch/matches`);
-  }
-
   async listEphcatchers(params?: {
     offset?: number;
     limit?: number;
@@ -34,6 +30,10 @@ export class EphcatchService {
     return this.api.request('get', `/api/v2/ephcatch/ephcatchers`, {
       params: params,
     });
+  }
+
+  async listEphcatchMatches(): Promise<APIResponse<Array<ModelsUser>>> {
+    return this.api.request('get', `/api/v2/ephcatch/matches`);
   }
 
   async unlikeEphcatcher(ephcatcherID: number): Promise<APIResponse<any>> {

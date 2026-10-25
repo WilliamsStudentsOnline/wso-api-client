@@ -1,12 +1,11 @@
 {
   "name": "wso-api-client",
   "version": "24.11.10",
-  "description": "WSO API Client for JS/TS (git-distributed; generated from wso-go OpenAPI)",
+  "description": "WSO API Client for JS/TS (git tags; generated from wso-go OpenAPI)",
   "main": "lib/wso.js",
   "typings": "lib/wso.d.ts",
   "scripts": {
-    "generate": "python3 scripts/generate.py",
-    "generate:latest": "python3 scripts/generate.py --latest",
+    "codegen": "node scripts/generate.mjs",
     "build": "tsc",
     "prepare": "npm run build",
     "lint": "eslint -c .eslintrc.yml 'src/**/*.ts'",
@@ -30,13 +29,9 @@
     "typescript": "^4.9.3"
   },
   "files": [
-    "lib/**/*",
-    "src/**/*"
+    "lib/**/*"
   ],
   "homepage": "https://github.com/WilliamsStudentsOnline/wso-api-client",
-  "directories": {
-    "lib": "lib"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/WilliamsStudentsOnline/wso-api-client.git"
