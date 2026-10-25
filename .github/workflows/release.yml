@@ -1,6 +1,6 @@
 name: Client release
 
-# Triggered by v* tags from `make publish`
+# Triggered by v* tags from `yarn publish-client`
 
 on:
   push:

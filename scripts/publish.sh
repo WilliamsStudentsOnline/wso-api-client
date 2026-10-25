@@ -3,12 +3,12 @@
 # Must be run on a clean local master that matches origin/master
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
 if [[ "$branch" != "master" ]]; then
-  echo "error: make publish only runs on master (currently on ${branch})" >&2
+  echo "error: yarn publish-client only runs on master (currently on ${branch})" >&2
   echo "checkout master, pull, then retry" >&2
   exit 1
 fi
