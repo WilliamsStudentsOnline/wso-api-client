@@ -57,4 +57,37 @@ export class FactrakService extends GeneratedFactrakService {
   ): Promise<APIResponse<ModelsFactrakSurveyAvgRatings>> {
     return super.getProfessorRatings(professorID, params as any);
   }
+
+  async listCourses(params?: {
+    offset?: number;
+    limit?: number;
+    preload?: string[];
+    q?: string;
+    areaOfStudyID?: string | number;
+    departmentID?: string | number;
+    professorID?: string | number;
+    metric?: string;
+    direction?: boolean;
+    ascending?: boolean;
+  }): Promise<APIResponse<ModelsCourse[]>> {
+    const { ascending, areaOfStudyID, departmentID, professorID, ...rest } =
+      params || {};
+    return super.listCourses({
+      ...rest,
+      direction: rest.direction ?? ascending,
+      areaOfStudyID:
+        areaOfStudyID === undefined ? undefined : String(areaOfStudyID),
+      departmentID:
+        departmentID === undefined ? undefined : String(departmentID),
+      professorID: professorID === undefined ? undefined : String(professorID),
+    });
+  }
+
+  async listSurveys(params?: Record<string, any>): Promise<APIResponse<any>> {
+    if (!params) return super.listSurveys();
+    const { start, ...rest } = params;
+    // old clients passed `start: Date`; API expects offset string — drop silently
+    void start;
+    return super.listSurveys(rest);
+  }
 }
