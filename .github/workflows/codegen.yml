@@ -1,0 +1,77 @@
+name: OpenAPI codegen
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: wso-go openapi-v* tag (leave empty for latest release)
+        required: false
+        type: string
+  # Optional: wso-go can POST repository_dispatch after make publish-api
+  repository_dispatch:
+    types: [openapi-contract-published]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  codegen:
+    name: Regenerate client from OpenAPI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Resolve contract tag
+        id: tag
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
+            tag="${{ github.event.client_payload.tag }}"
+          else
+            tag="${{ inputs.tag }}"
+          fi
+          if [[ -z "${tag}" ]]; then
+            tag="$(python3 - <<'PY'
+          import json, urllib.request
+          req = urllib.request.Request(
+              "https://api.github.com/repos/WilliamsStudentsOnline/wso-go/releases?per_page=30",
+              headers={"Accept": "application/vnd.github+json"},
+          )
+          with urllib.request.urlopen(req) as resp:
+              releases = json.load(resp)
+          for rel in releases:
+              t = rel.get("tag_name") or ""
+              if t.startswith("openapi-v"):
+                  print(t)
+                  break
+          else:
+              raise SystemExit("no openapi-v* release found")
+          PY
+          )"
+          fi
+          echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+          echo "Using contract ${tag}"
+
+      - name: Generate
+        run: python3 scripts/generate.py --tag "${{ steps.tag.outputs.tag }}"
+
+      - name: Create or update codegen PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: codegen/openapi
+          delete-branch: false
+          title: "codegen: regenerate from ${{ steps.tag.outputs.tag }}"
+          labels: codegen
+          commit-message: "codegen: regenerate from ${{ steps.tag.outputs.tag }}"
+          body: |
+            Automated OpenAPI codegen from `WilliamsStudentsOnline/wso-go@${{ steps.tag.outputs.tag }}`.
+
+            Review the diff, merge, then tag this repo (e.g. `vYYYY.MM.DD`) for consumers to pin.
