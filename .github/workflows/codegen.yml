@@ -59,4 +59,4 @@ jobs:
           body: |
             Automated OpenAPI codegen from `WilliamsStudentsOnline/wso-go@${{ steps.tag.outputs.label }}`.
 
-            Review, merge, then on master run `yarn publish-client` to tag for consumers.
+            Review, merge, then on master run `yarn publish-api` to tag for consumers.

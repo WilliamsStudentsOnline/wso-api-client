@@ -20,9 +20,9 @@ yarn codegen --latest
 On a clean local `master` that matches `origin/master` (after merging a codegen PR):
 
 ```bash
-yarn publish-client
+yarn publish-api
 ```
 
 Tags `vYYYY.MM.DD` (or `vYYYY.MM.DD-N` if that day already has a tag) and pushes it. CI creates a GitHub Release. Consumers then run `yarn codegen --tag vYYYY.MM.DD` in wso-react.
 
-(`publish-client` rather than `publish` so we don't clash with yarn's registry publish.)
+(`publish-api` rather than `publish` so we don't clash with yarn's registry publish.)

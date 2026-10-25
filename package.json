@@ -6,7 +6,7 @@
   "typings": "lib/wso.d.ts",
   "scripts": {
     "codegen": "node scripts/generate.mjs",
-    "publish-client": "bash scripts/publish.sh",
+    "publish-api": "bash scripts/publish.sh",
     "build": "tsc",
     "prepare": "npm run build",
     "lint": "eslint -c .eslintrc.yml 'src/**/*.ts'",

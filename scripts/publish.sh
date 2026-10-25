@@ -8,7 +8,7 @@ cd "$ROOT"
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
 if [[ "$branch" != "master" ]]; then
-  echo "error: yarn publish-client only runs on master (currently on ${branch})" >&2
+  echo "error: yarn publish-api only runs on master (currently on ${branch})" >&2
   echo "checkout master, pull, then retry" >&2
   exit 1
 fi
