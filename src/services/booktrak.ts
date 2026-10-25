@@ -17,10 +17,7 @@ export class BooktrakService extends GeneratedBooktrakService {
     return this.api.request('get', `/api/v2/booktrak/books/${bookID}`);
   }
 
-  async searchBooks(params?: {
-    q?: string;
-    limit?: number;
-  }): Promise<APIResponse<ModelsBook[]>> {
+  async searchBooks(params?: { q?: string; limit?: number }): Promise<APIResponse<ModelsBook[]>> {
     return this.api.request('get', `/api/v2/booktrak/books/web`, { params });
   }
 

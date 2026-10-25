@@ -7,9 +7,7 @@ export class BulletinService extends GeneratedBulletinService {
     discussionID: number,
     preloadOrParams?: string[] | { preload?: string[] }
   ): Promise<APIResponse<ModelsDiscussion>> {
-    const params = Array.isArray(preloadOrParams)
-      ? { preload: preloadOrParams }
-      : preloadOrParams;
+    const params = Array.isArray(preloadOrParams) ? { preload: preloadOrParams } : preloadOrParams;
     return super.getDiscussion(discussionID, params as any);
   }
 

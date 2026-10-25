@@ -69,15 +69,12 @@ export class FactrakService extends GeneratedFactrakService {
     direction?: boolean;
     ascending?: boolean;
   }): Promise<APIResponse<ModelsCourse[]>> {
-    const { ascending, areaOfStudyID, departmentID, professorID, ...rest } =
-      params || {};
+    const { ascending, areaOfStudyID, departmentID, professorID, ...rest } = params || {};
     return super.listCourses({
       ...rest,
       direction: rest.direction ?? ascending,
-      areaOfStudyID:
-        areaOfStudyID === undefined ? undefined : String(areaOfStudyID),
-      departmentID:
-        departmentID === undefined ? undefined : String(departmentID),
+      areaOfStudyID: areaOfStudyID === undefined ? undefined : String(areaOfStudyID),
+      departmentID: departmentID === undefined ? undefined : String(departmentID),
       professorID: professorID === undefined ? undefined : String(professorID),
     });
   }

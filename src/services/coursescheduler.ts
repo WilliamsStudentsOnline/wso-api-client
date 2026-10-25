@@ -3,9 +3,7 @@ import { CourseSchedulerService as GeneratedCourseSchedulerService } from '../ge
 import { CourseSelectionSetRequest, ModelsCourseSelectionString } from './types';
 
 export class CourseSchedulerService extends GeneratedCourseSchedulerService {
-  async getSelections(
-    unixID: number | 'me'
-  ): Promise<APIResponse<ModelsCourseSelectionString>> {
+  async getSelections(unixID: number | 'me'): Promise<APIResponse<ModelsCourseSelectionString>> {
     return super.getSelections(unixID as any);
   }
 

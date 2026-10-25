@@ -4,9 +4,7 @@ import { UserService as GeneratedUserService } from '../generated/services/user'
 import { ResponsesGetUserResponseUser } from './types';
 
 export class UserService extends GeneratedUserService {
-  async getUser(
-    userID: number | 'me' = 'me'
-  ): Promise<APIResponse<ResponsesGetUserResponseUser>> {
+  async getUser(userID: number | 'me' = 'me'): Promise<APIResponse<ResponsesGetUserResponseUser>> {
     return super.getUser(userID);
   }
 
