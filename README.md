@@ -4,7 +4,9 @@ TypeScript client for the WSO API, shipped via git tags.
 
 Most `*Service` methods and types are generated from `wso-go` `openapi-v*` release assets. For compatibility reasons, we maintain handwritten `api.ts`, `auth.ts`, `services/auth.ts`, `wso.ts`, and small wrappers under `src/services/`.
 
-## Regenerate from OpenAPI
+## Codegen
+
+To regenerate from a published OpenAPI contract:
 
 ```bash
 # interactive
@@ -15,14 +17,12 @@ yarn codegen --tag yyyy.mm.dd-n # if multiple publishes in the same day
 yarn codegen --latest
 ```
 
-## Publish a consumer pin
+## Publish
 
-On a clean local `master` that matches `origin/master` (after merging a codegen PR):
+After merging a codegen change to `master`, on a clean local up-to-date `master` run:
 
 ```bash
 yarn publish-api
 ```
 
-Tags `vYYYY.MM.DD` (or `vYYYY.MM.DD-N` if that day already has a tag) and pushes it. CI creates a GitHub Release. Consumers then run `yarn codegen --tag vYYYY.MM.DD` in wso-react.
-
-(`publish-api` rather than `publish` so we don't clash with yarn's registry publish.)
+This creates and pushes a tagged release `vYYYY.MM.DD` (suffixed for multiple changes in the same day). This step is only needed when you wish to update the client for downstream consumers (e.g. wso-react).
