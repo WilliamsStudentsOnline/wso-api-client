@@ -14,9 +14,11 @@ import { NotificationService } from './services/notification';
 import { GoodrichService } from './services/goodrich';
 import { BooktrakService } from './services/booktrak';
 import { BannerService } from './services/banner';
+import { AdminService } from './services/admin';
 
 export class WSO {
   public api: API;
+  private _admin: AdminService;
   private _auth: AuthService;
   private _autocomplete: AutocompleteService;
   private _banner: BannerService;
@@ -35,6 +37,7 @@ export class WSO {
   constructor(api: API) {
     this.api = api;
 
+    this._admin = new AdminService(api);
     this._auth = new AuthService(api);
     this._autocomplete = new AutocompleteService(api);
     this._banner = new BannerService(api);
@@ -96,6 +99,10 @@ export class WSO {
     return this._banner;
   }
 
+  get adminService(): AdminService {
+    return this._admin;
+  }
+
   get bulletinService(): BulletinService {
     return this._bulletin;
   }
@@ -117,8 +124,11 @@ export class WSO {
   }
 
   private initServices(api: API) {
+    this._admin = new AdminService(api);
     this._auth = new AuthService(api);
     this._autocomplete = new AutocompleteService(api);
+    this._banner = new BannerService(api);
+    this._booktrak = new BooktrakService(api);
     this._bulletin = new BulletinService(api);
     this._dormtrak = new DormtrakService(api);
     this._ephcatch = new EphcatchService(api);

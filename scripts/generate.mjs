@@ -26,6 +26,8 @@ const TAG_TO_SERVICE = {
   ephmatch: ['EphmatchService', 'ephmatch'],
   factrak: ['FactrakService', 'factrak'],
   'factrak-admin': ['FactrakService', 'factrak'],
+  admin: ['AdminService', 'admin'],
+  moderator: ['AdminService', 'admin'],
   goodrich: ['GoodrichService', 'goodrich'],
   health: ['MiscService', 'misc'],
   words: ['MiscService', 'misc'],
@@ -151,6 +153,7 @@ function resolveService(tags, apiPath) {
     if (TAG_TO_SERVICE[tag]) return TAG_TO_SERVICE[tag];
   }
   if ((tags || []).includes('admin')) {
+    if (apiPath.startsWith('/admin')) return TAG_TO_SERVICE.admin;
     if (apiPath.startsWith('/booktrak')) return TAG_TO_SERVICE.booktrak;
     if (apiPath.startsWith('/factrak')) return TAG_TO_SERVICE.factrak;
   }
