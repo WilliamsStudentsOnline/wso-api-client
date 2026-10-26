@@ -5,6 +5,7 @@ import {
   ModelsUser,
   ResponsesGetUserResponseUser,
   ResponsesListUsersResponseUser,
+  UserCreateTagRequestParams,
   UserUpdateUserParams,
   UserUpdateUserTagsParams,
 } from '../types';
@@ -14,6 +15,12 @@ export class UserService {
 
   constructor(api: API) {
     this.api = api;
+  }
+
+  async createUserTagRequest(userID: number | 'me', body: UserCreateTagRequestParams): Promise<APIResponse<Record<string, any>>> {
+    return this.api.request('post', `/api/v2/users/${userID}/tag-requests`, {
+      data: body,
+    });
   }
 
   async getOnboardingCanonicalUser(unixID: string): Promise<APIResponse<ModelsUser>> {

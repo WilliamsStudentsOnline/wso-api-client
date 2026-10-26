@@ -159,21 +159,6 @@ export class FactrakService {
     return this.api.request('get', `/api/v2/factrak/departments`);
   }
 
-  async listFlaggedSurveysAdmin(params?: {
-    professorID?: number;
-    courseID?: number;
-    userID?: number;
-    offset?: string;
-    limit?: number;
-    preload?: Array<string>;
-    populateAgreements?: boolean;
-    populateClientAgreement?: boolean;
-  }): Promise<APIResponse<Array<ModelsFactrakSurvey>>> {
-    return this.api.request('get', `/api/v2/factrak/admin/surveys`, {
-      params: params,
-    });
-  }
-
   async listProfessorCourses(professorID: number): Promise<APIResponse<Array<ModelsCourse>>> {
     return this.api.request('get', `/api/v2/factrak/professors/${professorID}/courses`);
   }
@@ -233,10 +218,6 @@ export class FactrakService {
     return this.api.request('get', `/api/v2/factrak/users/${userID}/surveys`, {
       params: params,
     });
-  }
-
-  async unflagSurveyAdmin(surveyID: number): Promise<APIResponse<any>> {
-    return this.api.request('delete', `/api/v2/factrak/admin/surveys/${surveyID}/flag`);
   }
 
   async updateSurvey(surveyID: number, updateParams: FactrakSurveyUpdateParams): Promise<APIResponse<ModelsFactrakSurvey>> {
