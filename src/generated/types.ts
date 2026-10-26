@@ -1,6 +1,26 @@
 /* eslint-disable */
 /** Generated from WSO OpenAPI — do not edit. yarn codegen */
 
+export interface AdminModeratorTaskResponse {
+  context?: any;
+  createdAt?: string;
+  id?: number;
+  requestingUser?: ModelsUser;
+  requestingUserID?: number;
+  resolution?: ModelsModeratorTaskResolution;
+  resolvedAt?: string;
+  resolvedByUser?: ModelsUser;
+  resolvedByUserID?: number;
+  taskFields?: Record<string, any>;
+  taskReference?: string;
+  taskType?: ModelsModeratorTaskType;
+  updatedAt?: string;
+}
+
+export interface AdminResolveTasksBody {
+  resolution: any;
+}
+
 export interface AuthAuthResponse {
   expire?: string;
   token?: string;
@@ -632,6 +652,14 @@ export interface ModelsListingType {
   [key: string]: any;
 }
 
+export interface ModelsModeratorTaskResolution {
+  [key: string]: any;
+}
+
+export interface ModelsModeratorTaskType {
+  [key: string]: any;
+}
+
 export interface ModelsNeighborhood {
   dorms?: Array<ModelsDorm>;
   id?: number;
@@ -962,6 +990,11 @@ export interface ServicesRespError {
   errorCode?: number;
   errors?: Array<string>;
   message?: string;
+}
+
+export interface UserCreateTagRequestParams {
+  tagID: number;
+  taskType: any;
 }
 
 export interface UserUpdateUserParams {
