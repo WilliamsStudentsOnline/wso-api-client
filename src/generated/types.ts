@@ -993,8 +993,7 @@ export interface ServicesRespError {
 }
 
 export interface UserCreateTagRequestParams {
-  tagID: number;
-  taskType: any;
+  tagName: string;
 }
 
 export interface UserUpdateUserParams {
