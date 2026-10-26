@@ -13,10 +13,7 @@ export class AutocompleteService {
     limit?: number
   ): Promise<APIResponse<AutocompleteACEntry[]>> {
     return this.api.request('get', '/api/v2/autocomplete/area-of-study', {
-      params: {
-        q: query,
-        limit: limit,
-      },
+      params: { q: query, limit },
     });
   }
 
@@ -25,10 +22,7 @@ export class AutocompleteService {
     limit?: number
   ): Promise<APIResponse<AutocompleteACEntry[]>> {
     return this.api.request('get', '/api/v2/autocomplete/course', {
-      params: {
-        q: query,
-        limit: limit,
-      },
+      params: { q: query, limit },
     });
   }
 
@@ -37,10 +31,7 @@ export class AutocompleteService {
     limit?: number
   ): Promise<APIResponse<AutocompleteACEntry[]>> {
     return this.api.request('get', '/api/v2/autocomplete/factrak', {
-      params: {
-        q: query,
-        limit: limit,
-      },
+      params: { q: query, limit },
     });
   }
 
@@ -49,10 +40,7 @@ export class AutocompleteService {
     limit?: number
   ): Promise<APIResponse<AutocompleteACEntry[]>> {
     return this.api.request('get', '/api/v2/autocomplete/professor', {
-      params: {
-        q: query,
-        limit: limit,
-      },
+      params: { q: query, limit },
     });
   }
 
@@ -61,10 +49,7 @@ export class AutocompleteService {
     limit?: number
   ): Promise<APIResponse<AutocompleteACEntry[]>> {
     return this.api.request('get', '/api/v2/autocomplete/tag', {
-      params: {
-        q: query,
-        limit: limit,
-      },
+      params: { q: query, limit },
     });
   }
 }

@@ -1,0 +1,29 @@
+name: Client release
+
+# Triggered by v* tags from `yarn publish-api`
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          body: |
+            TypeScript API client for consumers to pin via git tag.
+
+            ```bash
+            yarn codegen --tag ${{ github.ref_name }}
+            ```
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,62 @@
+name: OpenAPI codegen
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag date (2026.10.25) or full openapi-v* (empty = latest)"
+        required: false
+        type: string
+  repository_dispatch:
+    types: [openapi-contract-published]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  codegen:
+    name: Regenerate client from OpenAPI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Resolve contract tag
+        id: tag
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
+            raw="${{ github.event.client_payload.tag }}"
+          else
+            raw="${{ inputs.tag }}"
+          fi
+          if [[ -z "${raw}" ]]; then
+            echo "args=--latest" >> "$GITHUB_OUTPUT"
+            echo "label=latest" >> "$GITHUB_OUTPUT"
+          elif [[ "${raw}" == openapi-v* ]]; then
+            echo "args=--tag ${raw}" >> "$GITHUB_OUTPUT"
+            echo "label=${raw}" >> "$GITHUB_OUTPUT"
+          else
+            echo "args=--tag ${raw}" >> "$GITHUB_OUTPUT"
+            echo "label=openapi-v${raw//-/.}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Generate
+        run: yarn codegen ${{ steps.tag.outputs.args }}
+
+      - name: Create or update codegen PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: codegen/openapi
+          delete-branch: false
+          title: "codegen: regenerate from ${{ steps.tag.outputs.label }}"
+          labels: codegen
+          commit-message: "codegen: regenerate from ${{ steps.tag.outputs.label }}"
+          body: |
+            Automated OpenAPI codegen from `WilliamsStudentsOnline/wso-go@${{ steps.tag.outputs.label }}`.
+
+            Review, merge, then on master run `yarn publish-api` to tag for consumers.
