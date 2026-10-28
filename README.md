@@ -17,6 +17,29 @@ yarn codegen --tag yyyy.mm.dd-n # if multiple publishes in the same day
 yarn codegen --latest
 ```
 
+### Local / unreleased API (no publish-api)
+
+Point codegen at a local `swagger.json` from a `wso-go` checkout (JSON only):
+
+```bash
+yarn codegen --spec /path/to/wso-go/docs/swagger.json
+yarn build
+```
+
+Unknown OpenAPI tags get a generated `*Service` file automatically. The handwritten
+`src/wso.ts` facade still needs a one-line import + getter for brand-new services
+(same pattern as `bulletinService`). New `wso-go` endpoints need an `@ID` (and usually
+`@Security Bearer`) so method names stay valid TypeScript identifiers.
+
+Wire a local client into `wso-react` without publishing a git tag:
+
+```bash
+# in wso-react/package.json
+"wso-api-client": "file:../worktrees/wso-api-client-board"
+# or file:../wso-api-client
+yarn install
+```
+
 ## Publish
 
 After merging a codegen change to `master`, on a clean local up-to-date `master` run:
