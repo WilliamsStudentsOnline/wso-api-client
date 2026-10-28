@@ -19,6 +19,7 @@ const TAG_TO_SERVICE = {
   'booktrak-admin': ['BooktrakService', 'booktrak'],
   bulletins: ['BulletinService', 'bulletin'],
   banner: ['BannerService', 'banner'],
+  board: ['BoardService', 'board'],
   chat: ['ChatService', 'chat'],
   'course-scheduler': ['CourseSchedulerService', 'coursescheduler'],
   dormtrak: ['DormtrakService', 'dormtrak'],
@@ -146,6 +147,14 @@ function emitTypes(definitions) {
   return lines.join('\n');
 }
 
+function defaultServiceForTag(tag) {
+  const parts = tag.split(/[-_]/).filter(Boolean);
+  const className =
+    parts.map((p) => p[0].toUpperCase() + p.slice(1)).join('') + 'Service';
+  const fileStem = parts.join('').toLowerCase();
+  return [className, fileStem];
+}
+
 function resolveService(tags, apiPath) {
   if (apiPath.startsWith('/ephmatch/')) return TAG_TO_SERVICE.ephmatch;
   for (const tag of tags || []) {
@@ -157,6 +166,11 @@ function resolveService(tags, apiPath) {
     if (apiPath.startsWith('/booktrak')) return TAG_TO_SERVICE.booktrak;
     if (apiPath.startsWith('/factrak')) return TAG_TO_SERVICE.factrak;
   }
+  // New OpenAPI tags get a Service file without editing TAG_TO_SERVICE
+  for (const tag of tags || []) {
+    if (SKIP_TAGS.has(tag)) continue;
+    return defaultServiceForTag(tag);
+  }
   return null;
 }
 
@@ -164,6 +178,26 @@ function pathTsExpr(apiPath, pathParams) {
   let out = apiPath;
   for (const p of pathParams) out = out.replace(`{${p}}`, `\${${p}}`);
   return pathParams.length ? `\`/api/v2${out}\`` : `\`/api/v2${apiPath}\``;
+}
+
+// Quote names that aren't valid JS identifiers (e.g. query key type[])
+function tsPropName(name) {
+  return /^[A-Za-z_$][\w$]*$/.test(name) ? name : JSON.stringify(name);
+}
+
+// Fallback opIds from path are not valid identifiers; camelCase them
+function sanitizeOpId(opId) {
+  if (/^[A-Za-z_$][\w$]*$/.test(opId)) return opId;
+  const cleaned = opId
+    .replace(/[{}]/g, '')
+    .replace(/[^A-Za-z0-9]+/g, ' ')
+    .trim()
+    .split(/\s+/)
+    .map((p, i) =>
+      i === 0 ? p.toLowerCase() : p[0].toUpperCase() + p.slice(1).toLowerCase()
+    )
+    .join('');
+  return cleaned || 'operation';
 }
 
 function tsPathParamType(name, p) {
@@ -182,13 +216,14 @@ function collectOps(spec) {
       const resolved = resolveService(op.tags, apiPath);
       if (!resolved) continue;
       const [className, fileStem] = resolved;
-      const opId = op.operationId || `${method}_${apiPath}`;
+      const rawOpId = op.operationId || `${method}_${apiPath}`;
+      const opId = sanitizeOpId(rawOpId);
       const key = `${fileStem}:${opId}`;
       if (seen.has(key)) continue;
       seen.add(key);
 
-      let usePath = PATH_OVERRIDES[opId] || apiPath;
-      let useMethod = METHOD_OVERRIDES[opId] || method;
+      let usePath = PATH_OVERRIDES[rawOpId] || PATH_OVERRIDES[opId] || apiPath;
+      let useMethod = METHOD_OVERRIDES[rawOpId] || METHOD_OVERRIDES[opId] || method;
 
       if (!byFile.has(fileStem)) byFile.set(fileStem, []);
       byFile.get(fileStem).push({
@@ -232,7 +267,7 @@ function emitMethod(item) {
       } else {
         t = schemaToTs({ type: p.type, items: p.items });
       }
-      fields.push(`    ${p.name}${p.required ? '' : '?'}: ${t};`);
+      fields.push(`    ${tsPropName(p.name)}${p.required ? '' : '?'}: ${t};`);
     }
     args.push(`params?: {\n${fields.join('\n')}\n  }`);
   }

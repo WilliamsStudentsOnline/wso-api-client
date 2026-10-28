@@ -40,6 +40,47 @@ export interface BannerBanner {
   visible?: boolean;
 }
 
+export interface BoardCreateReplyParams {
+  content: string;
+}
+
+export interface BoardCreateThreadParams {
+  body: string;
+  endsAt?: string;
+  repliesEnabled?: boolean;
+  resolved?: boolean;
+  ride?: BoardCreateThreadRideParams;
+  startsAt?: string;
+  title: string;
+  type: string;
+}
+
+export interface BoardUpdateReplyParams {
+  content?: string;
+}
+
+export interface BoardUpdateThreadParams {
+  body?: string;
+  endsAt?: string;
+  repliesEnabled?: boolean;
+  resolved?: boolean;
+  ride?: BoardCreateThreadRideParams;
+  startsAt?: string;
+  title?: string;
+  type?: string;
+}
+
+export interface BoardCreateThreadRideParams {
+  destination?: string;
+  offeringRide?: boolean;
+  source?: string;
+}
+
+export interface BoardListThreadsResponse {
+  nextCursor?: string;
+  threads?: Array<ModelsBoardThread>;
+}
+
 export interface BooktrakCreateBookListingParams {
   bookID: number;
   condition?: any;
@@ -302,6 +343,46 @@ export interface ModelsBannedUser {
   id?: number;
   reason?: string;
   user?: any;
+  userID?: number;
+}
+
+export interface ModelsBoardPost {
+  content?: string;
+  createdAt?: string;
+  exUserName?: string;
+  id?: number;
+  isOP?: boolean;
+  thread?: ModelsBoardThread;
+  threadID?: number;
+  user?: ModelsUser;
+  userID?: number;
+}
+
+export interface ModelsBoardRideInformation {
+  destination?: string;
+  id?: number;
+  offeringRide?: boolean;
+  source?: string;
+  thread?: ModelsBoardThread;
+  threadID?: number;
+}
+
+export interface ModelsBoardThread {
+  body?: string;
+  createdAt?: string;
+  endsAt?: string;
+  exUserName?: string;
+  id?: number;
+  lastActive?: string;
+  posts?: Array<ModelsBoardPost>;
+  repliesEnabled?: boolean;
+  replyCount?: number;
+  resolved?: boolean;
+  ride?: ModelsBoardRideInformation;
+  startsAt?: string;
+  title?: string;
+  type?: string;
+  user?: ModelsUser;
   userID?: number;
 }
 

@@ -15,6 +15,7 @@ import { GoodrichService } from './services/goodrich';
 import { BooktrakService } from './services/booktrak';
 import { BannerService } from './services/banner';
 import { AdminService } from './services/admin';
+import { BoardService } from './services/board';
 
 export class WSO {
   public api: API;
@@ -22,6 +23,7 @@ export class WSO {
   private _auth: AuthService;
   private _autocomplete: AutocompleteService;
   private _banner: BannerService;
+  private _board: BoardService;
   private _booktrak: BooktrakService;
   private _bulletin: BulletinService;
   private _chat: ChatService;
@@ -41,6 +43,7 @@ export class WSO {
     this._auth = new AuthService(api);
     this._autocomplete = new AutocompleteService(api);
     this._banner = new BannerService(api);
+    this._board = new BoardService(api);
     this._bulletin = new BulletinService(api);
     this._booktrak = new BooktrakService(api);
     this._chat = new ChatService(api);
@@ -99,6 +102,10 @@ export class WSO {
     return this._banner;
   }
 
+  get boardService(): BoardService {
+    return this._board;
+  }
+
   get adminService(): AdminService {
     return this._admin;
   }
@@ -128,6 +135,7 @@ export class WSO {
     this._auth = new AuthService(api);
     this._autocomplete = new AutocompleteService(api);
     this._banner = new BannerService(api);
+    this._board = new BoardService(api);
     this._booktrak = new BooktrakService(api);
     this._bulletin = new BulletinService(api);
     this._dormtrak = new DormtrakService(api);

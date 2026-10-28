@@ -1,1 +1,1 @@
-tag: openapi-v2026.10.26-3
+spec: /home/charlie/code/wso/worktrees/wso-go-board/docs/swagger.json
