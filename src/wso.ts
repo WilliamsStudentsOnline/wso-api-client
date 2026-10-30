@@ -7,6 +7,7 @@ import { DormtrakService } from './services/dormtrak';
 import { EphcatchService } from './services/ephcatch';
 import { EphmatchService } from './services/ephmatch';
 import { FactrakService } from './services/factrak';
+import { FeedbackService } from './services/feedback';
 import { MiscService } from './services/misc';
 import { UserService } from './services/user';
 import { ChatService } from './services/chat';
@@ -29,6 +30,7 @@ export class WSO {
   private _ephcatch: EphcatchService;
   private _ephmatch: EphmatchService;
   private _factrak: FactrakService;
+  private _feedback: FeedbackService;
   private _goodrich: GoodrichService;
   private _misc: MiscService;
   private _notification: NotificationService;
@@ -48,6 +50,7 @@ export class WSO {
     this._ephcatch = new EphcatchService(api);
     this._ephmatch = new EphmatchService(api);
     this._factrak = new FactrakService(api);
+    this._feedback = new FeedbackService(api);
     this._goodrich = new GoodrichService(api);
     this._misc = new MiscService(api);
     this._notification = new NotificationService(api);
@@ -77,6 +80,10 @@ export class WSO {
 
   get factrakService(): FactrakService {
     return this._factrak;
+  }
+
+  get feedbackService(): FeedbackService {
+    return this._feedback;
   }
 
   get ephmatchService(): EphmatchService {
@@ -134,6 +141,7 @@ export class WSO {
     this._ephcatch = new EphcatchService(api);
     this._ephmatch = new EphmatchService(api);
     this._factrak = new FactrakService(api);
+    this._feedback = new FeedbackService(api);
     this._goodrich = new GoodrichService(api);
     this._misc = new MiscService(api);
     this._user = new UserService(api);

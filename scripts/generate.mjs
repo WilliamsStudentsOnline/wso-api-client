@@ -26,6 +26,7 @@ const TAG_TO_SERVICE = {
   ephmatch: ['EphmatchService', 'ephmatch'],
   factrak: ['FactrakService', 'factrak'],
   'factrak-admin': ['FactrakService', 'factrak'],
+  feedback: ['FeedbackService', 'feedback'],
   admin: ['AdminService', 'admin'],
   moderator: ['AdminService', 'admin'],
   goodrich: ['GoodrichService', 'goodrich'],
@@ -347,9 +348,14 @@ function normalizeTag(input) {
   let t = String(input).trim();
   if (!t) return null;
   if (t.startsWith('openapi-v')) return t;
-  t = t.replace(/-/g, '.');
-  if (!t.startsWith('openapi-v')) t = `openapi-v${t}`;
-  return t;
+  // Keep day suffix: 2026.10.27-2 → openapi-v2026.10.27-2
+  const suffix = t.match(/-(\d+)$/);
+  const suffixPart = suffix ? `-${suffix[1]}` : '';
+  const datePart = (suffix ? t.slice(0, -suffix[0].length) : t).replace(
+    /-/g,
+    '.'
+  );
+  return `openapi-v${datePart}${suffixPart}`;
 }
 
 async function fetchJson(url) {

@@ -50,7 +50,7 @@ export class UserService {
     });
   }
 
-  async updateUser(userID: number | 'me', updateParams: UserUpdateUserParams): Promise<APIResponse<ModelsUser>> {
+  async updateUser(userID: number | 'me', updateParams: UserUpdateUserParams): Promise<APIResponse<ResponsesGetUserResponseUser>> {
     return this.api.request('patch', `/api/v2/users/${userID}`, {
       data: updateParams,
     });
