@@ -26,6 +26,7 @@ const TAG_TO_SERVICE = {
   ephmatch: ['EphmatchService', 'ephmatch'],
   factrak: ['FactrakService', 'factrak'],
   'factrak-admin': ['FactrakService', 'factrak'],
+  feedback: ['FeedbackService', 'feedback'],
   admin: ['AdminService', 'admin'],
   moderator: ['AdminService', 'admin'],
   goodrich: ['GoodrichService', 'goodrich'],

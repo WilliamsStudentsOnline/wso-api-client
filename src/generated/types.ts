@@ -239,6 +239,19 @@ export interface FactrakSurveyUpdateParams {
   wouldTakeAnother?: boolean;
 }
 
+export interface FeedbackCreateFeedbackParams {
+  notes: string;
+  preferredName?: string;
+  url?: string;
+  userID?: number;
+}
+
+export interface FeedbackUpdateFeedbackParams {
+  adminNotes?: string;
+  issue?: string;
+  priority?: ModelsFeedbackPriority;
+}
+
 export interface GoodrichCreateOrderParams {
   comboDeal?: boolean;
   date?: string;
@@ -605,6 +618,22 @@ export interface ModelsFactrakSurveyAvgRatings {
   numWouldTakeAnother?: number;
 }
 
+export interface ModelsFeedback {
+  adminNotes?: string;
+  id?: number;
+  issue?: string;
+  notes?: string;
+  preferredName?: string;
+  priority?: any;
+  url?: string;
+  user?: ModelsUser;
+  userID?: number;
+}
+
+export interface ModelsFeedbackPriority {
+  [key: string]: any;
+}
+
 export interface ModelsGoodrichMenuItem {
   available?: boolean;
   category?: string;
@@ -757,6 +786,7 @@ export interface ModelsUser {
   onCampusSemester?: number;
   optOutEphcatch?: boolean;
   pronoun?: string;
+  pronounOverride?: string;
   suBox?: string;
   tags?: Array<ModelsTag>;
   title?: string;
@@ -851,6 +881,7 @@ export interface ResponsesGetUserResponseUser {
   officeID?: number;
   optOutEphcatch?: boolean;
   pronoun?: string;
+  pronounOverride?: string;
   suBox?: string;
   tags?: Array<ResponsesGetUserResponseTag>;
   title?: string;
@@ -966,6 +997,7 @@ export interface ResponsesListUsersResponseUser {
   officeID?: number;
   optOutEphcatch?: boolean;
   pronoun?: string;
+  pronounOverride?: string;
   suBox?: string;
   tags?: Array<ResponsesListUsersResponseTag>;
   title?: string;
@@ -1005,6 +1037,7 @@ export interface UserUpdateUserParams {
   nickname?: string;
   offCycle?: boolean;
   optOutEphcatch?: boolean;
+  pronounOverride?: string;
   visible?: boolean;
 }
 
