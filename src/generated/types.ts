@@ -21,6 +21,20 @@ export interface AdminResolveTasksBody {
   resolution: any;
 }
 
+export interface AdminCreateJobRunRequest {
+  params?: Record<string, any>;
+  runAt?: string;
+}
+
+export interface AdminJobInfo {
+  description?: string;
+  hasActiveRun?: boolean;
+  name?: string;
+  nextRunAt?: string;
+  params?: Array<RegistryParam>;
+  schedule?: RegistrySchedule;
+}
+
 export interface AuthAuthResponse {
   expire?: string;
   token?: string;
@@ -677,6 +691,25 @@ export interface ModelsGoodrichPaymentMethod {
   [key: string]: any;
 }
 
+export interface ModelsJobRun {
+  args?: string;
+  exitStatus?: number;
+  finishedAt?: string;
+  id?: number;
+  inputFileName?: string;
+  inputSha256?: string;
+  invocationID?: string;
+  jobName?: string;
+  logPath?: string;
+  runAt?: string;
+  startedAt?: string;
+  status?: string;
+  trigger?: string;
+  triggeredByUser?: ModelsUser;
+  triggeredByUserID?: number;
+  unitName?: string;
+}
+
 export interface ModelsListingType {
   [key: string]: any;
 }
@@ -817,6 +850,23 @@ export interface OldLoginParams {
   password?: string;
   unixID?: string;
   useIP?: boolean;
+}
+
+export interface RegistryParam {
+  default?: string;
+  description?: string;
+  enumValues?: Array<string>;
+  name?: string;
+  required?: boolean;
+  type?: RegistryParamType;
+}
+
+export interface RegistryParamType {
+  [key: string]: any;
+}
+
+export interface RegistrySchedule {
+  onCalendar?: string;
 }
 
 export interface ResponsesGetUserResponseDepartment {

@@ -28,6 +28,7 @@ const TAG_TO_SERVICE = {
   'factrak-admin': ['FactrakService', 'factrak'],
   feedback: ['FeedbackService', 'feedback'],
   admin: ['AdminService', 'admin'],
+  'admin-jobs': ['AdminService', 'admin'],
   moderator: ['AdminService', 'admin'],
   goodrich: ['GoodrichService', 'goodrich'],
   health: ['MiscService', 'misc'],
