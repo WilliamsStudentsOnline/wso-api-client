@@ -56,20 +56,13 @@ export class BoardService {
     limit?: number;
     sort?: string;
     includeNull?: boolean;
-    /** Prefer `type` — axios appends `[]` to array keys. `"type[]"` becomes `type[][]=…` and gin won't bind. */
-    type?: Array<string>;
     "type[]"?: Array<string>;
     resolved?: boolean;
     offeringRide?: boolean;
     userID?: number;
   }): Promise<APIResponse<BoardListThreadsResponse>> {
-    const { "type[]": typeBracket, type, ...rest } = params || {};
-    const types = type ?? typeBracket;
     return this.api.request('get', `/api/v2/board/threads`, {
-      params: {
-        ...rest,
-        ...(types && types.length > 0 ? { type: types } : {}),
-      },
+      params: params,
     });
   }
 
