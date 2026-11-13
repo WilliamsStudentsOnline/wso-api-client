@@ -28,8 +28,7 @@ export class AdminService extends GeneratedAdminService {
         if (resp.status >= 400) {
           let error: unknown;
           try {
-            const parsed =
-              typeof resp.data === 'string' ? JSON.parse(resp.data) : resp.data;
+            const parsed = typeof resp.data === 'string' ? JSON.parse(resp.data) : resp.data;
             error = parsed?.error;
           } catch {
             // body wasn't JSON
