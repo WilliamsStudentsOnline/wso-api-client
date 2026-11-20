@@ -23,7 +23,6 @@ const TAG_TO_SERVICE = {
   chat: ['ChatService', 'chat'],
   dormtrak: ['DormtrakService', 'dormtrak'],
   ephcatch: ['EphcatchService', 'ephcatch'],
-  ephmatch: ['EphmatchService', 'ephmatch'],
   factrak: ['FactrakService', 'factrak'],
   'factrak-admin': ['FactrakService', 'factrak'],
   feedback: ['FeedbackService', 'feedback'],
@@ -140,7 +139,6 @@ function defaultServiceForTag(tag) {
 }
 
 function resolveService(tags, apiPath) {
-  if (apiPath.startsWith('/ephmatch/')) return TAG_TO_SERVICE.ephmatch;
   for (const tag of tags || []) {
     if (SKIP_TAGS.has(tag)) return null;
     if (TAG_TO_SERVICE[tag]) return TAG_TO_SERVICE[tag];

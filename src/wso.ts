@@ -5,7 +5,6 @@ import { AutocompleteService } from './services/autocomplete';
 import { BulletinService } from './services/bulletin';
 import { DormtrakService } from './services/dormtrak';
 import { EphcatchService } from './services/ephcatch';
-import { EphmatchService } from './services/ephmatch';
 import { FactrakService } from './services/factrak';
 import { FeedbackService } from './services/feedback';
 import { MiscService } from './services/misc';
@@ -31,7 +30,6 @@ export class WSO {
   private _chat: ChatService;
   private _dormtrak: DormtrakService;
   private _ephcatch: EphcatchService;
-  private _ephmatch: EphmatchService;
   private _factrak: FactrakService;
   private _feedback: FeedbackService;
   private _goodrich: GoodrichService;
@@ -53,7 +51,6 @@ export class WSO {
     this._chat = new ChatService(api);
     this._dormtrak = new DormtrakService(api);
     this._ephcatch = new EphcatchService(api);
-    this._ephmatch = new EphmatchService(api);
     this._factrak = new FactrakService(api);
     this._feedback = new FeedbackService(api);
     this._goodrich = new GoodrichService(api);
@@ -90,10 +87,6 @@ export class WSO {
 
   get feedbackService(): FeedbackService {
     return this._feedback;
-  }
-
-  get ephmatchService(): EphmatchService {
-    return this._ephmatch;
   }
 
   get ephcatchService(): EphcatchService {
@@ -154,7 +147,6 @@ export class WSO {
     this._bulletin = new BulletinService(api);
     this._dormtrak = new DormtrakService(api);
     this._ephcatch = new EphcatchService(api);
-    this._ephmatch = new EphmatchService(api);
     this._factrak = new FactrakService(api);
     this._feedback = new FeedbackService(api);
     this._goodrich = new GoodrichService(api);
