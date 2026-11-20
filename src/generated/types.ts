@@ -155,10 +155,6 @@ export interface BulletinUpdateRideParams {
   offer?: boolean;
 }
 
-export interface CourseschedulerCourseSelectionsString {
-  courses?: string;
-}
-
 export interface DormtrakDormRoomPhotoInfo {
   dormRoomId?: number;
   name?: string;
@@ -1174,13 +1170,6 @@ export interface UserUpdateUserParams {
 
 export interface UserUpdateUserTagsParams {
   tags?: Array<string>;
-}
-
-/** @deprecated alias for CourseschedulerCourseSelectionsString */
-export type ModelsCourseSelectionString = CourseschedulerCourseSelectionsString;
-
-export interface CourseSelectionSetRequest {
-  courses?: string;
 }
 
 export namespace BooktrakCreateBookListingParams {
