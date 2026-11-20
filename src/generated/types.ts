@@ -1180,6 +1180,41 @@ export interface UserUpdateUserTagsParams {
   tags?: Array<string>;
 }
 
+export interface WcfmNow {
+  listeners?: number;
+  live?: boolean;
+  next?: WcfmShow;
+  onAir?: WcfmShow;
+  recent?: Array<WcfmTrack>;
+  refreshAfter?: number;
+  streamURL?: string;
+  track?: WcfmTrack;
+}
+
+export interface WcfmShow {
+  automated?: boolean;
+  description?: string;
+  djs?: Array<string>;
+  end?: string;
+  episodeName?: string;
+  id?: number;
+  image?: string;
+  start?: string;
+  title?: string;
+}
+
+export interface WcfmTrack {
+  album?: string;
+  artist?: string;
+  end?: string;
+  id?: number;
+  image?: string;
+  label?: string;
+  song?: string;
+  start?: string;
+  year?: number;
+}
+
 export namespace BooktrakCreateBookListingParams {
   export enum ConditionEnum {
     Empty = '',

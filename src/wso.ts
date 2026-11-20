@@ -17,6 +17,7 @@ import { BooktrakService } from './services/booktrak';
 import { BannerService } from './services/banner';
 import { AdminService } from './services/admin';
 import { BoardService } from './services/board';
+import { WcfmService } from './services/wcfm';
 
 export class WSO {
   public api: API;
@@ -37,6 +38,7 @@ export class WSO {
   private _misc: MiscService;
   private _notification: NotificationService;
   private _user: UserService;
+  private _wcfm: WcfmService;
 
   constructor(api: API) {
     this.api = api;
@@ -58,6 +60,7 @@ export class WSO {
     this._misc = new MiscService(api);
     this._notification = new NotificationService(api);
     this._user = new UserService(api);
+    this._wcfm = new WcfmService(api);
   }
 
   isAuthenticated(): boolean {
@@ -137,6 +140,10 @@ export class WSO {
     return this._goodrich;
   }
 
+  get wcfmService(): WcfmService {
+    return this._wcfm;
+  }
+
   private initServices(api: API) {
     this._admin = new AdminService(api);
     this._auth = new AuthService(api);
@@ -153,6 +160,7 @@ export class WSO {
     this._goodrich = new GoodrichService(api);
     this._misc = new MiscService(api);
     this._user = new UserService(api);
+    this._wcfm = new WcfmService(api);
     this._notification = new NotificationService(api);
     this._chat = new ChatService(api);
   }
