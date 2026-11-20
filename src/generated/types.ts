@@ -900,6 +900,7 @@ export interface ModelsUser {
   officeID?: number;
   onCampusSemester?: number;
   optOutEphcatch?: boolean;
+  photoHidden?: boolean;
   pronoun?: string;
   pronounOverride?: string;
   suBox?: string;
@@ -1012,6 +1013,7 @@ export interface ResponsesGetUserResponseUser {
   office?: ResponsesGetUserResponseOffice;
   officeID?: number;
   optOutEphcatch?: boolean;
+  photoHidden?: boolean;
   pronoun?: string;
   pronounOverride?: string;
   suBox?: string;
@@ -1128,6 +1130,7 @@ export interface ResponsesListUsersResponseUser {
   office?: ResponsesListUsersResponseOffice;
   officeID?: number;
   optOutEphcatch?: boolean;
+  photoHidden?: boolean;
   pronoun?: string;
   pronounOverride?: string;
   suBox?: string;
