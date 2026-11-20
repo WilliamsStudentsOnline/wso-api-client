@@ -28,11 +28,16 @@ export interface AdminCreateJobRunRequest {
 
 export interface AdminJobInfo {
   description?: string;
+  disabled?: boolean;
   hasActiveRun?: boolean;
   name?: string;
   nextRunAt?: string;
   params?: Array<RegistryParam>;
   schedule?: RegistrySchedule;
+}
+
+export interface AdminUpdateJobRequest {
+  disabled: boolean;
 }
 
 export interface AuthAuthResponse {
@@ -153,10 +158,6 @@ export interface BulletinUpdateRideParams {
   body?: string;
   date?: string;
   offer?: boolean;
-}
-
-export interface CourseschedulerCourseSelectionsString {
-  courses?: string;
 }
 
 export interface DormtrakDormRoomPhotoInfo {
@@ -1174,13 +1175,6 @@ export interface UserUpdateUserParams {
 
 export interface UserUpdateUserTagsParams {
   tags?: Array<string>;
-}
-
-/** @deprecated alias for CourseschedulerCourseSelectionsString */
-export type ModelsCourseSelectionString = CourseschedulerCourseSelectionsString;
-
-export interface CourseSelectionSetRequest {
-  courses?: string;
 }
 
 export namespace BooktrakCreateBookListingParams {
