@@ -1,1 +1,1 @@
-spec: wso-go@a34d7df docs/swagger.json (wso-go #486, unreleased; regenerate with --tag once a contract is published)
+tag: openapi-v2026.11.19
