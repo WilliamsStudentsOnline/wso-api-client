@@ -23,6 +23,10 @@ export class UserService {
     });
   }
 
+  async flagUserPhoto(userID: number | 'me'): Promise<APIResponse<any>> {
+    return this.api.request('post', `/api/v2/users/${userID}/photo/flag`);
+  }
+
   async getOnboardingCanonicalUser(unixID: string): Promise<APIResponse<ModelsUser>> {
     return this.api.request('get', `/api/v2/onboarding/canonical/${unixID}`);
   }
