@@ -21,7 +21,6 @@ const TAG_TO_SERVICE = {
   banner: ['BannerService', 'banner'],
   board: ['BoardService', 'board'],
   chat: ['ChatService', 'chat'],
-  'course-scheduler': ['CourseSchedulerService', 'coursescheduler'],
   dormtrak: ['DormtrakService', 'dormtrak'],
   ephcatch: ['EphcatchService', 'ephcatch'],
   ephmatch: ['EphmatchService', 'ephmatch'],
@@ -41,16 +40,6 @@ const TAG_TO_SERVICE = {
 
 const SKIP_TAGS = new Set(['auth', 'auth-2.0']);
 const HTTP_METHODS = new Set(['get', 'post', 'put', 'patch', 'delete', 'head', 'options']);
-
-// Correct swagger mistakes / prefer real router paths
-const PATH_OVERRIDES = {
-  getBook: '/booktrak/books/{bookID}',
-  getBookListing: '/booktrak/listings/{bookListingID}',
-  deleteDiscussion: '/bulletin/discussions/{discussionID}',
-};
-const METHOD_OVERRIDES = {
-  createBook: 'post',
-};
 
 function defToTsName(refOrName) {
   const name = refOrName.split('/').pop();
@@ -103,13 +92,6 @@ function emitTypes(definitions) {
     lines.push('}', '');
   }
   lines.push(
-    '/** @deprecated alias for CourseschedulerCourseSelectionsString */',
-    'export type ModelsCourseSelectionString = CourseschedulerCourseSelectionsString;',
-    '',
-    'export interface CourseSelectionSetRequest {',
-    '  courses?: string;',
-    '}',
-    '',
     // Same-file namespace merge so ModelsBookListing works as both type and enum holder
     'export namespace BooktrakCreateBookListingParams {',
     '  export enum ConditionEnum {',
@@ -224,15 +206,12 @@ function collectOps(spec) {
       if (seen.has(key)) continue;
       seen.add(key);
 
-      let usePath = PATH_OVERRIDES[rawOpId] || PATH_OVERRIDES[opId] || apiPath;
-      let useMethod = METHOD_OVERRIDES[rawOpId] || METHOD_OVERRIDES[opId] || method;
-
       if (!byFile.has(fileStem)) byFile.set(fileStem, []);
       byFile.get(fileStem).push({
         className,
         operationId: opId,
-        method: useMethod,
-        path: usePath,
+        method,
+        path: apiPath,
         op,
       });
     }
@@ -352,8 +331,6 @@ function emitService(fileStem, items, definitions) {
   }
 
   const known = new Set(Object.keys(definitions).map(defToTsName));
-  known.add('ModelsCourseSelectionString');
-  known.add('CourseSelectionSetRequest');
   const typeImports = [...allImports].filter((i) => known.has(i)).sort();
 
   const lines = [
