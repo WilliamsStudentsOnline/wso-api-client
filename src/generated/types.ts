@@ -28,11 +28,16 @@ export interface AdminCreateJobRunRequest {
 
 export interface AdminJobInfo {
   description?: string;
+  disabled?: boolean;
   hasActiveRun?: boolean;
   name?: string;
   nextRunAt?: string;
   params?: Array<RegistryParam>;
   schedule?: RegistrySchedule;
+}
+
+export interface AdminUpdateJobRequest {
+  disabled: boolean;
 }
 
 export interface AuthAuthResponse {

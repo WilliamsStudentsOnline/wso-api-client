@@ -6,6 +6,7 @@ import {
   AdminJobInfo,
   AdminModeratorTaskResponse,
   AdminResolveTasksBody,
+  AdminUpdateJobRequest,
   FeedbackUpdateFeedbackParams,
   ModelsFeedback,
   ModelsJobRun,
@@ -101,6 +102,12 @@ export class AdminService {
 
   async resolveModeratorTasks(taskID: number, body: AdminResolveTasksBody): Promise<APIResponse<Array<AdminModeratorTaskResponse>>> {
     return this.api.request('post', `/api/v2/admin/tasks/${taskID}/resolve`, {
+      data: body,
+    });
+  }
+
+  async updateAdminJob(name: string, body: AdminUpdateJobRequest): Promise<APIResponse<AdminJobInfo>> {
+    return this.api.request('patch', `/api/v2/admin/jobs/${name}`, {
       data: body,
     });
   }

@@ -1,1 +1,1 @@
-spec: wso-go@0f79f66 docs/swagger.json (unreleased; regenerate with --tag once a contract is published)
+spec: wso-go@a34d7df docs/swagger.json (wso-go #486, unreleased; regenerate with --tag once a contract is published)
