@@ -204,51 +204,6 @@ export interface DormtrakReviewUpdateParams {
   wifi?: number;
 }
 
-export interface EphmatchCountMatchesResponse {
-  total?: number;
-  unseen?: number;
-}
-
-export interface EphmatchGetAvailabilityResp {
-  available?: boolean;
-  closingTime?: string;
-  nextOpenTime?: string;
-  openIndefinitely?: boolean;
-  seniorOnly?: boolean;
-}
-
-export interface EphmatchProfileCreateParams {
-  LocationCountry?: string;
-  description?: string;
-  locationState?: string;
-  locationTown?: string;
-  locationVisible?: boolean;
-  lookingFor?: string;
-  matchMessage?: string;
-  messagingPlatform?: string;
-  messagingUsername?: string;
-}
-
-export interface EphmatchProfileUpdateParams {
-  description?: string;
-  locationCountry?: string;
-  locationState?: string;
-  locationTown?: string;
-  locationVisible?: boolean;
-  lookingFor?: string;
-  matchMessage?: string;
-  messagingPlatform?: string;
-  messagingUsername?: string;
-}
-
-export interface EphmatchSetProfileRelationParams {
-  relation?: string;
-}
-
-export interface EphmatchSetProfileRelationResp {
-  matched?: boolean;
-}
-
 export interface FactrakAgreementCreateParams {
   agree?: boolean;
 }
@@ -1024,49 +979,6 @@ export interface ResponsesGetUserResponseUser {
   visible?: boolean;
   williamsEmail?: string;
   williamsID?: string;
-}
-
-export interface ResponsesListMatchesResponseEphmatchMatch {
-  createdAt?: string;
-  id?: number;
-  matchedUser?: ResponsesListMatchesResponseMatchedUser;
-  matchedUserID?: number;
-  seenByMatchedUser?: boolean;
-  seenBySelf?: boolean;
-  updatedAt?: string;
-}
-
-export interface ResponsesListMatchesResponseEphmatchProfile {
-  description?: string;
-  locationCountry?: string;
-  locationState?: string;
-  locationTown?: string;
-  locationVisible?: boolean;
-  lookingFor?: string;
-  matchMessage?: string;
-  messagingPlatform?: string;
-  messagingUsername?: string;
-}
-
-export interface ResponsesListMatchesResponseMatchedUser {
-  classYear?: number;
-  entry?: string;
-  ephmatchProfile?: ResponsesListMatchesResponseEphmatchProfile;
-  id?: number;
-  major?: string;
-  name?: string;
-  nickname?: string;
-  offCycle?: boolean;
-  pronoun?: string;
-  tags?: Array<ResponsesListMatchesResponseTag>;
-  title?: string;
-  unixID?: string;
-  williamsEmail?: string;
-}
-
-export interface ResponsesListMatchesResponseTag {
-  id?: number;
-  name?: string;
 }
 
 export interface ResponsesListUsersResponseDepartment {
