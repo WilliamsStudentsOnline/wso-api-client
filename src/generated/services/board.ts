@@ -7,6 +7,8 @@ import {
   BoardListThreadsResponse,
   BoardUpdateReplyParams,
   BoardUpdateThreadParams,
+  BoardVoteParams,
+  ModelsBoardPoll,
   ModelsBoardPost,
   ModelsBoardThread,
 } from '../types';
@@ -74,6 +76,12 @@ export class BoardService {
 
   async updateBoardThread(threadID: number, body: BoardUpdateThreadParams): Promise<APIResponse<ModelsBoardThread>> {
     return this.api.request('patch', `/api/v2/board/threads/${threadID}`, {
+      data: body,
+    });
+  }
+
+  async voteBoardPoll(threadID: number, body: BoardVoteParams): Promise<APIResponse<ModelsBoardPoll>> {
+    return this.api.request('put', `/api/v2/board/threads/${threadID}/vote`, {
       data: body,
     });
   }

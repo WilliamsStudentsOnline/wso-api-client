@@ -60,12 +60,15 @@ export interface BannerBanner {
 }
 
 export interface BoardCreateReplyParams {
+  anonymous?: boolean;
   content: string;
 }
 
 export interface BoardCreateThreadParams {
+  anonymous?: boolean;
   body: string;
   endsAt?: string;
+  poll?: BoardCreateThreadPollParams;
   repliesEnabled?: boolean;
   resolved?: boolean;
   ride?: BoardCreateThreadRideParams;
@@ -87,6 +90,15 @@ export interface BoardUpdateThreadParams {
   startsAt?: string;
   title?: string;
   type?: string;
+}
+
+export interface BoardVoteParams {
+  optionID: number;
+}
+
+export interface BoardCreateThreadPollParams {
+  closesAt?: string;
+  options?: Array<string>;
 }
 
 export interface BoardCreateThreadRideParams {
@@ -329,11 +341,30 @@ export interface ModelsBannedUser {
   userID?: number;
 }
 
+export interface ModelsBoardPoll {
+  closed?: boolean;
+  closesAt?: string;
+  id?: number;
+  myVote?: number;
+  options?: Array<ModelsBoardPollOption>;
+  threadID?: number;
+  totalVotes?: number;
+}
+
+export interface ModelsBoardPollOption {
+  id?: number;
+  label?: string;
+  votes?: number;
+}
+
 export interface ModelsBoardPost {
+  anonymous?: boolean;
+  byOP?: boolean;
   content?: string;
   createdAt?: string;
   exUserName?: string;
   id?: number;
+  isMine?: boolean;
   isOP?: boolean;
   thread?: ModelsBoardThread;
   threadID?: number;
@@ -351,12 +382,14 @@ export interface ModelsBoardRideInformation {
 }
 
 export interface ModelsBoardThread {
+  anonymous?: boolean;
   body?: string;
   createdAt?: string;
   endsAt?: string;
   exUserName?: string;
   id?: number;
   lastActive?: string;
+  poll?: ModelsBoardPoll;
   posts?: Array<ModelsBoardPost>;
   repliesEnabled?: boolean;
   replyCount?: number;
