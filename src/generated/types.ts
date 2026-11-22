@@ -388,6 +388,7 @@ export interface ModelsBoardThread {
   endsAt?: string;
   exUserName?: string;
   id?: number;
+  isMine?: boolean;
   lastActive?: string;
   poll?: ModelsBoardPoll;
   posts?: Array<ModelsBoardPost>;
