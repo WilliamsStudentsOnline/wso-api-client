@@ -4,9 +4,12 @@ import { API, APIResponse } from '../../api';
 import {
   AdminCreateJobRunRequest,
   AdminJobInfo,
+  AdminListUsersResponse,
   AdminModeratorTaskResponse,
   AdminResolveTasksBody,
   AdminUpdateJobRequest,
+  AdminUpdateUserAccessParams,
+  AdminUserAccess,
   FeedbackUpdateFeedbackParams,
   ModelsFeedback,
   ModelsJobRun,
@@ -45,6 +48,10 @@ export class AdminService {
     return this.api.request('get', `/api/v2/admin/jobs/runs/${id}/logs`);
   }
 
+  async getAdminUserAccess(userID: number | 'me'): Promise<APIResponse<AdminUserAccess>> {
+    return this.api.request('get', `/api/v2/admin/users/${userID}/access`);
+  }
+
   async getFeedback(feedbackID: number, params?: {
     preload?: Array<string>;
   }): Promise<APIResponse<ModelsFeedback>> {
@@ -73,6 +80,14 @@ export class AdminService {
 
   async listAdminJobs(): Promise<APIResponse<Array<AdminJobInfo>>> {
     return this.api.request('get', `/api/v2/admin/jobs`);
+  }
+
+  async listAdminUsers(params?: {
+    q?: string;
+  }): Promise<APIResponse<AdminListUsersResponse>> {
+    return this.api.request('get', `/api/v2/admin/users`, {
+      params: params,
+    });
   }
 
   async listFeedback(params?: {
@@ -108,6 +123,12 @@ export class AdminService {
 
   async updateAdminJob(name: string, body: AdminUpdateJobRequest): Promise<APIResponse<AdminJobInfo>> {
     return this.api.request('patch', `/api/v2/admin/jobs/${name}`, {
+      data: body,
+    });
+  }
+
+  async updateAdminUserAccess(userID: number | 'me', body: AdminUpdateUserAccessParams): Promise<APIResponse<AdminUserAccess>> {
+    return this.api.request('put', `/api/v2/admin/users/${userID}/access`, {
       data: body,
     });
   }
