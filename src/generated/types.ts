@@ -21,6 +21,29 @@ export interface AdminResolveTasksBody {
   resolution: any;
 }
 
+export interface AdminUpdateUserAccessParams {
+  bans?: AdminUserBans;
+  factrakAdmin?: boolean;
+}
+
+export interface AdminUserAccess {
+  admin?: boolean;
+  bans?: AdminUserBans;
+  factrakAdmin?: boolean;
+  name?: string;
+  type?: string;
+  unixID?: string;
+  userID?: number;
+}
+
+export interface AdminUserBans {
+  bulletinRead?: boolean;
+  bulletinWrite?: boolean;
+  dormtrak?: boolean;
+  factrak?: boolean;
+  reason?: string;
+}
+
 export interface AdminCreateJobRunRequest {
   params?: Record<string, any>;
   runAt?: string;
@@ -34,6 +57,10 @@ export interface AdminJobInfo {
   nextRunAt?: string;
   params?: Array<RegistryParam>;
   schedule?: RegistrySchedule;
+}
+
+export interface AdminListUsersResponse {
+  users?: Array<AdminUserAccess>;
 }
 
 export interface AdminUpdateJobRequest {
@@ -66,6 +93,7 @@ export interface BoardCreateReplyParams {
 export interface BoardCreateThreadParams {
   body: string;
   endsAt?: string;
+  poll?: BoardCreateThreadPollParams;
   repliesEnabled?: boolean;
   resolved?: boolean;
   ride?: BoardCreateThreadRideParams;
@@ -89,15 +117,19 @@ export interface BoardUpdateThreadParams {
   type?: string;
 }
 
+export interface BoardVoteParams {
+  optionID: number;
+}
+
+export interface BoardCreateThreadPollParams {
+  closesAt?: string;
+  options?: Array<string>;
+}
+
 export interface BoardCreateThreadRideParams {
   destination?: string;
   offeringRide?: boolean;
   source?: string;
-}
-
-export interface BoardListThreadsResponse {
-  nextCursor?: string;
-  threads?: Array<ModelsBoardThread>;
 }
 
 export interface BooktrakCreateBookListingParams {
@@ -329,6 +361,22 @@ export interface ModelsBannedUser {
   userID?: number;
 }
 
+export interface ModelsBoardPoll {
+  closed?: boolean;
+  closesAt?: string;
+  id?: number;
+  myVote?: number;
+  options?: Array<ModelsBoardPollOption>;
+  threadID?: number;
+  totalVotes?: number;
+}
+
+export interface ModelsBoardPollOption {
+  id?: number;
+  label?: string;
+  votes?: number;
+}
+
 export interface ModelsBoardPost {
   content?: string;
   createdAt?: string;
@@ -357,6 +405,7 @@ export interface ModelsBoardThread {
   exUserName?: string;
   id?: number;
   lastActive?: string;
+  poll?: ModelsBoardPoll;
   posts?: Array<ModelsBoardPost>;
   repliesEnabled?: boolean;
   replyCount?: number;

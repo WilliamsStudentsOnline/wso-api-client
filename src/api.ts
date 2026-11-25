@@ -83,4 +83,5 @@ export interface APIResponse<T = any> {
   error?: APIError;
   updateToken?: boolean;
   paginationTotal?: number;
+  nextCursor?: string;
 }
